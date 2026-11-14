@@ -11,8 +11,8 @@ claude_model: claude-sonnet-5-5
 graph_host: https://graph.facebook.com
 graph_version: v25.0
 
-# Adresse deiner GitHub-Pages-Seite + /insta   (DEINNAME und Repo-Namen anpassen)
-public_base_url: https://dominiksuerth-prog.github.io/insta-autopilot/insta
+# Öffentliche Adresse der Slides (direkt aus dem Repo, sofort nach dem Hochladen verfügbar)
+public_base_url: https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta
 
 channels:
   - id: stehtdirzu                      # passt zum Ordner channels/stehtdirzu
