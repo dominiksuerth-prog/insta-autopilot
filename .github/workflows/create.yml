@@ -12,8 +12,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: autopilot
@@ -22,9 +20,7 @@ concurrency:
 jobs:
   create:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    environment:
-      name: github-pages
+    timeout-minutes: 350
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -41,7 +37,7 @@ jobs:
       - run: python -m playwright install --with-deps chromium
       - name: Posts erzeugen
         run: python run_create.py --channel "${{ github.event.inputs.channel || 'all' }}"
-      - name: Ergebnis speichern
+      - name: Slides hochladen
         if: always()
         run: |
           git config user.name "autopilot-bot"
@@ -50,11 +46,6 @@ jobs:
           git diff --cached --quiet || git commit -m "autopilot: neue Posts"
           git pull --rebase
           git push
-      - uses: actions/configure-pages@v5
+      - name: Auf Freigabe warten (max. 5 Stunden)
         if: always()
-      - uses: actions/upload-pages-artifact@v3
-        if: always()
-        with:
-          path: docs
-      - uses: actions/deploy-pages@v4
-        if: always()
+        run: python run_poll.py --loop 300
