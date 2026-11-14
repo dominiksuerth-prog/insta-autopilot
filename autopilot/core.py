@@ -164,7 +164,6 @@ def generate_post(cfg, ch, topic):
             model=cfg.get("claude_model", "claude-sonnet-5-5"),
             max_tokens=4000,
             tools=[POST_TOOL],
-            tool_choice={"type": "tool", "name": "save_post"},
             messages=[{"role": "user", "content": prompt}],
         )
         data = next((b.input for b in msg.content if getattr(b, "type", "") == "tool_use"), None)
@@ -340,8 +339,7 @@ def prune_old(state, days=30):
 
 def create_post(cfg, state, ch, topic=None):
     """Erzeugt einen Post und schickt ihn zur Freigabe per Telegram."""
-    topic = topic or next_topic(state, ch)
-    save_state(state)
+    topic = topic or next_topic(state, ch)  # wird erst nach Erfolg gespeichert
     data = generate_post(cfg, ch, topic)
     post_id = now().strftime("%Y%m%d-%H%M") + "-" + uuid.uuid4().hex[:6]
     paths, urls = render_post(cfg, ch, data, post_id)
