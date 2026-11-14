@@ -1,0 +1,10 @@
+/* @heizkosten.klar – Navy + Heiz-Orange */
+:root {
+  --bg: #0F1B2D; --fg: #F4F1EA; --muted: #B8C2D1;
+  --head: 'Space Grotesk'; --body: 'Inter';
+  --hl-fg: #FF7A1A; --hl-bg: transparent;
+  --accent: #FF7A1A; --accent-fg: #0F1B2D;
+  --card: #1A2A42; --card-fg: #F4F1EA; --card-border: none;
+  --card2: #F4F1EA; --card2-fg: #0F1B2D; --card2-border: none;
+  --num: #FF7A1A; --bad: #FF9B9B; --good: #B54A00;
+}
