@@ -1,0 +1,10 @@
+/* @stehtdir.zu – Off-White, Schwarz, Signalgelb */
+:root {
+  --bg: #F7F5EE; --fg: #141414; --muted: #3A3A3A;
+  --head: 'Archivo'; --body: 'Inter';
+  --hl-fg: #141414; --hl-bg: #FFD43B;
+  --accent: #FFD43B; --accent-fg: #141414;
+  --card: #FFFFFF; --card-fg: #141414; --card-border: 3px solid #141414;
+  --card2: #141414; --card2-fg: #F7F5EE; --card2-border: 3px solid #141414;
+  --num: #141414; --bad: #B3261E; --good: #FFD43B;
+}
