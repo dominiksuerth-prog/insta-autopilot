@@ -1,0 +1,22 @@
+name: Setup prüfen
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      IG_TOKEN_HEIZKOSTEN: ${{ secrets.IG_TOKEN_HEIZKOSTEN }}
+      IG_TOKEN_STEHTDIRZU: ${{ secrets.IG_TOKEN_STEHTDIRZU }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml requests jinja2
+      - name: Ergebnis (hier aufklappen)
+        run: python check.py
