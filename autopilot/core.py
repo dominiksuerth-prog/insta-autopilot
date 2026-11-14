@@ -99,7 +99,7 @@ REGELN
   {cta_hint}
 - 5 bis 8 passende deutsche Hashtags.
 
-ANTWORTE NUR MIT JSON in genau diesem Format:
+Gib das Ergebnis ausschließlich über das Werkzeug "save_post" zurück. Aufbau der Felder:
 {{
   "slides": [
     {{"type": "cover", "kicker": "KURZES LABEL", "title": "...", "subtitle": "..."}},
@@ -111,6 +111,32 @@ ANTWORTE NUR MIT JSON in genau diesem Format:
   "hashtags": ["#...", "#..."],
   "check": ["Was vor dem Posten geprüft werden sollte (leer lassen, wenn nichts)"]
 }}"""
+
+
+POST_TOOL = {
+    "name": "save_post",
+    "description": "Speichert den fertigen Karussell-Post.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "slides": {"type": "array", "items": {
+                "type": "object",
+                "properties": {
+                    "type": {"type": "string", "enum": ["cover", "point", "list", "cta"]},
+                    "kicker": {"type": "string"}, "label": {"type": "string"},
+                    "contra": {"type": "string"}, "title": {"type": "string"},
+                    "subtitle": {"type": "string"}, "body": {"type": "string"},
+                    "items": {"type": "array", "items": {"type": "string"}},
+                },
+                "required": ["type", "title"],
+            }},
+            "caption": {"type": "string"},
+            "hashtags": {"type": "array", "items": {"type": "string"}},
+            "check": {"type": "array", "items": {"type": "string"}},
+        },
+        "required": ["slides", "caption", "hashtags"],
+    },
+}
 
 
 def _extract_json(text):
@@ -132,13 +158,28 @@ def generate_post(cfg, ch, topic):
         cta_hint=ch.get("cta_hint", ""),
     )
     client = anthropic.Anthropic()
-    msg = client.messages.create(
-        model=cfg.get("claude_model", "claude-sonnet-5-5"),
-        max_tokens=4000,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    text = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
-    data = _extract_json(text)
+    last_err = None
+    for _ in range(3):  # bis zu 3 Versuche
+        msg = client.messages.create(
+            model=cfg.get("claude_model", "claude-sonnet-5-5"),
+            max_tokens=4000,
+            tools=[POST_TOOL],
+            tool_choice={"type": "tool", "name": "save_post"},
+            messages=[{"role": "user", "content": prompt}],
+        )
+        data = next((b.input for b in msg.content if getattr(b, "type", "") == "tool_use"), None)
+        if data is None:  # Rückfall: JSON aus Text lesen
+            text = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
+            try:
+                data = _extract_json(text)
+            except Exception as e:
+                last_err = e
+                continue
+        if isinstance(data, dict) and data.get("slides"):
+            break
+        last_err = ValueError("Antwort ohne Slides")
+    else:
+        raise RuntimeError(f"Claude-Antwort nicht lesbar: {last_err}")
     slides = data.get("slides", [])
     if not 2 <= len(slides) <= 10:
         raise ValueError(f"Ungültige Slide-Anzahl: {len(slides)}")
