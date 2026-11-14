@@ -2,7 +2,7 @@
 # Zugangsschlüssel gehören NICHT hierher, sondern in Settings -> Secrets and variables -> Actions.
 
 # Hauptschalter: erst auf true setzen, wenn "Setup prüfen" überall OK meldet.
-enabled: false
+enabled: true
 
 # Modell für die Texte. Günstiger: claude-haiku-5-5
 claude_model: claude-sonnet-5-5
