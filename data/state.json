@@ -1,9 +1,25 @@
 {
   "channels": {
     "stehtdirzu": {
-      "topic_index": 2
+      "topic_index": 3
     }
   },
-  "posts": {},
+  "posts": {
+    "20261114-1947-075f86": {
+      "channel": "stehtdirzu",
+      "topic": "Gepäck verspätet oder verloren: Darauf hast du Anspruch",
+      "status": "pending",
+      "urls": [
+        "https://dominiksuerth-prog.github.io/insta-autopilot/insta/stehtdirzu/20261114-1947-075f86/1.jpg",
+        "https://dominiksuerth-prog.github.io/insta-autopilot/insta/stehtdirzu/20261114-1947-075f86/2.jpg",
+        "https://dominiksuerth-prog.github.io/insta-autopilot/insta/stehtdirzu/20261114-1947-075f86/3.jpg",
+        "https://dominiksuerth-prog.github.io/insta-autopilot/insta/stehtdirzu/20261114-1947-075f86/4.jpg",
+        "https://dominiksuerth-prog.github.io/insta-autopilot/insta/stehtdirzu/20261114-1947-075f86/5.jpg",
+        "https://dominiksuerth-prog.github.io/insta-autopilot/insta/stehtdirzu/20261114-1947-075f86/6.jpg"
+      ],
+      "caption": "Koffer nicht da? Dann fang nicht an zu diskutieren, sondern zu dokumentieren.\n\nVerspätetes oder verlorenes Gepäck ist ärgerlich, aber du bist nicht machtlos. Wichtig ist die Reihenfolge: Melde den Schaden noch im Gepäckbereich am Schalter der Airline oder des Flughafens und lass dir die Meldung schriftlich bestätigen. Hebe Bordkarte, Gepäckbon und alle Quittungen für nötige Ersatzkäufe auf. Danach meldest du den Schaden schriftlich bei der Airline, und zwar schnell, denn dafür gelten kurze Fristen. Die stehen in den Beförderungsbedingungen deiner Airline.\n\nUnd noch ein Irrtum: Die Pauschalen von 250 bis 600 € gibt es für Flüge, die mindestens 3 Stunden zu spät am Ziel ankommen, nicht für verspätete Koffer. Beim Gepäck geht es um Ersatz für nachweisbare Kosten und Schäden.\n\nDas ist eine allgemeine Info, keine Rechtsberatung im Einzelfall. Ob und wie viel du bekommst, hängt von deinem Fall ab.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#gepäckverloren #fluggastrechte #verbraucherrechte #reisetipps #flugverspätung #verbraucherschutz #urlaub #stehtdirzu",
+      "created": "2026-11-14T19:48:01.841423+01:00"
+    }
+  },
   "tg_offset": null
 }
