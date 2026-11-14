@@ -1,10 +1,13 @@
-"""Liest deine Telegram-Antworten ab und führt sie aus (läuft alle 15 Minuten per GitHub Actions).
+"""Liest deine Telegram-Antworten ab und führt sie aus (läuft nach jedem neuen Post bis zur Freigabe, sonst stündlich).
 
 Knöpfe:  ✅ Posten  |  🔁 Neu (gleiches Thema neu schreiben)  |  ❌ Verwerfen
 Befehle: /post heizkosten   -> neuen Post erzeugen
          /status            -> offene Posts anzeigen
 """
+import argparse
 import os
+import subprocess
+import time
 import traceback
 
 from autopilot.core import (_tg, approve_post, create_post, load_config, load_state,
@@ -60,13 +63,31 @@ def handle_message(cfg, msg):
         tg_text("Offene Posts:\n" + ("\n".join(pending) if pending else "keine"))
 
 
-def main():
-    cfg = load_config()
-    if not cfg.get("enabled") or not ALLOWED_CHAT:
-        print("Noch nicht eingeschaltet (enabled: false oder TELEGRAM_CHAT_ID fehlt) – nichts zu tun.")
+def sync():
+    """Änderungen (state.json, neue Slides) sofort ins Repo schieben – Bilder sind dann öffentlich."""
+    def git(*a):
+        return subprocess.run(["git", *a], capture_output=True, text=True)
+    git("config", "user.name", "autopilot-bot")
+    git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com")
+    git("add", "-A", "docs", "data")
+    if git("diff", "--cached", "--quiet").returncode == 0:
         return
+    git("commit", "-m", "autopilot: Freigaben")
+    for _ in range(3):
+        git("pull", "--rebase")
+        if git("push").returncode == 0:
+            return
+        time.sleep(5)
+    print("WARNUNG: git push fehlgeschlagen")
+
+
+def has_pending():
+    return any(p["status"] == "pending" for p in load_state()["posts"].values())
+
+
+def poll_once(cfg, wait=0):
     state = load_state()
-    params = {"timeout": 0}
+    params = {"timeout": wait}
     if state.get("tg_offset"):
         params["offset"] = state["tg_offset"]
     updates = _tg("getUpdates", data=params)
@@ -82,7 +103,24 @@ def main():
         except Exception as e:
             traceback.print_exc()
             tg_text(f"⚠️ Fehler: {e}")
-    print(f"{len(updates)} Telegram-Updates verarbeitet.")
+        sync()
+    return len(updates)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--loop", type=int, default=0,
+                    help="Minuten lang auf Freigaben warten, solange Posts offen sind")
+    args = ap.parse_args()
+    cfg = load_config()
+    if not cfg.get("enabled") or not ALLOWED_CHAT:
+        print("Noch nicht eingeschaltet (enabled: false oder TELEGRAM_CHAT_ID fehlt) – nichts zu tun.")
+        return
+    deadline = time.time() + args.loop * 60
+    total = poll_once(cfg)
+    while time.time() < deadline and has_pending():
+        total += poll_once(cfg, wait=25)  # Long-Polling: Telegram antwortet sofort bei deinem Tipp
+    print(f"{total} Telegram-Updates verarbeitet.")
 
 
 if __name__ == "__main__":
