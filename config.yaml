@@ -1,0 +1,30 @@
+# Einstellungen – direkt auf GitHub bearbeiten (Stift-Symbol).
+# Zugangsschlüssel gehören NICHT hierher, sondern in Settings -> Secrets and variables -> Actions.
+
+# Hauptschalter: erst auf true setzen, wenn "Setup prüfen" überall OK meldet.
+enabled: false
+
+# Modell für die Texte. Günstiger: claude-haiku-5-5
+claude_model: claude-sonnet-5-5
+
+# Instagram-API über Facebook Login for Business (Systemnutzer-Token, läuft nie ab)
+graph_host: https://graph.facebook.com
+graph_version: v25.0
+
+# Adresse deiner GitHub-Pages-Seite + /insta   (DEINNAME und Repo-Namen anpassen)
+public_base_url: https://dominiksuerth-prog.github.io/insta-autopilot/insta
+
+channels:
+  - id: stehtdirzu                      # passt zum Ordner channels/stehtdirzu
+    active: true
+    handle: "@stehtdir.zu"
+    ig_user_id: "17841456557692834"     # Instagram-ID aus dem Business-Portfolio "Autopilit"
+    token_env: IG_TOKEN_STEHTDIRZU      # Name des Secrets
+    cta_hint: "Letzter Satz der Caption: 'Speichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.'"
+
+  - id: heizkosten                      # pausiert – erst nach Klärung mit WSW aktivieren
+    active: false
+    handle: "@heizkosten.klar"
+    ig_user_id: "HIER_EINTRAGEN"
+    token_env: IG_TOKEN_HEIZKOSTEN
+    cta_hint: "Letzter Satz der Caption: 'Mehr ehrliche Zahlen: Folge @heizkosten.klar'."
