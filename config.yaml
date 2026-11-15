@@ -28,3 +28,11 @@ channels:
     ig_user_id: "HIER_EINTRAGEN"
     token_env: IG_TOKEN_HEIZKOSTEN
     cta_hint: "Letzter Satz der Caption: 'Mehr ehrliche Zahlen: Folge @heizkosten.klar'."
+
+  - id: onebetterthought                # Unterprofil, im Business-Portfolio "Autopilit"
+    active: true
+    language: en
+    handle: "@onebetterthought"
+    ig_user_id: "17841415614416136"
+    token_env: IG_TOKEN_STEHTDIRZU       # derselbe Systembenutzer-Token, wenn das Konto ihm zugewiesen ist
+    cta_hint: "Last line of the caption: 'Save this for later – and send it to someone who needs it.'"
