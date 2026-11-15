@@ -1,0 +1,18 @@
+/* @onebetterthought – Tinte, Creme, Gold */
+:root {
+  --bg: #F4EFE6; --fg: #15171B; --muted: #5B5850;
+  --head: 'Fraunces'; --body: 'Inter';
+  --hl-fg: #A87F2E; --hl-bg: transparent;
+  --accent: #15171B; --accent-fg: #F4EFE6;
+  --card: #FFFDF8; --card-fg: #15171B; --card-border: 2px solid #E3DACB;
+  --card2: #15171B; --card2-fg: #F4EFE6; --card2-border: none;
+  --num: #A87F2E; --bad: #9C3B2F; --good: #D9B66A;
+}
+.card.alt .hl { color: #D9B66A; }
+h1, h2 { font-weight: 700; letter-spacing: -1px; }
+.kicker { font-family: 'Inter', sans-serif; font-size: 24px; letter-spacing: 4px; border-radius: 999px; padding: 12px 26px; }
+.label { font-family: 'Inter', sans-serif; font-size: 26px; letter-spacing: 4px; color: #A87F2E; }
+.card.alt.grow { justify-content: center; padding: 64px 56px; gap: 32px; }
+.card.alt.grow h2 { font-size: 68px !important; }
+ul.items { justify-content: center; }
+.hl { padding: 0; }
