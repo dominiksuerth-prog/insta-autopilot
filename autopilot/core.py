@@ -76,7 +76,7 @@ def next_topic(state, ch):
 
 # ---------------------------------------------------------------- Text mit Claude
 
-PROMPT = """Du schreibst einen Instagram-Karussell-Post für den deutschen Kanal {handle}.
+PROMPT = """Du schreibst einen Instagram-Karussell-Post für den Kanal {handle}.
 
 THEMA: {topic}
 
@@ -87,7 +87,7 @@ FAKTENBASIS (nur diese Zahlen, Beträge, Fristen und Prozentwerte verwenden):
 {facts}
 
 REGELN
-- Deutsch, du-Form, kurz und konkret. Keine Emojis auf den Slides.
+- {lang_rule} Kurz und konkret. Keine Emojis auf den Slides.
 - 5 bis 7 Slides. Slide 1 hat type "cover", die letzte type "cta".
 - Dazwischen type "point" (eine Aussage mit Erklärung) oder "list" (2 bis 4 kurze Punkte).
 - Bei "point" kannst du "contra" setzen, wenn du einen Mythos/Irrtum widerlegst (contra = der Irrtum in Anführungszeichen).
@@ -97,7 +97,7 @@ REGELN
 - Keine Rechts-, Steuer- oder Anlageberatung im Einzelfall: allgemeine Infos, keine Garantien.
 - Caption: 500 bis 1200 Zeichen. Erste Zeile = Hook. Dann Kernaussage. Dann Aufforderung zum Speichern/Teilen.
   {cta_hint}
-- 5 bis 8 passende deutsche Hashtags.
+- 5 bis 8 passende Hashtags in der Sprache des Kanals.
 
 Gib das Ergebnis ausschließlich über das Werkzeug "save_post" zurück. Aufbau der Felder:
 {{
@@ -112,6 +112,16 @@ Gib das Ergebnis ausschließlich über das Werkzeug "save_post" zurück. Aufbau 
   "check": ["Was vor dem Posten geprüft werden sollte (leer lassen, wenn nichts)"]
 }}"""
 
+
+LANG_RULES = {
+    "de": "Alle Texte auf Deutsch, du-Form.",
+    "en": "Write ALL slide texts, caption and hashtags in natural, simple English (address the reader as 'you').",
+}
+
+LABELS = {
+    "de": {"lang": "de", "swipe": "Swipe →", "myth": "Irrtum", "fact": "Fakt", "cta": "Speichern & teilen · Folge"},
+    "en": {"lang": "en", "swipe": "Swipe →", "myth": "Myth", "fact": "Study", "cta": "Save & share · Follow"},
+}
 
 POST_TOOL = {
     "name": "save_post",
@@ -156,6 +166,7 @@ def generate_post(cfg, ch, topic):
         style=(chdir / "style.md").read_text(encoding="utf-8"),
         facts=(chdir / "facts.md").read_text(encoding="utf-8"),
         cta_hint=ch.get("cta_hint", ""),
+        lang_rule=LANG_RULES.get(ch.get("language", "de"), LANG_RULES["de"]),
     )
     client = anthropic.Anthropic()
     last_err = None
@@ -201,6 +212,7 @@ def render_post(cfg, ch, data, post_id):
                       autoescape=select_autoescape(["html"]))
     env.filters["hl"] = _hl
     tpl = env.get_template("slide.html")
+    t = dict(LABELS.get(ch.get("language", "de"), LABELS["de"]), **(ch.get("labels") or {}))
     theme = Markup((ROOT / "channels" / ch["id"] / "theme.css").read_text(encoding="utf-8"))
 
     outdir = ROOT / "docs" / "insta" / ch["id"] / post_id
@@ -211,7 +223,7 @@ def render_post(cfg, ch, data, post_id):
         browser = p.chromium.launch()
         page = browser.new_page(viewport={"width": 1080, "height": 1350})
         for i, s in enumerate(slides, 1):
-            html = tpl.render(s=s, i=i, n=len(slides), handle=ch["handle"], theme=theme)
+            html = tpl.render(s=s, i=i, n=len(slides), handle=ch["handle"], theme=theme, t=t)
             page.set_content(html, wait_until="networkidle")
             page.evaluate("document.fonts.ready")
             png = page.screenshot(type="png")
