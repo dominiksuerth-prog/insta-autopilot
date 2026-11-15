@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="de">
+<html lang="{{ t.lang }}">
 <head>
 <meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Fraunces:opsz,wght@9..144,600..800&family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; }
 html, body { margin: 0; }
@@ -42,15 +42,15 @@ ul.items .num { font-family: var(--head), sans-serif; font-weight: 800; font-siz
     <h1>{{ s.title | hl }}</h1>
     {% if s.subtitle %}<p class="sub">{{ s.subtitle }}</p>{% endif %}
   </div>
-  <div class="foot"><b>{{ handle }}</b><span>Swipe →</span></div>
+  <div class="foot"><b>{{ handle }}</b><span>{{ t.swipe }}</span></div>
 
 {% elif s.type == 'point' %}
   {% if s.label %}<div class="label">{{ s.label }}</div>{% endif %}
   {% if s.contra %}
-  <div class="card"><div class="tag" style="color:var(--bad)">✕ Irrtum</div><p class="contra">{{ s.contra }}</p></div>
+  <div class="card"><div class="tag" style="color:var(--bad)">✕ {{ t.myth }}</div><p class="contra">{{ s.contra }}</p></div>
   {% endif %}
   <div class="card alt grow">
-    {% if s.contra %}<div class="tag" style="color:var(--good)">✓ Fakt</div>{% endif %}
+    {% if s.contra %}<div class="tag" style="color:var(--good)">✓ {{ t.fact }}</div>{% endif %}
     <h2 style="font-size:60px">{{ s.title | hl }}</h2>
     <p class="body">{{ s.body }}</p>
   </div>
@@ -68,7 +68,7 @@ ul.items .num { font-family: var(--head), sans-serif; font-weight: 800; font-siz
     <h2 style="font-size:84px">{{ s.title | hl }}</h2>
     {% if s.body %}<p class="sub">{{ s.body }}</p>{% endif %}
   </div>
-  <div class="btn">Speichern &amp; teilen · Folge {{ handle }}</div>
+  <div class="btn">{{ t.cta }} {{ handle }}</div>
   <div class="foot"><b>{{ handle }}</b><span>{{ i }} / {{ n }}</span></div>
 {% endif %}
 </div>
