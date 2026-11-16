@@ -28,7 +28,7 @@
     "20261116-1617-c4e5be": {
       "channel": "stehtdirzu",
       "topic": "Überbucht und nicht mitgenommen: deine Rechte",
-      "status": "pending",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261116-1617-c4e5be/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261116-1617-c4e5be/2.jpg",
@@ -39,7 +39,9 @@
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261116-1617-c4e5be/7.jpg"
       ],
       "caption": "Gate zu, Koffer im Kopf, Platz weg: Die Airline hat zu viele Tickets verkauft und du bleibst am Boden?\n\nDas ist keine Gefälligkeit, das ist Nichtbeförderung. Und dafür kann dir nach der EU-Verordnung 261/2004 Geld zustehen. Pro Person, unabhängig vom Ticketpreis: 250 € bis 1.500 km, 400 € bei 1.500 bis 3.500 km (und bei EU-Flügen über 1.500 km), 600 € über 3.500 km.\n\nDie Regeln gelten bei Abflug in der EU (jede Airline) und bei Flügen in die EU mit einer EU-Airline. Ausnahmen gibt es bei außergewöhnlichen Umständen wie Unwetter oder Sicherheitsrisiken. Ob dir im konkreten Fall etwas zusteht, hängt vom Einzelfall ab.\n\nDeine Schritte: Bordkarte und Buchung sichern, Notizen machen, die Airline schriftlich zur Zahlung auffordern und den Betrag nennen. Nicht ewig warten: Die EU-Reform sieht frühestens ab 2027 eine einheitliche Frist von 9 Monaten vor.\n\nDas ist allgemeine Information, keine Rechtsberatung.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#fluggastrechte #überbucht #verbraucherrecht #flugentschädigung #dasstehtdirzu #airline #reiserecht",
-      "created": "2026-11-16T16:17:11.241873+01:00"
+      "created": "2026-11-16T16:17:11.241873+01:00",
+      "media_id": "18038121653903978",
+      "published": "2026-11-16T19:44:43.868785+01:00"
     },
     "20261116-1617-ed1fec": {
       "channel": "onebetterthought",
@@ -58,5 +60,5 @@
       "created": "2026-11-16T16:17:36.330102+01:00"
     }
   },
-  "tg_offset": 69273741
+  "tg_offset": 69273744
 }
