@@ -1,10 +1,10 @@
 {
   "channels": {
     "stehtdirzu": {
-      "topic_index": 4
+      "topic_index": 5
     },
     "onebetterthought": {
-      "topic_index": 4
+      "topic_index": 5
     }
   },
   "posts": {
@@ -60,6 +60,37 @@
       "created": "2026-11-16T16:17:36.330102+01:00",
       "media_id": "18114556955631420",
       "published": "2026-11-16T19:45:36.980476+01:00"
+    },
+    "20261117-1644-8a5ec9": {
+      "channel": "stehtdirzu",
+      "topic": "Pauschalreise mit Mängeln: So forderst du Minderung",
+      "status": "pending",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261117-1644-8a5ec9/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261117-1644-8a5ec9/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261117-1644-8a5ec9/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261117-1644-8a5ec9/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261117-1644-8a5ec9/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261117-1644-8a5ec9/6.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261117-1644-8a5ec9/7.jpg"
+      ],
+      "caption": "Zimmer mit Baustellenlärm, Pool gesperrt, Buffet ein Witz? Dann hast du nicht einfach Pech gehabt.\n\nBei einer Pauschalreise mit Mängeln kannst du vom Reiseveranstalter einen Preisnachlass verlangen. Das nennt sich Minderung. Entscheidend ist, wie du vorgehst:\n\n1. Mängel sofort vor Ort anzeigen, bei Reiseleitung oder Kontaktstelle.\n2. Beweise sichern: Fotos, Videos, Notizen, Zeugen.\n3. Schriftlich zur Abhilfe auffordern und eine angemessene Frist setzen.\n4. Nach der Rückkehr die Minderung schriftlich beim Veranstalter fordern. Mit Buchungsnummer, Mängelliste und Betrag.\n5. Die Verjährungsfrist im Blick behalten. Sie steht im Gesetz und oft in den Reisebedingungen.\n\nWie viel Minderung im Einzelfall drin ist, hängt vom Mangel ab. Eine Garantie gibt es nicht. Wer sauber dokumentiert, steht aber deutlich besser da. Bei Streit hilft zum Beispiel die Verbraucherzentrale.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#pauschalreise #reisemangel #reiserecht #verbraucherrechte #minderung #urlaub #stehtdirzu",
+      "created": "2026-11-17T16:44:33.387727+01:00"
+    },
+    "20261117-1644-34fe87": {
+      "channel": "onebetterthought",
+      "topic": "Walk to think: why a short walk makes you more creative",
+      "status": "pending",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261117-1644-34fe87/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261117-1644-34fe87/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261117-1644-34fe87/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261117-1644-34fe87/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261117-1644-34fe87/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261117-1644-34fe87/6.jpg"
+      ],
+      "caption": "Your best idea might not show up at your desk.\n\nIn a study by Oppezzo and Schwartz (2014), people did creative idea tasks while walking and while sitting. Walking happened either on a treadmill indoors or outside. On average, creative output rose by about 60% when people walked.\n\nWhat does that mean for you? If you are stuck on a draft, a project or a plan, try a short walk before you push harder at the screen. You do not need a mountain view. In this study, even the indoor treadmill walk helped.\n\nA fair note: this is one study, and 60% is an average. It looked at generating ideas, not all thinking. So think of a walk as a small, low-cost experiment, not a promise.\n\nNext time you are stuck, try this: take your question with you, walk for a bit, then write down what came up.\n\nSave this for later – and send it to someone who needs it.\n\n#onebetterthought #creativity #walking #psychology #productivitywithoutthegrind #thinkbetter #studytips #mindset",
+      "created": "2026-11-17T16:44:56.355055+01:00"
     }
   },
   "tg_offset": 69273745
