@@ -95,7 +95,7 @@
     "20261119-1629-dc7847": {
       "channel": "stehtdirzu",
       "topic": "Steuererklärung freiwillig? Bis zu 4 Jahre rückwirkend Geld holen",
-      "status": "pending",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261119-1629-dc7847/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261119-1629-dc7847/2.jpg",
@@ -106,7 +106,9 @@
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261119-1629-dc7847/7.jpg"
       ],
       "caption": "Du musst keine Steuererklärung abgeben? Dann verschenkst du vielleicht Geld.\n\nWer freiwillig abgibt, kann das bis zu 4 Jahre rückwirkend tun. Zuletzt lag die durchschnittliche Erstattung bei 1.240 €. Das ist kein Versprechen für dich, aber ein guter Grund, nachzuschauen.\n\nDie Frist, die keiner kennt: Für das Jahr 2022 muss die Erklärung bis zum 31.12.2026 beim Finanzamt eingehen. Nicht verlängerbar. Nicht auf den letzten Tag verschieben.\n\nMögliche Posten: Homeoffice mit 6 € pro Tag (max. 1.260 € pro Jahr), Handwerkerleistungen mit 20 % der Arbeitskosten (max. 1.200 € pro Jahr) und haushaltsnahe Dienstleistungen mit 20 % der Kosten (max. 4.000 € Ermäßigung pro Jahr).\n\nUnd falls doch eine Nachzahlung rauskommt: Du kannst den Antrag per Einspruch zurücknehmen, und zwar innerhalb von 1 Monat nach dem Bescheid.\n\nDas ist eine allgemeine Info, keine Steuerberatung im Einzelfall.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#steuererklärung #steuertipps #freiwilligesteuererklärung #steuerrückerstattung #homeoffice #verbraucherrechte #geldzurück #stehtdirzu",
-      "created": "2026-11-19T16:29:58.153198+01:00"
+      "created": "2026-11-19T16:29:58.153198+01:00",
+      "media_id": "17920129671262284",
+      "published": "2026-11-19T20:48:13.440997+01:00"
     },
     "20261119-1630-122d99": {
       "channel": "onebetterthought",
@@ -124,5 +126,5 @@
       "created": "2026-11-19T16:30:22.530733+01:00"
     }
   },
-  "tg_offset": 69273745
+  "tg_offset": 69273750
 }
