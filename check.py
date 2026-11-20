@@ -43,14 +43,14 @@ def main():
     print("\n== 3) Instagram")
     for ch in cfg["channels"]:
         if not ch.get("active", True):
-            print(f"[--]     {ch['id']}: pausiert (active: false)")
+            print(f"[--]     {ch['id']}: pausiert")
             continue
         token = os.getenv(ch["token_env"])
         if not token:
             bad(f"{ch['id']}: Secret {ch['token_env']} anlegen")
             continue
         if not str(ch.get("ig_user_id", "")).isdigit():
-            bad(f"{ch['id']}: ig_user_id in config.yaml fehlt")
+            bad(f"{ch['id']}: Instagram-ID fehlt (Cockpit → Kanäle)")
             continue
         r = requests.get(_graph(cfg, f"/{ch['ig_user_id']}"),
                          params={"fields": "username", "access_token": token}, timeout=20).json()
@@ -59,11 +59,11 @@ def main():
         else:
             ok(f"{ch['id']}: verbunden mit @{r.get('username')}")
 
-    print("\n== 4) GitHub Pages")
+    print("\n== 4) Öffentliche Slide-Adresse")
     url = cfg["public_base_url"].rstrip("/") + "/ping.txt"
     try:
         r = requests.get(url, timeout=20)
-        ok(f"{url} erreichbar") if r.ok else bad(f"{url} liefert {r.status_code} – Pages aktiviert? public_base_url richtig?")
+        ok(f"{url} erreichbar") if r.ok else bad(f"{url} liefert {r.status_code} – public_base_url richtig?")
     except Exception as e:
         bad(f"{url} nicht erreichbar: {e}")
 
