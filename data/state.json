@@ -365,5 +365,6 @@
       "msg": "@onebetterthought: 4 neue Themen vorgeschlagen (Cockpit → Kanäle → Themen)"
     }
   ],
-  "last_autoplan": "2026-11-20"
+  "last_autoplan": "2026-11-20",
+  "last_run": "2026-11-20T15:37:41+01:00"
 }
