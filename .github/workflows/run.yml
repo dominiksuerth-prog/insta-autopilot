@@ -1,0 +1,35 @@
+name: Autopilot
+
+# Stündlich + sofort, wenn du im Cockpit etwas tust (das Cockpit startet diesen Workflow).
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: autopilot
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      IG_TOKEN_HEIZKOSTEN: ${{ secrets.IG_TOKEN_HEIZKOSTEN }}
+      IG_TOKEN_STEHTDIRZU: ${{ secrets.IG_TOKEN_STEHTDIRZU }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m playwright install --with-deps chromium
+      - name: Autopilot
+        run: python run_autopilot.py --minutes 55
