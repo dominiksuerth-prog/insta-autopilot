@@ -134,7 +134,7 @@
     "20261120-1533-265395": {
       "channel": "onebetterthought",
       "topic": "Why hard habits take longer than easy ones",
-      "status": "approved",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-265395/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-265395/2.jpg",
@@ -153,7 +153,9 @@
         "The median of 66 days applies only to participants whose data could be modelled."
       ],
       "created": "2026-11-20T15:33:39.432542+01:00",
-      "scheduled": "2026-11-20T19:00:00+01:00"
+      "scheduled": "2026-11-20T19:00:00+01:00",
+      "media_id": "18043130012671262",
+      "published": "2026-11-20T23:15:26.343643+01:00"
     },
     "20261120-1533-33faec": {
       "channel": "onebetterthought",
@@ -245,7 +247,7 @@
     "20261120-1535-06f9f6": {
       "channel": "stehtdirzu",
       "topic": "Pauschalen, die du ohne Belege ansetzen kannst",
-      "status": "approved",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1535-06f9f6/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1535-06f9f6/2.jpg",
@@ -258,7 +260,9 @@
       "caption": "Du musst nicht für jeden Euro einen Zettel aufheben.\n\nZwei Pauschalen setzt du ohne Einzelbelege an: Der Arbeitnehmer-Pauschbetrag von 1.230 € pro Jahr deckt deine Werbungskosten ab. Dazu kommt die Homeoffice-Pauschale: 6 € pro Tag, maximal 1.260 € im Jahr.\n\nUnd jetzt die Frist, die kaum einer kennt: Wer nicht zur Abgabe verpflichtet ist, kann bis zu 4 Jahre rückwirkend eine freiwillige Steuererklärung abgeben. Für 2022 endet das am 31.12.2026. Es zählt, wann die Erklärung beim Finanzamt ankommt. Verlängern geht nicht.\n\nZuletzt lag die durchschnittliche Erstattung bei 1.240 €. Das ist ein Durchschnittswert, kein Versprechen für dich.\n\nKommt bei der freiwilligen Erklärung eine Nachzahlung raus? Dann kannst du den Antrag per Einspruch innerhalb von 1 Monat nach dem Bescheid zurücknehmen.\n\nDas ist eine allgemeine Information, keine Steuerberatung im Einzelfall.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#steuererklärung #homeofficepauschale #werbungskosten #steuertipps #verbraucherrechte #geldzurück #stehtdirzu",
       "check": [],
       "created": "2026-11-20T15:35:38.320486+01:00",
-      "scheduled": "2026-11-20T18:00:00+01:00"
+      "scheduled": "2026-11-20T18:00:00+01:00",
+      "media_id": "18025647491929759",
+      "published": "2026-11-20T23:14:44.760134+01:00"
     },
     "20261120-1536-0a7b3b": {
       "channel": "stehtdirzu",
@@ -352,6 +356,14 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-20T23:15:26+01:00",
+      "msg": "✅ Veröffentlicht auf @onebetterthought: Why hard habits take longer than easy ones"
+    },
+    {
+      "t": "2026-11-20T23:15:26+01:00",
+      "msg": "✅ Veröffentlicht auf @stehtdir.zu: Pauschalen, die du ohne Belege ansetzen kannst"
+    },
     {
       "t": "2026-11-20T15:54:25+01:00",
       "msg": "Why hard habits take longer than easy ones: freigegeben"
