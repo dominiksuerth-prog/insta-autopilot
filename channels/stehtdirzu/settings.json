@@ -1,0 +1,17 @@
+{
+  "name": "Steht dir zu",
+  "handle": "@stehtdir.zu",
+  "active": true,
+  "language": "de",
+  "ig_user_id": "17841456557692834",
+  "token_env": "IG_TOKEN_STEHTDIRZU",
+  "days": [
+    "mo",
+    "di",
+    "do",
+    "fr"
+  ],
+  "time": "18:00",
+  "autoplan_days": 7,
+  "cta_hint": "Letzter Satz der Caption: 'Speichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.'"
+}
