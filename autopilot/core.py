@@ -1,5 +1,5 @@
 """Instagram-Autopilot (GitHub-Variante):
-Themen -> Claude -> Slides (JPG, über GitHub Pages öffentlich) -> Telegram-Freigabe -> Instagram.
+Themen -> Claude -> Slides (JPG) -> Freigabe im Cockpit/Telegram -> Instagram zum geplanten Termin.
 Zugangsschlüssel kommen ausschließlich aus Umgebungsvariablen (GitHub Secrets) – nie aus Dateien im Repo.
 """
 import io
@@ -9,7 +9,7 @@ import pathlib
 import re
 import time
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import requests
@@ -28,10 +28,22 @@ def now():
 
 # ---------------------------------------------------------------- Konfiguration & Zustand
 
+WEEKDAYS = ["mo", "di", "mi", "do", "fr", "sa", "so"]
+CHANNEL_DEFAULTS = {"active": False, "language": "de", "token_env": "IG_TOKEN_STEHTDIRZU",
+                    "days": ["mo", "di", "do", "fr"], "time": "18:00", "autoplan_days": 7, "cta_hint": ""}
+
+
 def load_config():
+    """Globale Einstellungen aus config.yaml, Kanäle aus channels/<id>/settings.json."""
     with open(ROOT / "config.yaml", encoding="utf-8") as f:
-        cfg = yaml.safe_load(f)
-    cfg["channels_by_id"] = {c["id"]: c for c in cfg["channels"]}
+        cfg = yaml.safe_load(f) or {}
+    channels = []
+    for sf in sorted((ROOT / "channels").glob("*/settings.json")):
+        ch = dict(CHANNEL_DEFAULTS, **json.loads(sf.read_text(encoding="utf-8")))
+        ch["id"] = sf.parent.name
+        channels.append(ch)
+    cfg["channels"] = channels
+    cfg["channels_by_id"] = {c["id"]: c for c in channels}
     return cfg
 
 
@@ -156,7 +168,7 @@ def _extract_json(text):
     return json.loads(m.group(0))
 
 
-def generate_post(cfg, ch, topic):
+def generate_post(cfg, ch, topic, hint=""):
     import anthropic
 
     chdir = ROOT / "channels" / ch["id"]
@@ -168,6 +180,8 @@ def generate_post(cfg, ch, topic):
         cta_hint=ch.get("cta_hint", ""),
         lang_rule=LANG_RULES.get(ch.get("language", "de"), LANG_RULES["de"]),
     )
+    if hint:
+        prompt += f"\n\nZUSÄTZLICHER WUNSCH ZU DIESEM POST (hat Vorrang vor dem Stil, nicht vor den Regeln): {hint}"
     client = anthropic.Anthropic()
     last_err = None
     for _ in range(3):  # bis zu 3 Versuche
@@ -274,13 +288,13 @@ def _wait_ready(cfg, container_id, token):
 
 
 def wait_public(urls, max_wait=420):
-    """GitHub Pages braucht nach dem Push 1–3 Minuten. Warten, bis alle Bilder erreichbar sind."""
+    """Nach dem Push kann es kurz dauern, bis die Bilder öffentlich erreichbar sind."""
     deadline = time.time() + max_wait
     while time.time() < deadline:
         if all(requests.head(u, timeout=20).status_code == 200 for u in urls):
             return
         time.sleep(15)
-    raise RuntimeError("Bilder sind auf GitHub Pages noch nicht erreichbar – Freigabe beim nächsten Lauf erneut.")
+    raise RuntimeError("Bilder sind noch nicht öffentlich erreichbar – nächster Lauf versucht es erneut.")
 
 
 def publish_carousel(cfg, ch, image_urls, caption):
@@ -333,15 +347,173 @@ def tg_album(paths):
             f.close()
 
 
-# ---------------------------------------------------------------- Ablauf
+# ---------------------------------------------------------------------------- Planung
+
+def parse_dt(v):
+    return datetime.fromisoformat(v) if v else None
+
+
+def slots(ch, start, days_ahead):
+    """Posting-Termine eines Kanals ab `start` für `days_ahead` Tage."""
+    hh, mm = (int(x) for x in str(ch.get("time", "18:00")).split(":"))
+    days = {WEEKDAYS.index(d) for d in ch.get("days", []) if d in WEEKDAYS}
+    out = []
+    for n in range(days_ahead + 1):
+        d = (start + timedelta(days=n)).replace(hour=hh, minute=mm, second=0, microsecond=0)
+        if d.weekday() in days and d > start:
+            out.append(d)
+    return out
+
+
+def taken_slots(state, ch_id):
+    return {p["scheduled"][:16] for p in state["posts"].values()
+            if p["channel"] == ch_id and p.get("scheduled") and p["status"] in ("draft", "approved", "published")}
+
+
+def build_post(cfg, ch, topic, hint=""):
+    """Text mit Claude schreiben und Slides rendern. Gibt (post_id, Datensatz) zurück."""
+    data = generate_post(cfg, ch, topic, hint)
+    post_id = now().strftime("%Y%m%d-%H%M") + "-" + uuid.uuid4().hex[:6]
+    _paths, urls = render_post(cfg, ch, data, post_id)
+    return post_id, {"channel": ch["id"], "topic": topic, "status": "draft", "urls": urls,
+                     "caption": build_caption(data), "check": data.get("check") or [],
+                     "created": now().isoformat()}
+
+
+def plan_channel(cfg, state, ch, days_ahead=14, limit=None):
+    """Füllt freie Termine der nächsten `days_ahead` Tage mit Entwürfen. Gibt neue Post-IDs zurück."""
+    new_ids = []
+    taken = taken_slots(state, ch["id"])
+    for slot in slots(ch, now(), days_ahead):
+        if limit is not None and len(new_ids) >= limit:
+            break
+        if slot.isoformat()[:16] in taken:
+            continue
+        topic = next_topic(state, ch)
+        post_id, post = build_post(cfg, ch, topic)
+        post["scheduled"] = slot.isoformat()
+        state["posts"][post_id] = post
+        save_state(state)  # das Thema gilt erst jetzt als verbraucht
+        new_ids.append(post_id)
+    return new_ids
+
+
+def regenerate_post(cfg, state, post_id, topic=None, hint=""):
+    """Schreibt einen Entwurf neu (gleicher Termin). Der alte bekommt den Status 'replaced'."""
+    old = state["posts"][post_id]
+    if old["status"] not in ("draft", "approved"):
+        raise ValueError(f"Post ist bereits {old['status']}")
+    ch = cfg["channels_by_id"][old["channel"]]
+    new_id, post = build_post(cfg, ch, topic or old["topic"], hint)
+    post["scheduled"] = old.get("scheduled")
+    old["status"] = "replaced"
+    old["replaced_by"] = new_id
+    state["posts"][new_id] = post
+    save_state(state)
+    return new_id
+
+
+# ---------------------------------------------------------------------------- Entscheidungen
+
+def log(state, msg):
+    """Kurzes Protokoll für das Cockpit (letzte 80 Einträge)."""
+    state.setdefault("log", []).insert(0, {"t": now().isoformat(timespec="seconds"), "msg": msg})
+    del state["log"][80:]
+    save_state(state)
+
+
+def apply_decision(state, d):
+    """Freigeben / zurücknehmen / verwerfen / Text oder Termin ändern. Gibt eine Meldung zurück."""
+    post = state["posts"].get(d.get("post_id", ""))
+    if not post:
+        return None
+    if post["status"] not in ("draft", "approved"):
+        return f"{post['topic']}: bereits {post['status']} – nichts geändert"
+    a = d.get("action")
+    if d.get("caption"):
+        post["caption"] = d["caption"]
+    if d.get("scheduled"):
+        post["scheduled"] = d["scheduled"]
+        post.pop("reminded", None)
+    if a == "approve":
+        post["status"] = "approved"
+    elif a == "unapprove":
+        post["status"] = "draft"
+    elif a == "reject":
+        post["status"] = "rejected"
+    post.pop("error", None)
+    save_state(state)
+    word = {"approve": "freigegeben", "unapprove": "zurück auf Entwurf", "reject": "verworfen"}.get(a, "geändert")
+    return f"{post['topic']}: {word}"
+
+
+# ---------------------------------------------------------------------------- Veröffentlichen
+
+def publish_post(cfg, state, post_id):
+    post = state["posts"][post_id]
+    ch = cfg["channels_by_id"][post["channel"]]
+    wait_public(post["urls"])
+    media_id = publish_carousel(cfg, ch, post["urls"], post["caption"])
+    post.update(status="published", media_id=media_id, published=now().isoformat())
+    post.pop("error", None)
+    save_state(state)
+    return f"Veröffentlicht auf {ch['handle']}: {post['topic']}"
+
+
+def publish_due(cfg, state):
+    """Veröffentlicht alle freigegebenen Posts, deren Termin erreicht ist."""
+    msgs = []
+    for pid, p in sorted(state["posts"].items(), key=lambda kv: kv[1].get("scheduled") or ""):
+        if p["status"] != "approved" or not p.get("scheduled") or parse_dt(p["scheduled"]) > now():
+            continue
+        ch = cfg["channels_by_id"].get(p["channel"])
+        if not ch or not ch.get("active"):
+            continue
+        try:
+            msgs.append("✅ " + publish_post(cfg, state, pid))
+        except Exception as e:
+            if p.get("error") != str(e):
+                p["error"] = str(e)
+                save_state(state)
+                msgs.append(f"⚠️ {ch['handle']} – {p['topic']}: {e}")
+    return msgs
+
+
+def remind_drafts(cfg, state, hours=20):
+    """Schickt nicht freigegebene Entwürfe, deren Termin in den nächsten `hours` Stunden liegt, per Telegram."""
+    limit = now() + timedelta(hours=hours)
+    for pid, p in sorted(state["posts"].items(), key=lambda kv: kv[1].get("scheduled") or ""):
+        if p["status"] != "draft" or p.get("reminded") or not p.get("scheduled"):
+            continue
+        if parse_dt(p["scheduled"]) > limit:
+            continue
+        ch = cfg["channels_by_id"].get(p["channel"])
+        if not ch or not ch.get("active"):
+            continue
+        send_for_review(ch, pid, p)
+        p["reminded"] = True
+        save_state(state)
+
+
+def send_for_review(ch, post_id, post):
+    paths = [ROOT / "docs" / "insta" / post["channel"] / post_id / u.rsplit("/", 1)[-1] for u in post["urls"]]
+    if paths and all(p.exists() for p in paths):
+        tg_album(paths)
+    when = parse_dt(post["scheduled"]).strftime("%d.%m. %H:%M") if post.get("scheduled") else "sofort"
+    checks = post.get("check") or []
+    check_txt = ("\n\nBITTE PRÜFEN:\n- " + "\n- ".join(checks)) if checks else ""
+    tg_text(f"{ch['handle']} – noch nicht freigegeben, Termin {when}\n{post['topic']}\n\n{post['caption']}{check_txt}",
+            buttons=[[{"text": "✅ Freigeben", "callback_data": f"ok:{post_id}"},
+                      {"text": "🔁 Neu", "callback_data": f"re:{post_id}"},
+                      {"text": "❌ Verwerfen", "callback_data": f"no:{post_id}"}]])
+
 
 def prune_old(state, days=30):
-    """Löscht Bilder von Posts, die älter als `days` Tage und nicht mehr offen sind
-    (Instagram hat sie längst kopiert). Hält Repo und Website klein."""
+    """Löscht Bilder erledigter Posts, die älter als `days` Tage sind (Instagram hat sie längst kopiert)."""
     import shutil
     cutoff = now().timestamp() - days * 86400
     for pid, p in state["posts"].items():
-        if p["status"] == "pending" or p.get("pruned"):
+        if p["status"] in ("draft", "approved") or p.get("pruned"):
             continue
         if datetime.fromisoformat(p["created"]).timestamp() < cutoff:
             shutil.rmtree(ROOT / "docs" / "insta" / p["channel"] / pid, ignore_errors=True)
@@ -349,35 +521,138 @@ def prune_old(state, days=30):
     save_state(state)
 
 
-def create_post(cfg, state, ch, topic=None):
-    """Erzeugt einen Post und schickt ihn zur Freigabe per Telegram."""
-    topic = topic or next_topic(state, ch)  # wird erst nach Erfolg gespeichert
-    data = generate_post(cfg, ch, topic)
-    post_id = now().strftime("%Y%m%d-%H%M") + "-" + uuid.uuid4().hex[:6]
-    paths, urls = render_post(cfg, ch, data, post_id)
-    caption = build_caption(data)
-    state["posts"][post_id] = {"channel": ch["id"], "topic": topic, "status": "pending",
-                               "urls": urls, "caption": caption, "created": now().isoformat()}
-    save_state(state)
-
-    tg_album(paths)
-    checks = data.get("check") or []
-    check_txt = ("\n\nBITTE PRÜFEN:\n- " + "\n- ".join(checks)) if checks else ""
-    tg_text(f"{ch['handle']} – {topic}\n\n{caption}{check_txt}\n\n"
-            f"(Nach deinem Tipp wird der Post beim nächsten Lauf veröffentlicht – max. ca. 15 Minuten.)",
-            buttons=[[{"text": "✅ Posten", "callback_data": f"ok:{post_id}"},
-                      {"text": "🔁 Neu", "callback_data": f"re:{post_id}"},
-                      {"text": "❌ Verwerfen", "callback_data": f"no:{post_id}"}]])
-    return post_id
+def migrate_state(state):
+    """Alte Telegram-Entwürfe (Status 'pending') ins neue Modell übernehmen."""
+    changed = False
+    for p in state["posts"].values():
+        if p["status"] == "pending":
+            p["status"] = "draft"
+            p.setdefault("scheduled", p.get("created"))
+            p["reminded"] = True
+            changed = True
+    if changed:
+        save_state(state)
+    return state
 
 
-def approve_post(cfg, state, post_id):
-    post = state["posts"][post_id]
-    if post["status"] != "pending":
-        return f"Post ist bereits {post['status']}."
-    ch = cfg["channels_by_id"][post["channel"]]
-    wait_public(post["urls"])
-    media_id = publish_carousel(cfg, ch, post["urls"], post["caption"])
-    post.update(status="published", media_id=media_id, published=now().isoformat())
-    save_state(state)
-    return f"Veröffentlicht auf {ch['handle']}."
+# ---------------------------------------------------------------------------- Neuer Kanal
+
+CHANNEL_PROMPT = """Du richtest einen neuen, faktenbasierten Instagram-Karussell-Kanal ein.
+
+Handle: {handle}
+Name/Idee: {name}
+Sprache der Posts: {language}
+Nische, Zielgruppe, Ziel: {brief}
+Gewünschter Ton: {tone}
+
+Liefere das Ergebnis über das Werkzeug "save_channel":
+- style: Stil-Leitfaden für die Texte (in der Sprache der Posts, 8 bis 14 Zeilen): Zielgruppe, Ton, Aufbau eines Posts,
+  was immer gilt, was nie vorkommen darf. Keine Rechts-, Steuer-, Medizin- oder Anlageberatung im Einzelfall.
+- topics: 30 konkrete Post-Themen in der Sprache der Posts, jedes eine Zeile, abwechslungsreich, mit starkem Hook.
+- facts: Vorschlag einer Faktenbasis in der Sprache der Posts als Stichpunkte – nur Aussagen, bei denen du dir sehr
+  sicher bist, jeweils mit Quelle (Gesetz, Studie, Behörde). Beginne JEDE Zeile mit [PRÜFEN].
+"""
+
+CHANNEL_TOOL = {
+    "name": "save_channel",
+    "description": "Speichert die Grunddateien eines neuen Kanals.",
+    "input_schema": {"type": "object", "properties": {
+        "style": {"type": "string"},
+        "topics": {"type": "array", "items": {"type": "string"}},
+        "facts": {"type": "array", "items": {"type": "string"}},
+    }, "required": ["style", "topics", "facts"]},
+}
+
+
+def theme_css(bg, fg, accent, font="Space Grotesk"):
+    return f"""/* automatisch erzeugt */
+:root {{
+  --bg: {bg}; --fg: {fg}; --muted: color-mix(in srgb, {fg} 65%, {bg});
+  --head: '{font}'; --body: 'Inter';
+  --hl-fg: {accent}; --hl-bg: transparent;
+  --accent: {fg}; --accent-fg: {bg};
+  --card: color-mix(in srgb, {fg} 6%, {bg}); --card-fg: {fg}; --card-border: none;
+  --card2: {fg}; --card2-fg: {bg}; --card2-border: none;
+  --num: {accent}; --bad: #C0392B; --good: {accent};
+}}
+.card.alt .hl {{ color: {accent}; }}
+"""
+
+
+def create_channel(cfg, cid, handle, name, language, brief, tone, colors, days, time_, font="Space Grotesk"):
+    """Legt channels/<cid>/ mit Claude-Entwürfen an. Der Kanal bleibt inaktiv, bis Fakten geprüft
+    und das Instagram-Konto verknüpft sind."""
+    import anthropic
+    if not re.fullmatch(r"[a-z0-9_]{3,30}", cid):
+        raise ValueError("Kanal-ID: nur a-z, 0-9 und _ (3 bis 30 Zeichen)")
+    d = ROOT / "channels" / cid
+    if d.exists():
+        raise ValueError(f"Den Kanal {cid} gibt es schon")
+    prompt = CHANNEL_PROMPT.format(handle=handle, name=name, language=language, brief=brief, tone=tone)
+    msg = anthropic.Anthropic().messages.create(
+        model=cfg.get("claude_model", "claude-sonnet-5-5"), max_tokens=6000,
+        tools=[CHANNEL_TOOL], messages=[{"role": "user", "content": prompt}])
+    data = next((b.input for b in msg.content if getattr(b, "type", "") == "tool_use"), None)
+    if not data:
+        text = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
+        data = _extract_json(text)
+    bg, fg, accent = (list(colors) + ["#F5F1EA", "#14161A", "#C8553D"])[:3]
+    d.mkdir(parents=True)
+    (d / "style.md").write_text(data["style"].strip() + "\n", encoding="utf-8")
+    (d / "topics.txt").write_text("# Eine Zeile = ein Post.\n" + "\n".join(t.strip() for t in data["topics"]) + "\n",
+                                  encoding="utf-8")
+    (d / "facts.md").write_text(
+        "# Faktenbasis – UNGEPRÜFT. Jede Zeile mit [PRÜFEN] an der Quelle prüfen, dann die Markierung löschen.\n"
+        "# Nur was hier steht, darf als Zahl in Posts auftauchen.\n\n"
+        + "\n".join("- " + f.strip().lstrip("- ") for f in data["facts"]) + "\n", encoding="utf-8")
+    (d / "theme.css").write_text(theme_css(bg, fg, accent, font), encoding="utf-8")
+    settings = {"name": name, "handle": handle, "active": False, "language": language,
+                "ig_user_id": "", "token_env": "IG_TOKEN_STEHTDIRZU", "days": days, "time": time_,
+                "autoplan_days": 7, "cta_hint": ""}
+    (d / "settings.json").write_text(json.dumps(settings, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return d
+
+
+TOPICS_PROMPT = """Schlage {n} neue Themen für Instagram-Karussell-Posts des Kanals {handle} vor.
+
+STIL DES KANALS:
+{style}
+
+FAKTENBASIS (jedes Thema muss sich vollständig mit diesen Fakten belegen lassen – keine Themen, für die Zahlen fehlen):
+{facts}
+
+BISHERIGE THEMEN (nicht wiederholen, auch nicht sinngemäß):
+{used}
+
+Regeln: Sprache der Posts wie im Stil. Jede Zeile ein Thema mit starkem Hook, max. 90 Zeichen, abwechslungsreich
+(Mythos, Liste, Rechenbeispiel, Frage, Fehler). Gib die Themen über das Werkzeug "save_topics" zurück."""
+
+TOPICS_TOOL = {
+    "name": "save_topics",
+    "description": "Speichert neue Themen.",
+    "input_schema": {"type": "object", "properties": {"topics": {"type": "array", "items": {"type": "string"}}},
+                     "required": ["topics"]},
+}
+
+
+def suggest_topics(cfg, ch, n=20):
+    """Hängt n neue, von der Faktenbasis gedeckte Themen an topics.txt an. Gibt die Anzahl zurück."""
+    import anthropic
+    chdir = ROOT / "channels" / ch["id"]
+    tf = chdir / "topics.txt"
+    lines = tf.read_text(encoding="utf-8").splitlines()
+    used = [t.strip() for t in lines if t.strip() and not t.strip().startswith("#")]
+    prompt = TOPICS_PROMPT.format(n=n, handle=ch["handle"], used="\n".join(used) or "-",
+                                  style=(chdir / "style.md").read_text(encoding="utf-8"),
+                                  facts=(chdir / "facts.md").read_text(encoding="utf-8"))
+    msg = anthropic.Anthropic().messages.create(
+        model=cfg.get("claude_model", "claude-sonnet-5-5"), max_tokens=3000,
+        tools=[TOPICS_TOOL], messages=[{"role": "user", "content": prompt}])
+    data = next((b.input for b in msg.content if getattr(b, "type", "") == "tool_use"), None)
+    if not data:
+        data = _extract_json("".join(b.text for b in msg.content if getattr(b, "type", "") == "text"))
+    seen = {u.lower() for u in used}
+    new = [t.strip() for t in data.get("topics", []) if t.strip() and t.strip().lower() not in seen]
+    with tf.open("a", encoding="utf-8") as f:
+        f.write(("" if not lines or lines[-1] == "" else "\n") + "\n".join(new) + "\n")
+    return len(new)
