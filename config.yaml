@@ -14,25 +14,7 @@ graph_version: v25.0
 # Öffentliche Adresse der Slides (direkt aus dem Repo, sofort nach dem Hochladen verfügbar)
 public_base_url: https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta
 
-channels:
-  - id: stehtdirzu                      # passt zum Ordner channels/stehtdirzu
-    active: true
-    handle: "@stehtdir.zu"
-    ig_user_id: "17841456557692834"     # Instagram-ID aus dem Business-Portfolio "Autopilit"
-    token_env: IG_TOKEN_STEHTDIRZU      # Name des Secrets
-    cta_hint: "Letzter Satz der Caption: 'Speichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.'"
+# Kanäle stehen jetzt je in channels/<kanal>/settings.json und werden im Cockpit gepflegt.
 
-  - id: heizkosten                      # pausiert – erst nach Klärung mit WSW aktivieren
-    active: false
-    handle: "@heizkosten.klar"
-    ig_user_id: "HIER_EINTRAGEN"
-    token_env: IG_TOKEN_HEIZKOSTEN
-    cta_hint: "Letzter Satz der Caption: 'Mehr ehrliche Zahlen: Folge @heizkosten.klar'."
-
-  - id: onebetterthought                # Unterprofil, im Business-Portfolio "Autopilit"
-    active: true
-    language: en
-    handle: "@onebetterthought"
-    ig_user_id: "17841415614416136"
-    token_env: IG_TOKEN_STEHTDIRZU       # derselbe Systembenutzer-Token, wenn das Konto ihm zugewiesen ist
-    cta_hint: "Last line of the caption: 'Save this for later – and send it to someone who needs it.'"
+# Kanal-Cockpit: Wie viele Stunden vor dem Termin ein noch nicht freigegebener Post per Telegram erinnert wird
+remind_hours: 20
