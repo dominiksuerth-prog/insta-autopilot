@@ -4,7 +4,7 @@
       "topic_index": 6
     },
     "onebetterthought": {
-      "topic_index": 6
+      "topic_index": 11
     }
   },
   "posts": {
@@ -130,13 +130,129 @@
       "created": "2026-11-19T16:30:22.530733+01:00",
       "media_id": "18147926953592934",
       "published": "2026-11-19T20:48:57.452068+01:00"
+    },
+    "20261120-1533-265395": {
+      "channel": "onebetterthought",
+      "topic": "Why hard habits take longer than easy ones",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-265395/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-265395/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-265395/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-265395/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-265395/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-265395/6.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-265395/7.jpg"
+      ],
+      "caption": "Think you failed because a new habit still feels like work after three weeks? Maybe not.\n\nIn a study by Lally and colleagues, 96 adults each picked one daily eating, drinking or activity habit. For the people whose data could be modelled, the median time until the behaviour felt automatic was 66 days. Individual estimates ranged from 18 to 254 days.\n\nThe popular \"21 days\" idea traces back to a 1960 book by Maxwell Maltz. It was an observation, not an experiment.\n\nTwo more things stood out. On average, simpler behaviours became automatic faster than harder ones, like exercise. And missing one opportunity did not materially affect habit formation.\n\nSo here is one better thought: if your habit is hard, a longer timeline is normal. Make the first version smaller, keep it tied to the same moment each day, and don't treat one missed day as a disaster.\n\nThis was one study with a small group of adults, so your own timeline may look different.\n\nSave this for later – and send it to someone who needs it.\n\n#habits #habitbuilding #psychology #behaviourchange #mindset #smallsteps #onebetterthought",
+      "check": [
+        "Verify the Lally et al. (2010) details against the original paper: 96 adults, median 66 days, range 18 to 254 days, missed-day finding, and that simpler habits became automatic faster than harder ones.",
+        "The study showed harder habits took longer, but the fact base doesn't explain why. The slides make no claim about the cause. The cover says 'really do take longer' without a 'why'.",
+        "The try-this tip 'attach it to the same moment every day' is general advice. It is not a stated finding of the Lally study, so you may want to soften or remove it.",
+        "'Start with the easiest version' is a practical inference from the finding that simpler behaviours became automatic faster. It is not a tested intervention.",
+        "The median of 66 days applies only to participants whose data could be modelled."
+      ],
+      "created": "2026-11-20T15:33:39.432542+01:00",
+      "scheduled": "2026-11-20T19:00:00+01:00"
+    },
+    "20261120-1533-33faec": {
+      "channel": "onebetterthought",
+      "topic": "Habit took 18 days for one person, 254 for another. Same study.",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-33faec/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-33faec/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-33faec/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-33faec/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-33faec/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-33faec/6.jpg"
+      ],
+      "caption": "18 days for one person. 254 for another. Same study.\n\nYou have probably heard that a habit takes 21 days. That number comes from a 1960 book by Maxwell Maltz, Psycho-Cybernetics. It was an observation, not an experiment.\n\nWhen researchers actually tested it, the picture looked different. In Lally et al. (2010), 96 adults each picked one daily eating, drinking or activity habit. For the people whose data could be modelled, the median time until the behaviour felt automatic was 66 days. Individual estimates ranged from 18 to 254 days.\n\nTwo more details are worth keeping. In this study, missing one opportunity did not materially affect habit formation. And simpler behaviours became automatic faster than harder ones, like exercise.\n\nSo if your new habit still feels like effort after three weeks, that is not a verdict on you. It may just be your timeline. Start small, keep it simple, and carry on after a missed day.\n\nOne study. One better thought.\n\nSave this for later – and send it to someone who needs it.\n\n#onebetterthought #habits #habitformation #psychology #behaviourchange #studytips #selfimprovement #mindset",
+      "check": [
+        "Verify against the original paper (Lally et al., 2010): the 66-day median applies only to participants whose data could be modelled, and 18 to 254 days are individual estimates.",
+        "Verify the wording on missed opportunities (\"did not materially affect\") and on simpler vs. harder behaviours.",
+        "Confirm the 21 days / Maltz 1960 Psycho-Cybernetics attribution.",
+        "The last Try this item (\"Make it easier before you make it bigger\") is a practical reading of the finding on simpler behaviours, not a direct study result. Remove it if it is too loose."
+      ],
+      "created": "2026-11-20T15:33:58.531815+01:00",
+      "scheduled": "2026-11-23T19:00:00+01:00"
+    },
+    "20261120-1534-032f95": {
+      "channel": "onebetterthought",
+      "topic": "You wore a shirt you love? Fewer than 10% noticed.",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-032f95/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-032f95/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-032f95/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-032f95/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-032f95/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-032f95/6.jpg"
+      ],
+      "caption": "You wore the shirt you love. Surely everyone noticed? Probably not.\n\nIn a classic study, Gilovich, Medvec and Savitsky (2000) asked students to wear a T-shirt into a room of peers. First it was an embarrassing Barry Manilow shirt. Wearers guessed that about 50% of people would notice. Only about 25% could name who was on it.\n\nThen came a follow-up with shirts people liked. Wearers again guessed about 50%. Fewer than 10% noticed.\n\nThe name for this is the spotlight effect: we tend to feel more watched than we are. This was a study with students, so it's not a law for every room. But it's a gentle reminder that others may be paying less attention to you than it feels.\n\nNext time you hesitate over an outfit, a question or a haircut, try this: would you notice it on someone else? Probably not.\n\nSave this for later – and send it to someone who needs it.\n\n#onebetterthought #spotlighteffect #psychologyfacts #mindset #overthinking #selfawareness #studentlife #youngprofessionals",
+      "check": [
+        "Check against the original paper: the follow-up (liked shirts) results of about 50% guessed vs. fewer than 10% noticed.",
+        "Check wording: 'about 25% could name who was on the shirt' refers to the Barry Manilow shirt.",
+        "Sample size is not in the fact base, so it is left out. Add it only after checking the source.",
+        "Title of the cover: 'noticed' relates to the follow-up with liked shirts, not a favourite shirt of every individual."
+      ],
+      "created": "2026-11-20T15:34:22.783625+01:00",
+      "scheduled": "2026-11-24T19:00:00+01:00"
+    },
+    "20261120-1534-d8f661": {
+      "channel": "onebetterthought",
+      "topic": "Treadmill or park? Walking helped creativity either way",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-d8f661/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-d8f661/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-d8f661/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-d8f661/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-d8f661/5.jpg"
+      ],
+      "caption": "Stuck on an idea? Maybe don't stare at the screen.\n\nHere's a small, nice finding. Oppezzo & Schwartz (2014) compared walking with sitting. Walking happened either on a treadmill indoors or outside. In both cases, walking increased creative idea generation compared with sitting. On average, creative output rose by about 60%.\n\nWhat does that mean for you? In this study, you didn't need a pretty park. The walking itself seemed to help. So if the weather is bad or you live far from green space, a treadmill may still do something useful for your ideas.\n\nA few honest limits: these are averages, not guarantees. The study looked at generating ideas, so it doesn't mean walking improves every kind of thinking. Treat it as a low-effort experiment, not a rule.\n\nNext time you need fresh ideas, try a walk before you sit down to write. Take your phone for a voice memo and see what happens.\n\nSource: Oppezzo & Schwartz (2014), Journal of Experimental Psychology: Learning, Memory, and Cognition.\n\nSave this for later – and send it to someone who needs it.\n\n#onebetterthought #creativity #walking #psychology #productivity #thinkbetter #studytips #mindset",
+      "check": [
+        "The fact base gives no participant numbers for Oppezzo & Schwartz (2014), so the 'THE STUDY' slide has no sample size. Check the original paper and add it if you want.",
+        "The 'about 60%' figure is from the fact base. Check the original source for what exactly it measures (idea generation vs. other creativity tasks).",
+        "The caption says the study looked at generating ideas and not every kind of thinking. Verify this wording against the paper.",
+        "Try-this tips (walk before writing, voice memo, brainstorming only) are practical suggestions and not study findings. Check that the framing is fine."
+      ],
+      "created": "2026-11-20T15:34:43.928003+01:00",
+      "scheduled": "2026-11-26T19:00:00+01:00"
+    },
+    "20261120-1534-0a892d": {
+      "channel": "onebetterthought",
+      "topic": "What happens in your brain when you say \"angry\" out loud?",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-0a892d/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-0a892d/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-0a892d/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-0a892d/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-0a892d/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-0a892d/6.jpg"
+      ],
+      "caption": "Your brain has an alarm system. And a single word may turn its volume down a little.\n\nIn 2007, Lieberman and colleagues put 30 people in an fMRI scanner and showed them emotional faces. When the people labeled the emotion with a word, like \"angry\", the response of the amygdala, the brain's alarm system, was reduced. At the same time, activity increased in the right ventrolateral prefrontal cortex. The effect has a catchy name: affect labeling, or \"name it to tame it\".\n\nNow the honest part. In this study, people labeled the emotions on faces. They were not naming their own anger in a real argument. So this is not a cure and not a guarantee. It is a small, interesting hint about how words and the brain work together.\n\nWhat you can do with it: next time you feel tense, find one word for it. \"Annoyed.\" \"Nervous.\" \"Angry.\" Then carry on with your day. It costs nothing and takes a few seconds.\n\nOne study. One better thought.\n\nSave this for later – and send it to someone who needs it.\n\n#onebetterthought #psychology #emotions #affectlabeling #mindset #brainfacts #selfawareness #studyoftheday",
+      "check": [
+        "Original source check: Lieberman et al. (2007) used emotional faces (labeling others' emotions), not participants' own feelings. Slides state this limit; confirm wording is fair.",
+        "Caption's last line must stay exactly as required; the 'One study. One better thought.' line before it is brand tagline, not a claim.",
+        "Check that the 'right ventrolateral prefrontal cortex' and 'amygdala reduced' description matches the paper's wording.",
+        "'A word may dial it down' and the myth slide are framed as hint, not proof; the myth ('makes it bigger') is not tested directly in the study."
+      ],
+      "created": "2026-11-20T15:35:03.547549+01:00",
+      "scheduled": "2026-11-27T19:00:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
     {
+      "t": "2026-11-20T15:35:03+01:00",
+      "msg": "@onebetterthought: 5 neue Entwürfe für die nächsten 7 Tage"
+    },
+    {
       "t": "2026-11-20T15:33:10+01:00",
       "msg": "@onebetterthought: 4 neue Themen vorgeschlagen (Cockpit → Kanäle → Themen)"
     }
-  ]
+  ],
+  "last_autoplan": "2026-11-20"
 }
