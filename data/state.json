@@ -134,7 +134,7 @@
     "20261120-1533-265395": {
       "channel": "onebetterthought",
       "topic": "Why hard habits take longer than easy ones",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-265395/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-265395/2.jpg",
@@ -245,7 +245,7 @@
     "20261120-1535-06f9f6": {
       "channel": "stehtdirzu",
       "topic": "Pauschalen, die du ohne Belege ansetzen kannst",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1535-06f9f6/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1535-06f9f6/2.jpg",
@@ -352,6 +352,14 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-20T15:54:25+01:00",
+      "msg": "Why hard habits take longer than easy ones: freigegeben"
+    },
+    {
+      "t": "2026-11-20T15:54:25+01:00",
+      "msg": "Pauschalen, die du ohne Belege ansetzen kannst: freigegeben"
+    },
     {
       "t": "2026-11-20T15:37:38+01:00",
       "msg": "@stehtdir.zu: 5 neue Entwürfe für die nächsten 7 Tage"
