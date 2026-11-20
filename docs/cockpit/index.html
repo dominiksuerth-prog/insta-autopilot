@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F4F2EE">
+<title>Kanal-Cockpit</title>
+<style>
+:root{
+  --bg:#F4F2EE; --panel:#FFFFFF; --ink:#16181D; --muted:#6B6F78; --line:#E4E1DA; --soft:#EEEBE5;
+  --draft:#B7791F; --draft-bg:#FDF3E1; --ok:#1F7A4D; --ok-bg:#E3F4EA; --bad:#B42318; --bad-bg:#FDE8E6;
+  --pub:#4B5563; --pub-bg:#ECEDEF; --accent:#16181D; --r:14px;
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 var(--font);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px 110px}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hbar{max-width:980px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.logo{font-weight:750;letter-spacing:-.02em;font-size:18px;white-space:nowrap}
+.logo span{color:var(--muted);font-weight:500}
+.status{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);min-width:0}
+.status .txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dot{width:8px;height:8px;border-radius:50%;background:#A3A3A3;flex:none}
+.dot.run{background:#2F80ED;animation:pulse 1.2s infinite}
+.dot.ok{background:var(--ok)} .dot.err{background:var(--bad)}
+@keyframes pulse{50%{opacity:.3}}
+.iconbtn{border:1px solid var(--line);background:var(--panel);border-radius:10px;height:34px;min-width:34px;padding:0 10px;cursor:pointer}
+.tabs{display:flex;gap:4px;max-width:980px;margin:0 auto;padding:0 12px 10px}
+.tab{border:0;background:transparent;padding:8px 14px;border-radius:999px;cursor:pointer;color:var(--muted);font-weight:600}
+.tab.on{background:var(--ink);color:#fff}
+@media (max-width:640px){
+  header{backdrop-filter:none;background:var(--bg)}
+  .tabs{position:fixed;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom));justify-content:space-around;z-index:30}
+  .tab{flex:1}
+}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:26px 0 10px;font-weight:700}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--panel);padding:9px 14px;border-radius:10px;cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:#cfcac0}
+.btn.pri{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.btn.danger{color:var(--bad)}
+.btn.sm{padding:6px 10px;font-size:13px;border-radius:9px}
+.btn:disabled{opacity:.45;cursor:default}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cdot{width:9px;height:9px;border-radius:50%;flex:none}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.kpi b{display:block;font-size:24px;letter-spacing:-.02em;line-height:1.1}
+.kpi small{color:var(--muted);font-size:12.5px}
+.kpi.warn b{color:var(--draft)}
+.day{margin-top:18px}
+.dayh{display:flex;align-items:baseline;gap:8px;margin:0 2px 8px}
+.dayh b{font-size:15px}
+.dayh span{color:var(--muted);font-size:13px}
+.dayh.today b::after{content:"Heute";margin-left:8px;font-size:11px;background:var(--ink);color:#fff;padding:2px 7px;border-radius:999px;vertical-align:2px}
+.post{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:10px;margin-bottom:8px;cursor:pointer}
+.post:hover{border-color:#d6d1c6}
+.thumb{width:56px;height:70px;border-radius:8px;object-fit:cover;background:var(--soft);flex:none}
+.pmain{min-width:0;flex:1}
+.ptop{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+.ptitle{font-weight:650;margin-top:2px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.badge{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.b-draft{background:var(--draft-bg);color:var(--draft)} .b-approved{background:var(--ok-bg);color:var(--ok)}
+.b-published{background:var(--pub-bg);color:var(--pub)} .b-rejected{background:var(--bad-bg);color:var(--bad)}
+.b-pend{background:#E6F0FD;color:#2F6FCC} .b-late{background:var(--bad-bg);color:var(--bad)}
+.qa{display:flex;gap:6px;flex:none}
+.qa .btn{width:38px;height:38px;justify-content:center;padding:0;font-size:16px}
+.post.done{opacity:.62}
+.empty{background:var(--panel);border:1px dashed #d4cfc5;border-radius:var(--r);padding:22px;text-align:center;color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.chead{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.chead h3{margin:0;font-size:17px;letter-spacing:-.01em}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+@media (max-width:640px){.grid2{grid-template-columns:1fr}}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--muted);font-weight:600}
+input[type=text],input[type=time],input[type=number],input[type=datetime-local],input[type=password],select,textarea{
+  border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 11px;width:100%;color:var(--ink);font-weight:400;font-size:15px}
+textarea{min-height:110px;resize:vertical;line-height:1.45}
+textarea.code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;min-height:280px}
+.daysel{display:flex;gap:4px}
+.daysel button{width:36px;height:34px;border-radius:9px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:12.5px;font-weight:700}
+.daysel button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:600}
+.switch input{appearance:none;width:42px;height:24px;border-radius:999px;background:#cfcac0;position:relative;cursor:pointer;transition:.15s}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.15s}
+.switch input:checked{background:var(--ok)} .switch input:checked::after{left:21px}
+.stats{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:8px 0 12px}
+.stats b{color:var(--ink)}
+.warnbox{background:var(--draft-bg);color:#7A4E0E;border-radius:10px;padding:10px 12px;font-size:13.5px;margin:10px 0}
+.infobox{background:#EEF2F7;color:#33445C;border-radius:10px;padding:10px 12px;font-size:13.5px;margin:10px 0}
+/* Overlay */
+.ov{position:fixed;inset:0;background:rgba(18,18,22,.45);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+@media (min-width:760px){.ov{align-items:center}}
+.sheet{background:var(--bg);width:100%;max-width:760px;max-height:94vh;overflow:auto;border-radius:18px 18px 0 0;padding:16px 16px calc(18px + env(safe-area-inset-bottom))}
+@media (min-width:760px){.sheet{border-radius:18px}}
+.shead{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.shead h3{margin:0;font-size:17px;flex:1;min-width:0}
+.slides{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+.slides img{height:min(52vh,420px);aspect-ratio:4/5;object-fit:cover;border-radius:10px;scroll-snap-align:start;background:var(--soft);flex:none}
+.checks{background:var(--draft-bg);border-radius:10px;padding:8px 12px;margin:10px 0;font-size:13.5px;color:#7A4E0E}
+.checks ul{margin:4px 0 0;padding-left:18px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;z-index:80;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.18);max-width:90vw}
+.log{background:var(--panel);border:1px solid var(--line);border-radius:var(--r)}
+.log div{padding:9px 14px;border-bottom:1px solid var(--soft);font-size:14px;display:flex;gap:12px}
+.log div:last-child{border:0}
+.log time{color:var(--muted);font-size:12.5px;white-space:nowrap;min-width:92px}
+.setup{max-width:560px;margin:40px auto}
+.setup ol{padding-left:20px} .setup li{margin:6px 0}
+code{background:var(--soft);padding:1px 5px;border-radius:5px;font-size:13px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hbar">
+    <div class="logo">Kanal-Cockpit <span>· KI-Kanäle</span></div>
+    <div class="status" id="status"><span class="dot"></span><span class="txt">lädt …</span></div>
+    <button class="iconbtn" id="reload" title="Aktualisieren">↻</button>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button class="tab on" data-v="plan">Plan</button>
+    <button class="tab" data-v="channels">Kanäle</button>
+    <button class="tab" data-v="log">Protokoll</button>
+  </nav>
+</header>
+<div class="wrap" id="app"></div>
+
+<script>
+"use strict";
+const REPO = "dominiksuerth-prog/insta-autopilot";
+const BRANCH = "main";
+const WORKFLOW = "run.yml";
+const TZ = "Europe/Berlin";
+const DAYS = ["mo","di","mi","do","fr","sa","so"];
+const DAYNAMES = {mo:"Mo",di:"Di",mi:"Mi",do:"Do",fr:"Fr",sa:"Sa",so:"So"};
+const PALETTE = ["#E0A100","#2F6FCC","#C2410C","#0F766E","#7C3AED","#BE185D","#4D7C0F","#334155"];
+const DEMO = new URLSearchParams(location.search).has("demo");
+
+const S = { view:"plan", filter:"all", showDone:false, channels:[], state:{posts:{},channels:{},log:[]}, inbox:[], runs:[], loaded:false };
+const $ = (s,el=document)=>el.querySelector(s);
+const esc = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ------------------------------------------------------------ GitHub-Zugriff */
+const token = () => localStorage.getItem("gh_token") || "";
+const b64enc = s => btoa(String.fromCharCode(...new TextEncoder().encode(s)));
+const b64dec = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g,"")),c=>c.charCodeAt(0)));
+const DEMO_FILES = {};
+
+async function gh(path, opts={}){
+  if (DEMO) return demoGh(path, opts);
+  const r = await fetch("https://api.github.com"+path, {cache:"no-store", ...opts,
+    headers:{"Authorization":"Bearer "+token(),"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28",...(opts.headers||{})}});
+  if (r.status===401) { localStorage.removeItem("gh_token"); throw new Error("Zugangsschlüssel ungültig oder abgelaufen – bitte neu eintragen."); }
+  if (!r.ok && r.status!==404) throw new Error(`GitHub ${r.status}: ${(await r.text()).slice(0,160)}`);
+  if (r.status===404) return null;
+  if (r.status===204) return {};
+  return r.json();
+}
+async function readFile(path){           // -> {text, sha} oder null
+  const j = await gh(`/repos/${REPO}/contents/${path}?ref=${BRANCH}&t=${Date.now()}`);
+  if (!j || Array.isArray(j)) return null;
+  return {text: b64dec(j.content||""), sha:j.sha};
+}
+async function listDir(path){
+  const j = await gh(`/repos/${REPO}/contents/${path}?ref=${BRANCH}&t=${Date.now()}`);
+  return Array.isArray(j) ? j : [];
+}
+async function writeFile(path, text, sha, message){
+  return gh(`/repos/${REPO}/contents/${path}`, {method:"PUT", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({message, content:b64enc(text), branch:BRANCH, ...(sha?{sha}:{})})});
+}
+let dispatchTimer=null;
+function kickAutopilot(){            // mehrere Klicks -> ein Start
+  clearTimeout(dispatchTimer);
+  dispatchTimer = setTimeout(async ()=>{
+    try{ await gh(`/repos/${REPO}/actions/workflows/${WORKFLOW}/dispatches`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ref:BRANCH})}); }
+    catch(e){ toast("Start fehlgeschlagen: "+e.message); }
+    setTimeout(loadRuns, 4000);
+  }, 1500);
+}
+async function sendJob(job){
+  const name = `${Date.now()}-${Math.random().toString(36).slice(2,7)}.json`;
+  job.at = new Date().toISOString();
+  await writeFile(`data/inbox/${name}`, JSON.stringify(job, null, 1), null, `cockpit: ${job.action}`);
+  S.inbox.push({name, job});
+  kickAutopilot();
+  render();
+}
+
+/* ------------------------------------------------------------ Demo-Modus (lokaler Test ohne GitHub) */
+async function demoGh(path, opts){
+  const m = path.match(/contents\/([^?]*)/);
+  if (path.includes("/actions/runs")) return {workflow_runs:[{status:"completed",conclusion:"success",updated_at:new Date(Date.now()-9e5).toISOString(),html_url:"#",event:"schedule"}]};
+  if (path.includes("/dispatches")) return {};
+  if (!m) return null;
+  const p = m[1];
+  if (opts.method==="PUT"){ DEMO_FILES[p]=JSON.parse(opts.body); console.log("PUT",p,b64dec(DEMO_FILES[p].content)); return {content:{sha:"x"}}; }
+  if (p.endsWith("/") || !p.includes(".")) {
+    const r = await fetch("demo/"+p+"/_dir.json"); return r.ok ? r.json() : [];
+  }
+  const r = await fetch("demo/"+p); if(!r.ok) return null;
+  return {content: b64enc(await r.text()), sha:"demo"};
+}
+
+/* ------------------------------------------------------------ Laden */
+async function loadAll(){
+  setStatus("load");
+  const [stateF, chDir, inboxDir] = await Promise.all([readFile("data/state.json"), listDir("channels"), listDir("data/inbox")]);
+  S.state = stateF ? JSON.parse(stateF.text) : {posts:{},channels:{}};
+  S.state.posts ||= {}; S.state.channels ||= {}; S.state.log ||= [];
+  const dirs = chDir.filter(d=>d.type==="dir").map(d=>d.name);
+  S.channels = (await Promise.all(dirs.map(async (id,i)=>{
+    const [st, topics, facts] = await Promise.all([readFile(`channels/${id}/settings.json`), readFile(`channels/${id}/topics.txt`), readFile(`channels/${id}/facts.md`)]);
+    if (!st) return null;
+    const s = JSON.parse(st.text);
+    const tl = (topics?.text||"").split("\n").map(t=>t.trim()).filter(t=>t && !t.startsWith("#"));
+    return {id, ...s, _sha:st.sha, _topics:tl, _topicsRaw:topics, _facts:facts,
+            _pruefen:((facts?.text||"").match(/\[PRÜFEN\]/g)||[]).length};
+  }))).filter(Boolean);
+  S.channels.forEach((c,i)=>c._color = c.color || PALETTE[i % PALETTE.length]);
+  const files = inboxDir.filter(f=>f.name.endsWith(".json"));
+  S.inbox = (await Promise.all(files.map(async f=>{ const r = await readFile(`data/inbox/${f.name}`); try{return {name:f.name, job:JSON.parse(r.text)}}catch{return null} }))).filter(Boolean);
+  S.loaded = true;
+  render();
+  loadRuns();
+}
+async function loadRuns(){
+  try{
+    const j = await gh(`/repos/${REPO}/actions/workflows/${WORKFLOW}/runs?per_page=6`);
+    S.runs = j?.workflow_runs || [];
+  }catch(e){ S.runs=[]; }
+  setStatus();
+  const busy = S.runs.some(r=>r.status!=="completed");
+  clearTimeout(loadRuns._t);
+  if (busy || S.inbox.length) loadRuns._t = setTimeout(async()=>{ const was=S.runs[0]?.status; await loadRuns(); if (was!=="completed" && S.runs[0]?.status==="completed") loadAll(); }, 12000);
+}
+function setStatus(mode){
+  const el = $("#status");
+  if (mode==="load"){ el.innerHTML = `<span class="spin"></span><span class="txt">lädt …</span>`; return; }
+  const r = S.runs[0];
+  const busy = S.runs.find(x=>x.status!=="completed");
+  let dot="dot", txt;
+  if (busy){ dot+=" run"; txt = busy.status==="queued" ? "Autopilot startet …" : "Autopilot arbeitet …"; }
+  else if (r){ dot += r.conclusion==="success"?" ok":" err"; txt = `Letzter Lauf ${rel(r.updated_at)}${r.conclusion!=="success"?" – Fehler":""}`; }
+  else txt = "noch kein Lauf";
+  if (S.inbox.length) txt += ` · ${S.inbox.length} Auftrag${S.inbox.length>1?"e":""} offen`;
+  el.innerHTML = `<span class="${dot}"></span><span class="txt">${esc(txt)}</span>`;
+}
+
+/* ------------------------------------------------------------ Zeit */
+const fmt = (d,o)=>new Intl.DateTimeFormat("de-DE",{timeZone:TZ,...o}).format(d);
+const dayKey = d => fmt(d,{year:"numeric",month:"2-digit",day:"2-digit"});
+function rel(iso){
+  const m = Math.round((Date.now()-new Date(iso))/60000);
+  if (m<1) return "gerade eben"; if (m<60) return `vor ${m} Min.`;
+  const h = Math.round(m/60); if (h<24) return `vor ${h} Std.`; return `am ${fmt(new Date(iso),{day:"2-digit",month:"2-digit"})}`;
+}
+function toLocalInput(iso){
+  const d = new Date(iso);
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA",{timeZone:TZ,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(d).map(x=>[x.type,x.value]));
+  return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}`;
+}
+function fromLocalInput(v){           // "2026-11-23T18:00" (Berlin) -> ISO mit Offset
+  for (const off of ["+01:00","+02:00"]) { const iso = `${v}:00${off}`; if (toLocalInput(iso)===v) return iso; }
+  return `${v}:00+01:00`;
+}
+
+/* ------------------------------------------------------------ Hilfen */
+const chan = id => S.channels.find(c=>c.id===id) || {id, handle:id, _color:"#999"};
+function pendingFor(pid){ return S.inbox.filter(i=>i.job.post_id===pid).map(i=>i.job); }
+function viewPost(pid){             // Post inkl. noch nicht übernommener Cockpit-Entscheidungen
+  const p = {...S.state.posts[pid], id:pid};
+  const pend = pendingFor(pid);
+  for (const j of pend){
+    if (j.action==="approve") p.status="approved";
+    if (j.action==="unapprove") p.status="draft";
+    if (j.action==="reject") p.status="rejected";
+    if (j.caption) p.caption=j.caption;
+    if (j.scheduled) p.scheduled=j.scheduled;
+    if (j.action==="regenerate") p._regen=true;
+  }
+  p._pending = pend.length>0;
+  return p;
+}
+function toast(t){ const el=document.createElement("div"); el.className="toast"; el.textContent=t; document.body.appendChild(el); setTimeout(()=>el.remove(),3200); }
+const BADGE = {draft:["b-draft","Entwurf"],approved:["b-approved","Freigegeben"],published:["b-published","Veröffentlicht"],rejected:["b-rejected","Verworfen"]};
+function badge(p){
+  if (p._regen) return `<span class="badge b-pend">wird neu geschrieben …</span>`;
+  const late = p.status==="draft" && p.scheduled && new Date(p.scheduled) < Date.now();
+  const [c,t] = late ? ["b-late","Termin verpasst"] : (BADGE[p.status]||["b-pub",p.status]);
+  return `<span class="badge ${c}">${t}</span>${p._pending?` <span class="badge b-pend">wird übernommen</span>`:""}`;
+}
+
+/* ------------------------------------------------------------ Ansichten */
+function render(){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on", t.dataset.v===S.view));
+  const app = $("#app");
+  if (!DEMO && !token()) { app.innerHTML = setupView(); bindSetup(); return; }
+  if (!S.loaded) { app.innerHTML = `<p class="muted" style="margin-top:30px"><span class="spin"></span> Lade Daten aus GitHub …</p>`; return; }
+  app.innerHTML = S.view==="plan" ? planView() : S.view==="channels" ? channelsView() : logView();
+  setStatus();
+}
+
+function planView(){
+  const posts = Object.keys(S.state.posts).map(viewPost)
+    .filter(p=>p.scheduled && p.status!=="replaced")
+    .filter(p=>S.filter==="all" || p.channel===S.filter);
+  const nowT = Date.now(), weekAgo = nowT-7*864e5;
+  const open = posts.filter(p=>["draft","approved"].includes(p.status));
+  const late = open.filter(p=>p.status==="draft" && new Date(p.scheduled)<nowT);
+  const upcoming = posts.filter(p=>new Date(p.scheduled)>=nowT || (S.showDone && new Date(p.scheduled)>=weekAgo))
+                        .filter(p=>S.showDone || ["draft","approved"].includes(p.status))
+                        .filter(p=>!late.includes(p))
+                        .sort((a,b)=>a.scheduled.localeCompare(b.scheduled));
+  const drafts = open.filter(p=>p.status==="draft").length, appr = open.filter(p=>p.status==="approved").length;
+  const nextAppr = open.filter(p=>p.status==="approved" && new Date(p.scheduled)>=nowT).sort((a,b)=>a.scheduled.localeCompare(b.scheduled))[0];
+  const coveredUntil = open.filter(p=>p.status==="approved").map(p=>p.scheduled).sort().pop();
+  const chipsHtml = `<button class="chip ${S.filter==="all"?"on":""}" data-filter="all">Alle Kanäle</button>` +
+    S.channels.map(c=>`<button class="chip ${S.filter===c.id?"on":""}" data-filter="${c.id}"><span class="cdot" style="background:${c._color}"></span>${esc(c.handle)}${c.active?"":" <span class='muted'>(pausiert)</span>"}</button>`).join("");
+  let html = `
+  <div class="kpis">
+    <div class="kpi ${drafts?"warn":""}"><b>${drafts}</b><small>warten auf Freigabe</small></div>
+    <div class="kpi"><b>${appr}</b><small>freigegeben &amp; eingeplant</small></div>
+    <div class="kpi"><b>${nextAppr?fmt(new Date(nextAppr.scheduled),{weekday:"short",hour:"2-digit",minute:"2-digit"}):"–"}</b><small>nächster Post geht raus</small></div>
+    <div class="kpi"><b>${coveredUntil?fmt(new Date(coveredUntil),{day:"2-digit",month:"2-digit"}):"–"}</b><small>freigegeben bis</small></div>
+  </div>
+  <div class="row" style="margin-top:16px;justify-content:space-between">
+    <div class="chips">${chipsHtml}</div>
+  </div>
+  <div class="row" style="margin-top:12px">
+    <button class="btn pri" data-act="plan">＋ Vorproduzieren</button>
+    <button class="btn" data-act="addpost">Eigener Post</button>
+    <label class="switch small" style="margin-left:auto"><input type="checkbox" id="showDone" ${S.showDone?"checked":""}> Erledigte zeigen</label>
+  </div>`;
+  if (late.length){
+    html += `<h2>Termin verpasst – nicht freigegeben</h2>` + late.map(postRow).join("") +
+      `<p class="small muted" style="margin:4px 2px 0">Freigeben = geht sofort raus. Oder neuen Termin setzen bzw. verwerfen.</p>`;
+  }
+  html += `<h2>Kommende Termine</h2>`;
+  if (!upcoming.length) html += `<div class="empty">Noch nichts geplant.<br>Tipp auf <b>Vorproduzieren</b> – Claude schreibt Entwürfe für die freien Termine, du gibst sie hier frei.</div>`;
+  let cur="";
+  for (const p of upcoming){
+    const d = new Date(p.scheduled), k = dayKey(d);
+    if (k!==cur){
+      if (cur) html += `</div>`;
+      cur=k;
+      const isToday = k===dayKey(new Date());
+      html += `<div class="day"><div class="dayh ${isToday?"today":""}"><b>${fmt(d,{weekday:"long"})}</b><span>${fmt(d,{day:"numeric",month:"long"})}</span></div>`;
+    }
+    html += postRow(p);
+  }
+  if (cur) html += `</div>`;
+  return html;
+}
+function postRow(p){
+  const c = chan(p.channel);
+  const done = !["draft","approved"].includes(p.status);
+  const qa = p.status==="draft" && !p._regen
+    ? `<div class="qa"><button class="btn ok" title="Freigeben" data-quick="approve" data-id="${p.id}">✓</button><button class="btn danger" title="Verwerfen" data-quick="reject" data-id="${p.id}">✕</button></div>` : "";
+  return `<div class="post ${done?"done":""}" data-open="${p.id}">
+    <img class="thumb" loading="lazy" src="${esc((p.urls||[])[0]||"")}" alt="">
+    <div class="pmain">
+      <div class="ptop"><span class="cdot" style="background:${c._color}"></span>${esc(c.handle)} · ${fmt(new Date(p.scheduled),{hour:"2-digit",minute:"2-digit"})} ${badge(p)}</div>
+      <div class="ptitle">${esc(p.topic)}</div>
+      ${p.error?`<div class="small" style="color:var(--bad)">⚠️ ${esc(p.error)}</div>`:""}
+    </div>${qa}</div>`;
+}
+
+function channelsView(){
+  let html = `<div class="row" style="margin-top:18px"><button class="btn pri" data-act="newchannel">＋ Neuen Kanal anlegen</button></div>`;
+  for (const c of S.channels){
+    const cs = S.state.channels[c.id] || {topic_index:0};
+    const left = Math.max(0, c._topics.length - (cs.topic_index||0));
+    const posts = Object.values(S.state.posts).filter(p=>p.channel===c.id);
+    const pub = posts.filter(p=>p.status==="published").sort((a,b)=>(b.published||"").localeCompare(a.published||""));
+    const dr = posts.filter(p=>p.status==="draft").length, ap = posts.filter(p=>p.status==="approved").length;
+    const missing = [];
+    if (!c.ig_user_id) missing.push("Instagram-ID fehlt");
+    if (c._pruefen) missing.push(`${c._pruefen} Fakten noch ungeprüft`);
+    html += `<div class="card" data-ch="${c.id}">
+      <div class="chead"><span class="cdot" style="background:${c._color};width:12px;height:12px"></span>
+        <h3>${esc(c.name||c.handle)}</h3><span class="muted">${esc(c.handle)} · ${c.language==="en"?"Englisch":"Deutsch"}</span>
+        <label class="switch" style="margin-left:auto"><input type="checkbox" data-field="active" ${c.active?"checked":""}> ${c.active?"Aktiv":"Pausiert"}</label></div>
+      ${c.note?`<div class="infobox">${esc(c.note)}</div>`:""}
+      <div class="stats"><span><b>${pub.length}</b> veröffentlicht</span><span><b>${ap}</b> freigegeben</span><span><b>${dr}</b> Entwürfe</span>
+        <span style="${left<6?"color:var(--bad)":""}"><b style="${left<6?"color:var(--bad)":""}">${left}</b> Themen übrig</span>
+        ${pub[0]?`<span>zuletzt ${rel(pub[0].published)}</span>`:""}</div>
+      ${missing.length?`<div class="warnbox">Vor dem Aktivieren: ${missing.join(" · ")}</div>`:""}
+      <div class="grid2">
+        <label class="f">Posting-Tage<div class="daysel">${DAYS.map(d=>`<button type="button" data-day="${d}" class="${(c.days||[]).includes(d)?"on":""}">${DAYNAMES[d]}</button>`).join("")}</div></label>
+        <label class="f">Uhrzeit<input type="time" data-field="time" value="${esc(c.time||"18:00")}"></label>
+        <label class="f">Automatisch vorproduzieren (Tage im Voraus, 0 = aus)<input type="number" min="0" max="28" data-field="autoplan_days" value="${c.autoplan_days??7}"></label>
+        <label class="f">Instagram-ID<input type="text" data-field="ig_user_id" value="${esc(c.ig_user_id||"")}" placeholder="z. B. 1784…"></label>
+        <label class="f" style="grid-column:1/-1">Schlusssatz der Caption<input type="text" data-field="cta_hint" value="${esc(c.cta_hint||"")}"></label>
+      </div>
+      <div class="actions">
+        <button class="btn pri sm" data-save="${c.id}">Speichern</button>
+        <button class="btn sm" data-edit="topics" data-id="${c.id}">Themen (${left})</button>
+        <button class="btn sm" data-edit="facts" data-id="${c.id}">Fakten${c._pruefen?` ⚠️`:""}</button>
+        <button class="btn sm" data-edit="style" data-id="${c.id}">Stil</button>
+        <button class="btn sm" data-act="plan" data-id="${c.id}">Vorproduzieren</button>
+      </div>
+    </div>`;
+  }
+  return html;
+}
+
+function logView(){
+  const entries = S.state.log || [];
+  const runs = S.runs.map(r=>`<div><time>${rel(r.updated_at)}</time><span>${r.status!=="completed"?"läuft":r.conclusion==="success"?"✓ erfolgreich":"✕ "+esc(r.conclusion)} · ${r.event==="schedule"?"stündlich":"vom Cockpit"} · <a href="${esc(r.html_url)}" target="_blank" rel="noopener">Details</a></span></div>`).join("");
+  return `<h2>Was passiert ist</h2><div class="log">${entries.length?entries.map(e=>`<div><time>${fmt(new Date(e.t),{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})}</time><span>${esc(e.msg)}</span></div>`).join(""):`<div><span class="muted">Noch keine Einträge.</span></div>`}</div>
+  <h2>Läufe des Autopiloten</h2><div class="log">${runs||`<div><span class="muted">keine</span></div>`}</div>
+  <h2>Gerät</h2><div class="row"><button class="btn sm danger" data-act="logout">Zugangsschlüssel auf diesem Gerät löschen</button></div>`;
+}
+
+function setupView(){
+  return `<div class="setup card">
+    <h3 style="margin-top:0">Einmalig: Zugang einrichten</h3>
+    <p>Das Cockpit spricht direkt mit deinem GitHub-Projekt. Dafür braucht es einen Zugangsschlüssel, der <b>nur in diesem Browser</b> gespeichert wird.</p>
+    <ol>
+      <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a> öffnen</li>
+      <li>Name: <code>Kanal-Cockpit</code>, Ablauf: 1 Jahr</li>
+      <li>Repository access: <b>Only select repositories</b> → <code>insta-autopilot</code></li>
+      <li>Permissions → Repository: <b>Contents</b> = Read and write, <b>Actions</b> = Read and write</li>
+      <li>Generate token, kopieren, hier einfügen</li>
+    </ol>
+    <label class="f">Zugangsschlüssel<input type="password" id="tok" placeholder="github_pat_…" autocomplete="off"></label>
+    <div class="actions"><button class="btn pri" id="saveTok">Speichern &amp; öffnen</button></div>
+    <p class="small muted">Auf dem Handy einmal genauso eintragen. Löschen geht unter Protokoll → Gerät.</p>
+  </div>`;
+}
+function bindSetup(){
+  $("#saveTok").onclick = async ()=>{
+    const v = $("#tok").value.trim(); if (!v) return;
+    localStorage.setItem("gh_token", v);
+    try{ await loadAll(); toast("Verbunden ✓"); }catch(e){ toast(e.message); render(); }
+  };
+}
+
+/* ------------------------------------------------------------ Dialoge */
+function sheet(title, body, onBind){
+  const ov = document.createElement("div"); ov.className="ov";
+  ov.innerHTML = `<div class="sheet"><div class="shead"><h3>${title}</h3><button class="iconbtn" data-close>✕</button></div>${body}</div>`;
+  ov.addEventListener("click", e=>{ if (e.target===ov || e.target.closest("[data-close]")) ov.remove(); });
+  document.body.appendChild(ov);
+  onBind && onBind(ov, ()=>ov.remove());
+  return ov;
+}
+
+function openPost(pid){
+  const p = viewPost(pid), c = chan(p.channel);
+  const editable = ["draft","approved"].includes(p.status) && !p._regen;
+  const body = `
+    <div class="ptop" style="margin-bottom:10px"><span class="cdot" style="background:${c._color}"></span>${esc(c.handle)} ${badge(p)}</div>
+    <div class="slides">${(p.urls||[]).map(u=>`<img src="${esc(u)}" loading="lazy" alt="">`).join("")}</div>
+    ${(p.check||[]).length?`<div class="checks"><b>Bitte prüfen</b><ul>${p.check.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:""}
+    <div class="grid2" style="margin-top:12px">
+      <label class="f">Termin<input type="datetime-local" id="pSched" value="${p.scheduled?toLocalInput(p.scheduled):""}" ${editable?"":"disabled"}></label>
+      <label class="f">Thema<input type="text" value="${esc(p.topic)}" disabled></label>
+    </div>
+    <label class="f" style="margin-top:10px">Caption<textarea id="pCap" rows="9" ${editable?"":"disabled"}>${esc(p.caption)}</textarea></label>
+    ${p.error?`<div class="warnbox">Letzter Versuch fehlgeschlagen: ${esc(p.error)}</div>`:""}
+    ${p.published?`<p class="small muted">Veröffentlicht ${rel(p.published)}.</p>`:""}
+    <div class="actions">${editable ? `
+      ${p.status==="draft"?`<button class="btn ok" data-a="approve">✓ Freigeben</button>`:`<button class="btn" data-a="unapprove">Freigabe zurücknehmen</button>`}
+      <button class="btn" data-a="edit">Änderungen speichern</button>
+      <button class="btn" data-a="regen">🔁 Neu schreiben</button>
+      <button class="btn danger" data-a="reject">Verwerfen</button>` : ""}
+    </div>
+    <div id="regenBox" style="display:none;margin-top:12px" class="card">
+      <label class="f">Anderes Thema (leer = gleiches Thema)<input type="text" id="rTopic" placeholder="${esc(p.topic)}"></label>
+      <label class="f" style="margin-top:8px">Was soll anders werden? (optional)<input type="text" id="rHint" placeholder="z. B. kürzer, anderer Einstieg, mehr Beispiel"></label>
+      <div class="actions"><button class="btn pri" data-a="regenGo">Neu schreiben lassen</button></div>
+    </div>`;
+  sheet(esc(p.topic), body, (ov, close)=>{
+    ov.addEventListener("click", async e=>{
+      const a = e.target.closest("[data-a]")?.dataset.a; if (!a) return;
+      if (a==="regen"){ $("#regenBox",ov).style.display="block"; return; }
+      const cap = $("#pCap",ov).value, sched = $("#pSched",ov).value;
+      const job = {post_id:pid};
+      if (cap !== p.caption) job.caption = cap;
+      if (sched && sched !== toLocalInput(p.scheduled)) job.scheduled = fromLocalInput(sched);
+      if (a==="approve" || a==="unapprove" || a==="reject") job.action = a;
+      else if (a==="edit") { if (!job.caption && !job.scheduled) return toast("Keine Änderung"); job.action="edit"; }
+      else if (a==="regenGo") { job.action="regenerate"; job.topic=$("#rTopic",ov).value.trim(); job.hint=$("#rHint",ov).value.trim(); delete job.caption; }
+      if (a==="reject" && !confirm("Diesen Post verwerfen?")) return;
+      e.target.disabled = true;
+      try{
+        await sendJob(job);
+        close();
+        toast({approve:"Freigegeben – geht zum Termin raus", unapprove:"Freigabe zurückgenommen", reject:"Verworfen", edit:"Gespeichert", regenGo:"Claude schreibt neu – dauert 1–3 Minuten"}[a]);
+      }catch(err){ toast(err.message); e.target.disabled=false; }
+    });
+  });
+}
+
+function openPlan(cid){
+  const opts = S.channels.map(c=>`<option value="${c.id}" ${c.id===cid?"selected":""}>${esc(c.handle)}${c.active?"":" (pausiert)"}</option>`).join("");
+  sheet("Vorproduzieren", `
+    <p class="small muted" style="margin-top:0">Claude füllt alle <b>freien Termine</b> (laut Posting-Tagen des Kanals) mit Entwürfen. Du gibst sie danach im Plan frei. Kosten: ca. 2–4 Cent pro Post.</p>
+    <div class="grid2">
+      <label class="f">Kanal<select id="plCh"><option value="all" ${cid?"":"selected"}>Alle aktiven Kanäle</option>${opts}</select></label>
+      <label class="f">Zeitraum<select id="plDays"><option value="7">nächste 7 Tage</option><option value="14" selected>nächste 14 Tage</option><option value="21">nächste 21 Tage</option><option value="28">nächste 28 Tage</option></select></label>
+    </div>
+    <div id="plInfo" class="infobox"></div>
+    <div class="actions"><button class="btn pri" id="plGo">Entwürfe erstellen</button></div>`, (ov, close)=>{
+      const info = ()=>{
+        const ch = $("#plCh",ov).value, days = +$("#plDays",ov).value;
+        const list = ch==="all" ? S.channels.filter(c=>c.active) : [chan(ch)];
+        const parts = list.map(c=>{ const n = freeSlots(c, days); const cs=S.state.channels[c.id]||{}; const left=Math.max(0,c._topics.length-(cs.topic_index||0));
+          return `${esc(c.handle)}: ${n} freie Termine${left<n?` – <b style="color:var(--bad)">nur ${left} Themen übrig</b>`:""}`; });
+        $("#plInfo",ov).innerHTML = parts.join("<br>") || "Kein aktiver Kanal.";
+      };
+      $("#plCh",ov).onchange = info; $("#plDays",ov).onchange = info; info();
+      $("#plGo",ov).onclick = async e=>{
+        e.target.disabled = true;
+        try{ await sendJob({action:"plan", channel:$("#plCh",ov).value, days:+$("#plDays",ov).value}); close(); toast("Läuft – Entwürfe erscheinen nach und nach (ca. 1 Min. pro Post)"); }
+        catch(err){ toast(err.message); e.target.disabled=false; }
+      };
+  });
+}
+function freeSlots(c, days){
+  const taken = new Set(Object.values(S.state.posts).filter(p=>p.channel===c.id && p.scheduled && ["draft","approved","published"].includes(p.status)).map(p=>toLocalInput(p.scheduled)));
+  let n=0; const [hh,mm] = (c.time||"18:00").split(":");
+  for (let i=0;i<=days;i++){
+    const d = new Date(Date.now()+i*864e5);
+    const local = toLocalInput(d.toISOString()).slice(0,10)+`T${hh.padStart(2,"0")}:${mm}`;
+    const wd = DAYS[(new Date(local+":00Z").getUTCDay()+6)%7];
+    if (!(c.days||[]).includes(wd)) continue;
+    if (new Date(fromLocalInput(local)) <= Date.now()) continue;
+    if (!taken.has(local)) n++;
+  }
+  return n;
+}
+
+function openAddPost(){
+  const opts = S.channels.map(c=>`<option value="${c.id}">${esc(c.handle)}</option>`).join("");
+  const def = toLocalInput(new Date(Date.now()+864e5).toISOString()).slice(0,11)+"18:00";
+  sheet("Eigenen Post planen", `
+    <label class="f">Kanal<select id="apCh">${opts}</select></label>
+    <label class="f" style="margin-top:10px">Thema<input type="text" id="apTopic" placeholder="z. B. Widerrufsrecht beim Online-Kauf: 5 Irrtümer"></label>
+    <label class="f" style="margin-top:10px">Wunsch an Claude (optional)<input type="text" id="apHint" placeholder="z. B. mit Rechenbeispiel"></label>
+    <label class="f" style="margin-top:10px">Termin<input type="datetime-local" id="apWhen" value="${def}"></label>
+    <p class="small muted">Zahlen kommen nur aus der Faktenbasis des Kanals. Fehlt etwas, landet es unter „Bitte prüfen“.</p>
+    <div class="actions"><button class="btn pri" id="apGo">Entwurf erstellen</button></div>`, (ov, close)=>{
+      $("#apGo",ov).onclick = async e=>{
+        const topic = $("#apTopic",ov).value.trim(); if (!topic) return toast("Bitte ein Thema eingeben");
+        e.target.disabled=true;
+        try{ await sendJob({action:"add_post", channel:$("#apCh",ov).value, topic, hint:$("#apHint",ov).value.trim(), scheduled:fromLocalInput($("#apWhen",ov).value)}); close(); toast("Claude schreibt – ca. 1–2 Minuten"); }
+        catch(err){ toast(err.message); e.target.disabled=false; }
+      };
+  });
+}
+
+async function openEditor(kind, cid){
+  const c = chan(cid);
+  const path = `channels/${cid}/${kind==="topics"?"topics.txt":kind==="facts"?"facts.md":"style.md"}`;
+  const f = await readFile(path);
+  let text = f?.text || "", used = [];
+  let hint = "";
+  if (kind==="topics"){
+    const idx = (S.state.channels[cid]||{}).topic_index || 0;
+    const lines = text.split("\n"); let n=0, cut=lines.length;
+    for (let i=0;i<lines.length;i++){ const t=lines[i].trim(); if (t && !t.startsWith("#")){ if (n===idx){cut=i;break;} n++; } }
+    used = lines.slice(0,cut); text = lines.slice(cut).join("\n").replace(/^\n+/,"");
+    hint = `Eine Zeile = ein Post, von oben nach unten. ${idx} Themen sind bereits verbraucht (nicht angezeigt).`;
+  } else if (kind==="facts"){
+    hint = "Nur was hier steht, darf als Zahl, Betrag, Frist oder Studie in Posts vorkommen. Zeilen mit [PRÜFEN] an der Quelle prüfen und die Markierung dann löschen – erst danach lässt sich der Kanal aktivieren.";
+  } else hint = "Ton, Zielgruppe und Regeln für Claude.";
+  const title = {topics:"Themen",facts:"Faktenbasis",style:"Stil"}[kind] + " – " + esc(c.handle);
+  sheet(title, `
+    <p class="small muted" style="margin-top:0">${hint}</p>
+    <textarea class="code" id="edTxt">${esc(text)}</textarea>
+    <div class="actions"><button class="btn pri" id="edSave">Speichern</button>
+    ${kind==="topics"?`<button class="btn" id="edSuggest">✨ 20 Themen vorschlagen lassen</button>`:""}</div>`, (ov, close)=>{
+      $("#edSave",ov).onclick = async e=>{
+        e.target.disabled=true;
+        let out = $("#edTxt",ov).value.replace(/\s+$/,"")+"\n";
+        if (kind==="topics") out = (used.length? used.join("\n").replace(/\s+$/,"")+"\n" : "") + out;
+        try{ await writeFile(path, out, f?.sha, `cockpit: ${kind} ${cid}`); close(); toast("Gespeichert"); loadAll(); }
+        catch(err){ toast(err.message); e.target.disabled=false; }
+      };
+      const sg = $("#edSuggest",ov);
+      if (sg) sg.onclick = async e=>{
+        e.target.disabled=true;
+        try{ await sendJob({action:"suggest_topics", channel:cid, n:20}); close(); toast("Claude sucht Themen passend zur Faktenbasis – in 1–2 Min. hier sichtbar"); }
+        catch(err){ toast(err.message); e.target.disabled=false; }
+      };
+  });
+}
+
+async function saveChannel(cid, card){
+  const c = chan(cid);
+  const f = await readFile(`channels/${cid}/settings.json`);
+  const s = JSON.parse(f.text);
+  s.days = [...card.querySelectorAll(".daysel button.on")].map(b=>b.dataset.day);
+  s.time = card.querySelector('[data-field="time"]').value || "18:00";
+  s.autoplan_days = Math.max(0, Math.min(28, +card.querySelector('[data-field="autoplan_days"]').value || 0));
+  s.ig_user_id = card.querySelector('[data-field="ig_user_id"]').value.trim();
+  s.cta_hint = card.querySelector('[data-field="cta_hint"]').value.trim();
+  const act = card.querySelector('[data-field="active"]').checked;
+  if (act && !s.active){
+    if (!/^\d{10,}$/.test(s.ig_user_id)) { toast("Aktivieren geht erst mit Instagram-ID"); return false; }
+    if (c._pruefen) { toast(`Erst die ${c._pruefen} ungeprüften Fakten prüfen`); return false; }
+  }
+  s.active = act;
+  await writeFile(`channels/${cid}/settings.json`, JSON.stringify(s, null, 2)+"\n", f.sha, `cockpit: Einstellungen ${cid}`);
+  return true;
+}
+
+function openNewChannel(){
+  sheet("Neuen Kanal anlegen", `
+    <p class="small muted" style="margin-top:0">Claude schreibt Stil-Leitfaden, 30 Themen und einen Vorschlag für die Faktenbasis. Der Kanal startet <b>pausiert</b>: Du prüfst die Fakten, legst das Instagram-Profil an und trägst die ID ein – dann aktivieren.</p>
+    <div class="grid2">
+      <label class="f">Instagram-Handle<input type="text" id="ncHandle" placeholder="@deinkanal"></label>
+      <label class="f">Name<input type="text" id="ncName" placeholder="z. B. Mietrecht kompakt"></label>
+      <label class="f">Sprache<select id="ncLang"><option value="de">Deutsch</option><option value="en">Englisch</option></select></label>
+      <label class="f">Schrift (Überschriften)<select id="ncFont"><option>Space Grotesk</option><option>Fraunces</option><option>Archivo</option><option>Inter</option></select></label>
+    </div>
+    <label class="f" style="margin-top:10px">Nische, Zielgruppe, Ziel<textarea id="ncBrief" rows="4" placeholder="z. B. Mieter in Deutschland, 25–40, wollen ihre Rechte kennen. Ziel: Reichweite, später Affiliate (Rechtsschutz)."></textarea></label>
+    <label class="f" style="margin-top:10px">Ton<input type="text" id="ncTone" placeholder="z. B. klar, ruhig, ohne Panikmache, du-Form"></label>
+    <div class="grid2" style="margin-top:10px">
+      <label class="f">Farben: Hintergrund · Text · Akzent<div class="row"><input type="color" id="ncC1" value="#F5F1EA"><input type="color" id="ncC2" value="#14161A"><input type="color" id="ncC3" value="#C8553D"></div></label>
+      <label class="f">Posting-Tage &amp; Uhrzeit<div class="row"><div class="daysel" id="ncDays">${DAYS.map(d=>`<button type="button" data-day="${d}" class="${["mo","di","do","fr"].includes(d)?"on":""}">${DAYNAMES[d]}</button>`).join("")}</div><input type="time" id="ncTime" value="18:00" style="width:130px"></div></label>
+    </div>
+    <div class="actions"><button class="btn pri" id="ncGo">Kanal anlegen lassen</button></div>`, (ov, close)=>{
+      ov.querySelectorAll("#ncDays button").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+      $("#ncGo",ov).onclick = async e=>{
+        const handle = $("#ncHandle",ov).value.trim().replace(/^([^@])/,"@$1");
+        const id = handle.replace(/^@/,"").toLowerCase().replace(/[^a-z0-9]/g,"").slice(0,30);
+        if (id.length<3) return toast("Bitte ein Instagram-Handle eingeben");
+        if (S.channels.some(c=>c.id===id)) return toast("Diesen Kanal gibt es schon");
+        if ($("#ncBrief",ov).value.trim().length<20) return toast("Beschreib Nische und Zielgruppe etwas genauer");
+        e.target.disabled=true;
+        try{
+          await sendJob({action:"create_channel", id, handle, name:$("#ncName",ov).value.trim()||handle, language:$("#ncLang",ov).value,
+            brief:$("#ncBrief",ov).value.trim(), tone:$("#ncTone",ov).value.trim(), font:$("#ncFont",ov).value,
+            colors:[$("#ncC1",ov).value,$("#ncC2",ov).value,$("#ncC3",ov).value],
+            days:[...ov.querySelectorAll("#ncDays button.on")].map(b=>b.dataset.day), time:$("#ncTime",ov).value||"18:00"});
+          close(); toast("Claude legt den Kanal an – ca. 2 Minuten");
+        }catch(err){ toast(err.message); e.target.disabled=false; }
+      };
+  });
+}
+
+/* ------------------------------------------------------------ Klicks */
+document.addEventListener("click", async e=>{
+  const t = e.target;
+  const tab = t.closest(".tab"); if (tab){ S.view = tab.dataset.v; render(); return; }
+  if (t.closest("#reload")){ loadAll().catch(err=>toast(err.message)); return; }
+  if (!$("#app").contains(t)) return;
+  const f = t.closest("[data-filter]"); if (f){ S.filter=f.dataset.filter; render(); return; }
+  const q = t.closest("[data-quick]");
+  if (q){ e.stopPropagation(); q.disabled=true;
+    try{ await sendJob({action:q.dataset.quick, post_id:q.dataset.id}); toast(q.dataset.quick==="approve"?"Freigegeben ✓":"Verworfen"); }
+    catch(err){ toast(err.message); q.disabled=false; } return; }
+  const o = t.closest("[data-open]"); if (o){ openPost(o.dataset.open); return; }
+  const a = t.closest("[data-act]");
+  if (a){
+    const act=a.dataset.act;
+    if (act==="plan") openPlan(a.dataset.id);
+    if (act==="addpost") openAddPost();
+    if (act==="newchannel") openNewChannel();
+    if (act==="logout" && confirm("Zugangsschlüssel auf diesem Gerät löschen?")){ localStorage.removeItem("gh_token"); S.loaded=false; render(); }
+    return;
+  }
+  const d = t.closest(".daysel button"); if (d && d.closest("[data-ch]")){ d.classList.toggle("on"); return; }
+  const ed = t.closest("[data-edit]"); if (ed){ openEditor(ed.dataset.edit, ed.dataset.id).catch(err=>toast(err.message)); return; }
+  const sv = t.closest("[data-save]");
+  if (sv){ sv.disabled=true;
+    try{ if (await saveChannel(sv.dataset.save, sv.closest("[data-ch]"))){ toast("Gespeichert"); await loadAll(); } }
+    catch(err){ toast(err.message); }
+    sv.disabled=false; }
+});
+document.addEventListener("change", e=>{
+  if (e.target.id==="showDone"){ S.showDone=e.target.checked; render(); }
+  if (e.target.matches('[data-field="active"]')) e.target.parentElement.lastChild.textContent = e.target.checked?" Aktiv":" Pausiert";
+});
+document.addEventListener("visibilitychange", ()=>{ if (!document.hidden && S.loaded) loadAll().catch(()=>{}); });
+
+render();
+if (DEMO || token()) loadAll().catch(err=>{ toast(err.message); render(); });
+</script>
+</body>
+</html>
