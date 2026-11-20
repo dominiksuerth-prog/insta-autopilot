@@ -1,0 +1,18 @@
+{
+  "name": "Heizkosten klar",
+  "handle": "@heizkosten.klar",
+  "active": false,
+  "language": "de",
+  "ig_user_id": "",
+  "token_env": "IG_TOKEN_HEIZKOSTEN",
+  "days": [
+    "mo",
+    "di",
+    "do",
+    "fr"
+  ],
+  "time": "18:00",
+  "autoplan_days": 0,
+  "cta_hint": "Letzter Satz der Caption: 'Mehr ehrliche Zahlen: Folge @heizkosten.klar'.",
+  "note": "Pausiert bis zur Klärung der Nebentätigkeit mit WSW."
+}
