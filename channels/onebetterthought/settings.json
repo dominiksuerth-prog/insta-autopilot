@@ -1,0 +1,17 @@
+{
+  "name": "One Better Thought",
+  "handle": "@onebetterthought",
+  "active": true,
+  "language": "en",
+  "ig_user_id": "17841415614416136",
+  "token_env": "IG_TOKEN_STEHTDIRZU",
+  "days": [
+    "mo",
+    "di",
+    "do",
+    "fr"
+  ],
+  "time": "19:00",
+  "autoplan_days": 7,
+  "cta_hint": "Last line of the caption: 'Save this for later – and send it to someone who needs it.'"
+}
