@@ -1,10 +1,10 @@
-name: Website veröffentlichen
+name: Website und Cockpit veröffentlichen
 
-# Läuft, wenn du selbst etwas im Ordner docs/ änderst (z. B. Impressum oder Link-Seite).
+# Läuft nur, wenn sich Website oder Cockpit ändern – nicht bei neuen Slides.
 on:
   push:
     branches: [main]
-    paths: ["docs/**"]
+    paths: ["docs/*.html", "docs/cockpit/**"]
   workflow_dispatch:
 
 permissions:
@@ -13,8 +13,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: autopilot
-  cancel-in-progress: false
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -24,7 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Nur Website und Cockpit (ohne Slides)
+        run: mkdir _site && cp docs/*.html _site/ && cp -r docs/cockpit _site/cockpit
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: _site
       - uses: actions/deploy-pages@v4
