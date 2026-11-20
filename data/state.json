@@ -1,7 +1,7 @@
 {
   "channels": {
     "stehtdirzu": {
-      "topic_index": 6
+      "topic_index": 11
     },
     "onebetterthought": {
       "topic_index": 11
@@ -241,10 +241,121 @@
       ],
       "created": "2026-11-20T15:35:03.547549+01:00",
       "scheduled": "2026-11-27T19:00:00+01:00"
+    },
+    "20261120-1535-06f9f6": {
+      "channel": "stehtdirzu",
+      "topic": "Pauschalen, die du ohne Belege ansetzen kannst",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1535-06f9f6/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1535-06f9f6/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1535-06f9f6/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1535-06f9f6/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1535-06f9f6/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1535-06f9f6/6.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1535-06f9f6/7.jpg"
+      ],
+      "caption": "Du musst nicht für jeden Euro einen Zettel aufheben.\n\nZwei Pauschalen setzt du ohne Einzelbelege an: Der Arbeitnehmer-Pauschbetrag von 1.230 € pro Jahr deckt deine Werbungskosten ab. Dazu kommt die Homeoffice-Pauschale: 6 € pro Tag, maximal 1.260 € im Jahr.\n\nUnd jetzt die Frist, die kaum einer kennt: Wer nicht zur Abgabe verpflichtet ist, kann bis zu 4 Jahre rückwirkend eine freiwillige Steuererklärung abgeben. Für 2022 endet das am 31.12.2026. Es zählt, wann die Erklärung beim Finanzamt ankommt. Verlängern geht nicht.\n\nZuletzt lag die durchschnittliche Erstattung bei 1.240 €. Das ist ein Durchschnittswert, kein Versprechen für dich.\n\nKommt bei der freiwilligen Erklärung eine Nachzahlung raus? Dann kannst du den Antrag per Einspruch innerhalb von 1 Monat nach dem Bescheid zurücknehmen.\n\nDas ist eine allgemeine Information, keine Steuerberatung im Einzelfall.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#steuererklärung #homeofficepauschale #werbungskosten #steuertipps #verbraucherrechte #geldzurück #stehtdirzu",
+      "check": [],
+      "created": "2026-11-20T15:35:38.320486+01:00",
+      "scheduled": "2026-11-20T18:00:00+01:00"
+    },
+    "20261120-1536-0a7b3b": {
+      "channel": "stehtdirzu",
+      "topic": "Homeoffice-Pauschale: So holst du sie dir",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-0a7b3b/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-0a7b3b/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-0a7b3b/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-0a7b3b/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-0a7b3b/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-0a7b3b/6.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-0a7b3b/7.jpg"
+      ],
+      "caption": "Du arbeitest im Homeoffice und hast dafür nie etwas angesetzt? Dann lies das.\n\nFür jeden Tag im Homeoffice kannst du 6 € als Werbungskosten geltend machen, maximal 1.260 € pro Jahr. Und wenn du nicht zur Abgabe verpflichtet bist, kannst du die Steuererklärung freiwillig bis zu 4 Jahre rückwirkend machen. Zuletzt lag die durchschnittliche Erstattung bei 1.240 €. Ob und wie viel es bei dir gibt, hängt vom Einzelfall ab. Eine Garantie gibt es nicht.\n\nWichtig: Für das Jahr 2022 endet die Frist am 31.12.2026. Es zählt, wann die Erklärung beim Finanzamt ankommt. Verlängern geht nicht.\n\nSo gehst du vor: Homeoffice-Tage zusammenzählen, Erklärung ausfüllen, rechtzeitig abgeben. Kommt bei der freiwilligen Erklärung eine Nachzahlung raus, kannst du den Antrag per Einspruch innerhalb von 1 Monat nach dem Bescheid zurücknehmen.\n\nDas ist eine allgemeine Info, keine Steuerberatung im Einzelfall.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#homeoffice #homeofficepauschale #steuererklärung #steuertipps #werbungskosten #verbraucherrechte #dassteht­dirzu #geldzurück",
+      "check": [],
+      "created": "2026-11-20T15:36:10.624008+01:00",
+      "scheduled": "2026-11-23T18:00:00+01:00"
+    },
+    "20261120-1536-2a4906": {
+      "channel": "stehtdirzu",
+      "topic": "Pendlerpauschale: richtig rechnen",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-2a4906/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-2a4906/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-2a4906/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-2a4906/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-2a4906/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-2a4906/6.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-2a4906/7.jpg"
+      ],
+      "caption": "Du verschenkst vielleicht Geld, nur weil du die Pendlerpauschale falsch rechnest.\n\nDie Kernpunkte: Es zählt nur die einfache Strecke zur Arbeit, nicht hin und zurück. Dazu zählst du die Tage, an denen du wirklich vor Ort warst. Das multiplizierst du mit dem aktuellen Satz pro Kilometer. Den Satz findest du beim Finanzamt oder in deiner Steuersoftware.\n\nWichtig: Das Finanzamt rechnet automatisch mit 1.230 € Arbeitnehmer-Pauschbetrag. Erst was deine Werbungskosten insgesamt darüber hinaus bringen, wirkt sich zusätzlich aus. Im Homeoffice gilt eine eigene Pauschale: 6 € pro Tag, max. 1.260 € pro Jahr.\n\nUnd die Frist: Bei einer freiwilligen Steuererklärung kannst du bis zu 4 Jahre rückwirkend abgeben. Für 2022 muss sie bis 31.12.2026 beim Finanzamt eingehen. Das lässt sich nicht verlängern. Zuletzt lag die durchschnittliche Erstattung bei 1.240 €. Was bei dir drin ist, hängt von deinem Einzelfall ab.\n\nKommt doch eine Nachzahlung heraus, kannst du den Antrag per Einspruch innerhalb von 1 Monat nach dem Bescheid zurücknehmen.\n\nDas ist keine Beratung im Einzelfall, nur eine Orientierung.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#pendlerpauschale #steuererklärung #steuertipps #werbungskosten #verbraucherrechte #geldsparen #stehtdirzu",
+      "check": [
+        "Der aktuelle Satz der Pendlerpauschale steht nicht in der Faktenbasis. Deshalb wird bewusst kein Betrag pro Kilometer genannt. Bei Bedarf in der Faktenbasis ergänzen.",
+        "Prüfen: Nur die einfache Strecke, kürzeste Straßenverbindung und Tage vor Ort sind allgemeines Steuerwissen und stehen nicht in der Faktenbasis.",
+        "Prüfen: Wie sich Pendlerpauschale und Homeoffice-Pauschale am selben Tag kombinieren lassen, ist nicht belegt. Der Post sagt nur, dass man beides getrennt zählen soll.",
+        "Prüfen: Die Aussage, dass der Pauschbetrag von 1.230 € automatisch berücksichtigt wird und nur der Mehrbetrag zusätzlich wirkt, ist vereinfacht dargestellt.",
+        "Frist 31.12.2026 für das Steuerjahr 2022 gegen den Stand der Faktenbasis (14.11.2026) prüfen."
+      ],
+      "created": "2026-11-20T15:36:41.655988+01:00",
+      "scheduled": "2026-11-24T18:00:00+01:00"
+    },
+    "20261120-1537-e188a7": {
+      "channel": "stehtdirzu",
+      "topic": "Handwerker und Haushaltshilfe: 20 % direkt von der Steuer",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-e188a7/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-e188a7/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-e188a7/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-e188a7/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-e188a7/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-e188a7/6.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-e188a7/7.jpg"
+      ],
+      "caption": "Der Handwerker war da – und du zahlst die volle Rechnung? Nicht ganz.\n\nFür Handwerkerleistungen kannst du 20 % der Arbeitskosten direkt von der Steuer abziehen, maximal 1.200 € pro Jahr. Bei haushaltsnahen Dienstleistungen wie einer Haushaltshilfe sind es 20 % der Kosten, maximal 4.000 € Steuerermäßigung pro Jahr. Das ist kein Abzug vom Einkommen, sondern direkt von der Steuer.\n\nDu musst keine Steuererklärung abgeben? Dann kannst du sie freiwillig machen, bis zu 4 Jahre rückwirkend. Für 2022 läuft die Frist am 31.12.2026 ab. Entscheidend ist, dass die Erklärung bis dahin beim Finanzamt eingeht. Verlängern geht nicht.\n\nSo gehst du vor: Rechnungen und Zahlungsbelege raussuchen, Arbeitskosten getrennt aufführen lassen, in der Erklärung eintragen. Kommt doch eine Nachzahlung raus, nimmst du den Antrag per Einspruch innerhalb von 1 Monat nach dem Bescheid zurück.\n\nDas sind allgemeine Infos, keine Beratung für deinen Einzelfall. Was am Ende herauskommt, hängt von deiner Situation ab.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#dasstehtdirzu #steuertipps #steuererklärung #handwerkerleistungen #haushaltsnahedienstleistungen #verbraucherrechte #geldzurück",
+      "check": [
+        "Nicht in der Faktenbasis, aber als Aussage enthalten: Die 20 % gelten nur für Arbeitskosten, nicht für Material (Folge von 'Arbeitskosten'). Bitte prüfen.",
+        "Voraussetzungen wie Rechnung und unbare Zahlung (Überweisung) stehen nicht in der Faktenbasis und wurden bewusst nicht genannt. Ggf. ergänzen und prüfen.",
+        "'Arbeitskosten getrennt ausweisen lassen' ist eine praktische Empfehlung, die nicht in der Faktenbasis steht. Bitte prüfen.",
+        "Die Frist 31.12.2026 für 2022 gilt laut Faktenbasis für die freiwillige Erklärung. Für Pflichtveranlagte gelten andere Fristen. Das steht nicht im Post.",
+        "Steuerermäßigung wirkt nur, wenn Einkommensteuer anfällt. Dieser Hinweis fehlt im Post (steht nur 'hängt von deiner Situation ab').",
+        "Faktenbasis ist Stand 11/2026. Frist und Höchstbeträge vor dem Posten nochmals prüfen."
+      ],
+      "created": "2026-11-20T15:37:11.290266+01:00",
+      "scheduled": "2026-11-26T18:00:00+01:00"
+    },
+    "20261120-1537-b7da6e": {
+      "channel": "stehtdirzu",
+      "topic": "Preiserhöhung bekommen? Dein Sonderkündigungsrecht",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-b7da6e/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-b7da6e/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-b7da6e/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-b7da6e/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-b7da6e/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-b7da6e/6.jpg"
+      ],
+      "caption": "Preiserhöhung im Briefkasten? Nicht einfach schlucken.\n\nViele Anbieter drehen am Preis und hoffen, dass du es nicht merkst. Dabei kann dir in so einem Fall ein Sonderkündigungsrecht zustehen. Das heißt: Du kommst unter Umständen auch mitten in der Laufzeit aus dem Vertrag raus. Ob das bei dir gilt, hängt von deinem Vertrag und der Art der Erhöhung ab.\n\nWichtig ist die Frist. Die Ankündigung und die Vertragsbedingungen verraten dir, bis wann du kündigen musst. Datum notieren, Schreiben aufheben, nicht auf den letzten Drücker warten.\n\nDeine Schritte: Ankündigung genau lesen. Frist suchen. Kündigen, am besten per Kündigungsbutton (Pflicht bei Online-Verträgen seit Juli 2022) oder schriftlich. Bestätigung einfordern und aufbewahren.\n\nBei Verträgen ab März 2022 bist du nach der Mindestlaufzeit ohnehin monatlich kündbar.\n\nDas ist eine allgemeine Information und keine Rechtsberatung im Einzelfall. Im Zweifel hilft die Verbraucherzentrale.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#sonderkündigungsrecht #preiserhöhung #verbraucherrechte #vertragkündigen #stehtdirzu #verbraucherschutz #kündigungsbutton",
+      "check": [
+        "Sonderkündigungsrecht bei Preiserhöhung: Die Faktenbasis enthält dazu nichts. Aussage (gilt je nach Vertrag/Art der Erhöhung, auch in der Mindestlaufzeit) rechtlich prüfen, z. B. TKG bei Handy/Internet, bei anderen Verträgen AGB-Lage.",
+        "Konkrete Kündigungsfrist nach Preisankündigung bewusst weggelassen, da keine Zahl in der Faktenbasis. Vor dem Posten ergänzen, falls verlässlich belegt.",
+        "Thema ist klassisch bei Strom/Gas, dort bewusst nicht behandelt (Kanalregel). Nur allgemein Verträge wie Handy, Internet, Fitnessstudio.",
+        "Faktenbasis um Sonderkündigungsrecht (Rechtsgrundlagen, Fristen, Form der Ankündigung) ergänzen."
+      ],
+      "created": "2026-11-20T15:37:38.138801+01:00",
+      "scheduled": "2026-11-27T18:00:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-20T15:37:38+01:00",
+      "msg": "@stehtdir.zu: 5 neue Entwürfe für die nächsten 7 Tage"
+    },
     {
       "t": "2026-11-20T15:35:03+01:00",
       "msg": "@onebetterthought: 5 neue Entwürfe für die nächsten 7 Tage"
