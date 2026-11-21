@@ -1,0 +1,3 @@
+# Wunschliste (optional): Eine Zeile = ein Reel-Wunsch, wird von oben nach unten zuerst genommen.
+# Ist die Liste leer, wählt Claude selbst aus DAX, S&P 500 und den Indizes.
+# Beispiele:  Duell: Coca-Cola vs. Pepsi   |   Jahre: Rheinmetall   |   Mythos: Sell in May am DAX
