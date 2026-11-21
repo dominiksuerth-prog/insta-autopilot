@@ -452,7 +452,7 @@
     },
     "20261121-2103-2a8063": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "rejected",
       "created": "2026-11-21T21:04:58.456674+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261121-2103-2a8063/cover.jpg"
@@ -499,6 +499,10 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-21T22:27:52+01:00",
+      "msg": "Duell: BMW vs. Mercedes-Benz – 5 Jahre: verworfen"
+    },
     {
       "t": "2026-11-21T21:06:35+01:00",
       "msg": "@aktien_nachgerechnet: 2 Entwürfe vorproduziert"
