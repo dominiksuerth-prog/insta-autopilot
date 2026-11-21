@@ -449,10 +449,60 @@
       "check": [],
       "format": "reel",
       "scheduled": "2026-11-23T18:30:00+01:00"
+    },
+    "20261121-2103-2a8063": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-21T21:04:58.456674+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261121-2103-2a8063/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261121-2103-2a8063.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261121-2103-2a8063.mp4",
+      "caption": "BMW vs. Mercedes-Benz – 5 Jahre im direkten Vergleich ⚔️\n\nBMW: -22,0% → aus 10.000 € wurden 7.803 €\nMercedes-Benz: -27,3% → aus 10.000 € wurden 7.272 €\n\nZeitraum: 11/2021 bis 11/2026, Kursentwicklung ohne Dividenden, in Euro.\nVergangene Renditen sind keine Garantie für die Zukunft.\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "duell",
+        "tickers": [
+          "BMW.DE",
+          "MBG.DE"
+        ],
+        "period": "5",
+        "question": "WER LIEGT VORN?"
+      },
+      "topic": "Duell: BMW vs. Mercedes-Benz – 5 Jahre",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-11-25T18:30:00+01:00"
+    },
+    "20261121-2104-453e8f": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-21T21:06:35.601682+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261121-2104-453e8f/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261121-2104-453e8f.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261121-2104-453e8f.mp4",
+      "caption": "Tesla: 5 Jahre übereinander gelegt 📈\n\n2026 bisher: -23,1% – Schwächstes Jahr seit 2022.\n2022: -65,0%\n2023: +101,7%\n2024: +62,5%\n2025: +11,4%\n\nJede Linie = ein Kalenderjahr, Kurs seit Jahresbeginn (Vorjahresschluss = 0 %).\nStand: 20.11.2026.\nSaison-Muster einzelner Jahre sind kein Beweis für die Zukunft.\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "jahre",
+        "tickers": [
+          "TSLA"
+        ],
+        "question": "JEDES JAHR ANDERS?"
+      },
+      "topic": "Jahre: Tesla – letzte 5 Jahre",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-11-27T18:30:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-21T21:06:35+01:00",
+      "msg": "@aktien_nachgerechnet: 2 Entwürfe vorproduziert"
+    },
     {
       "t": "2026-11-21T21:03:38+01:00",
       "msg": "Neu geschrieben: Jahre: Nvidia – letzte 5 Jahre"
