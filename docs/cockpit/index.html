@@ -307,7 +307,7 @@ function badge(p){
 function render(){
   document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on", t.dataset.v===S.view));
   const app = $("#app");
-  if (!DEMO && !token()) { app.innerHTML = setupView(); bindSetup(); return; }
+  if (!DEMO && !token()) { app.innerHTML = setupView(); bindSetup(); $("#status").innerHTML = `<span class="dot"></span><span class="txt">nicht verbunden</span>`; return; }
   if (!S.loaded) { app.innerHTML = `<p class="muted" style="margin-top:30px"><span class="spin"></span> Lade Daten aus GitHub …</p>`; return; }
   app.innerHTML = S.view==="plan" ? planView() : S.view==="channels" ? channelsView() : logView();
   setStatus();
@@ -373,7 +373,7 @@ function postRow(p){
     <img class="thumb" loading="lazy" src="${esc((p.urls||[])[0]||"")}" alt="">
     <div class="pmain">
       <div class="ptop"><span class="cdot" style="background:${c._color}"></span>${esc(c.handle)} · ${fmt(new Date(p.scheduled),{hour:"2-digit",minute:"2-digit"})} ${badge(p)}</div>
-      <div class="ptitle">${esc(p.topic)}</div>
+      <div class="ptitle">${p.video?"🎬 ":""}${esc(p.topic)}</div>
       ${p.error?`<div class="small" style="color:var(--bad)">⚠️ ${esc(p.error)}</div>`:""}
     </div>${qa}</div>`;
 }
@@ -386,6 +386,7 @@ function channelsView(){
     const posts = Object.values(S.state.posts).filter(p=>p.channel===c.id);
     const pub = posts.filter(p=>p.status==="published").sort((a,b)=>(b.published||"").localeCompare(a.published||""));
     const dr = posts.filter(p=>p.status==="draft").length, ap = posts.filter(p=>p.status==="approved").length;
+    const isReel = c.format==="reel_aktien";
     const missing = [];
     if (!c.ig_user_id) missing.push("Instagram-ID fehlt");
     if (c._pruefen) missing.push(`${c._pruefen} Fakten noch ungeprüft`);
@@ -395,7 +396,7 @@ function channelsView(){
         <label class="switch" style="margin-left:auto"><input type="checkbox" data-field="active" ${c.active?"checked":""}> ${c.active?"Aktiv":"Pausiert"}</label></div>
       ${c.note?`<div class="infobox">${esc(c.note)}</div>`:""}
       <div class="stats"><span><b>${pub.length}</b> veröffentlicht</span><span><b>${ap}</b> freigegeben</span><span><b>${dr}</b> Entwürfe</span>
-        <span style="${left<6?"color:var(--bad)":""}"><b style="${left<6?"color:var(--bad)":""}">${left}</b> Themen übrig</span>
+        ${isReel?`<span>Reels: Claude wählt aus DAX &amp; S&amp;P 500</span>`:`<span style="${left<6?"color:var(--bad)":""}"><b style="${left<6?"color:var(--bad)":""}">${left}</b> Themen übrig</span>`}
         ${pub[0]?`<span>zuletzt ${rel(pub[0].published)}</span>`:""}</div>
       ${missing.length?`<div class="warnbox">Vor dem Aktivieren: ${missing.join(" · ")}</div>`:""}
       <div class="grid2">
@@ -407,8 +408,8 @@ function channelsView(){
       </div>
       <div class="actions">
         <button class="btn pri sm" data-save="${c.id}">Speichern</button>
-        <button class="btn sm" data-edit="topics" data-id="${c.id}">Themen (${left})</button>
-        <button class="btn sm" data-edit="facts" data-id="${c.id}">Fakten${c._pruefen?` ⚠️`:""}</button>
+        <button class="btn sm" data-edit="topics" data-id="${c.id}">${isReel?`Wunschliste (${left})`:`Themen (${left})`}</button>
+        ${isReel?"":`<button class="btn sm" data-edit="facts" data-id="${c.id}">Fakten${c._pruefen?` ⚠️`:""}</button>`}
         <button class="btn sm" data-edit="style" data-id="${c.id}">Stil</button>
         <button class="btn sm" data-act="plan" data-id="${c.id}">Vorproduzieren</button>
       </div>
@@ -464,7 +465,8 @@ function openPost(pid){
   const editable = ["draft","approved"].includes(p.status) && !p._regen;
   const body = `
     <div class="ptop" style="margin-bottom:10px"><span class="cdot" style="background:${c._color}"></span>${esc(c.handle)} ${badge(p)}</div>
-    <div class="slides">${(p.urls||[]).map(u=>`<img src="${esc(u)}" loading="lazy" alt="">`).join("")}</div>
+    ${p.video_url ? `<div class="slides"><video controls playsinline preload="metadata" poster="${esc((p.urls||[])[0]||"")}" src="${esc(p.video_url)}" style="height:min(62vh,540px);aspect-ratio:9/16;border-radius:10px;background:#000"></video></div>`
+      : `<div class="slides">${(p.urls||[]).map(u=>`<img src="${esc(u)}" loading="lazy" alt="">`).join("")}</div>`}
     ${(p.check||[]).length?`<div class="checks"><b>Bitte prüfen</b><ul>${p.check.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:""}
     <div class="grid2" style="margin-top:12px">
       <label class="f">Termin<input type="datetime-local" id="pSched" value="${p.scheduled?toLocalInput(p.scheduled):""}" ${editable?"":"disabled"}></label>
@@ -480,7 +482,7 @@ function openPost(pid){
       <button class="btn danger" data-a="reject">Verwerfen</button>` : ""}
     </div>
     <div id="regenBox" style="display:none;margin-top:12px" class="card">
-      <label class="f">Anderes Thema (leer = gleiches Thema)<input type="text" id="rTopic" placeholder="${esc(p.topic)}"></label>
+      <label class="f">${p.video?"Wunsch für das neue Reel (leer = Claude wählt neu)":"Anderes Thema (leer = gleiches Thema)"}<input type="text" id="rTopic" placeholder="${p.video?"z. B. Duell: Coca-Cola vs. Pepsi":esc(p.topic)}"></label>
       <label class="f" style="margin-top:8px">Was soll anders werden? (optional)<input type="text" id="rHint" placeholder="z. B. kürzer, anderer Einstieg, mehr Beispiel"></label>
       <div class="actions"><button class="btn pri" data-a="regenGo">Neu schreiben lassen</button></div>
     </div>`;
@@ -520,7 +522,7 @@ function openPlan(cid){
         const ch = $("#plCh",ov).value, days = +$("#plDays",ov).value;
         const list = ch==="all" ? S.channels.filter(c=>c.active) : [chan(ch)];
         const parts = list.map(c=>{ const n = freeSlots(c, days); const cs=S.state.channels[c.id]||{}; const left=Math.max(0,c._topics.length-(cs.topic_index||0));
-          return `${esc(c.handle)}: ${n} freie Termine${left<n?` – <b style="color:var(--bad)">nur ${left} Themen übrig</b>`:""}`; });
+          return `${esc(c.handle)}: ${n} freie Termine${c.format!=="reel_aktien" && left<n?` – <b style="color:var(--bad)">nur ${left} Themen übrig</b>`:""}`; });
         $("#plInfo",ov).innerHTML = parts.join("<br>") || "Kein aktiver Kanal.";
       };
       $("#plCh",ov).onchange = info; $("#plDays",ov).onchange = info; info();
@@ -584,7 +586,7 @@ async function openEditor(kind, cid){
     <p class="small muted" style="margin-top:0">${hint}</p>
     <textarea class="code" id="edTxt">${esc(text)}</textarea>
     <div class="actions"><button class="btn pri" id="edSave">Speichern</button>
-    ${kind==="topics"?`<button class="btn" id="edSuggest">✨ 20 Themen vorschlagen lassen</button>`:""}</div>`, (ov, close)=>{
+    ${kind==="topics" && c.format!=="reel_aktien"?`<button class="btn" id="edSuggest">✨ 20 Themen vorschlagen lassen</button>`:""}</div>`, (ov, close)=>{
       $("#edSave",ov).onclick = async e=>{
         e.target.disabled=true;
         let out = $("#edTxt",ov).value.replace(/\s+$/,"")+"\n";
