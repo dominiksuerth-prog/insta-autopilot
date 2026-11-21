@@ -113,7 +113,9 @@ def plan_idea(cfg, ch, state, wish=""):
 
 def _params(idea):
     f, t = idea["format"], idea["tickers"]
-    q = (idea.get("question") or "").strip()[:24]
+    q = (idea.get("question") or "").strip()
+    if len(q) > 24 or not q.endswith("?"):
+        q = ""                      # zu lang/abgeschnitten -> Standardfrage des Formats
     if f == "jahre":
         s = indices.close(t[0])
         if s.empty:
