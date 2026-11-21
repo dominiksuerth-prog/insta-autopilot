@@ -1,0 +1,19 @@
+{
+  "name": "Aktien nachgerechnet",
+  "handle": "@aktien_nachgerechnet",
+  "format": "reel_aktien",
+  "active": false,
+  "language": "de",
+  "ig_user_id": "",
+  "token_env": "IG_TOKEN_STEHTDIRZU",
+  "days": [
+    "mo",
+    "mi",
+    "fr",
+    "so"
+  ],
+  "time": "18:30",
+  "autoplan_days": 7,
+  "logos": true,
+  "cta_hint": ""
+}
