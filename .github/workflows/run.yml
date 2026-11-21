@@ -1,9 +1,10 @@
 name: Autopilot
 
-# Stündlich + sofort, wenn du im Cockpit etwas tust (das Cockpit startet diesen Workflow).
+# Alle 30 Min. + sofort, wenn du im Cockpit etwas tust. Steht ein freigegebener Post in den nächsten 5 Std. an,
+# bleibt der Lauf wach und postet pünktlich (GitHub lässt zeitgesteuerte Läufe oft ausfallen).
 on:
   schedule:
-    - cron: "7 * * * *"
+    - cron: "7,37 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -16,7 +17,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 350
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -34,4 +35,4 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python -m playwright install --with-deps chromium
       - name: Autopilot
-        run: python run_autopilot.py --minutes 55
+        run: python run_autopilot.py --minutes 25 --wait-for-posts 300
