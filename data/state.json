@@ -408,7 +408,7 @@
     },
     "20261121-2100-1b304f": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "approved",
       "created": "2026-11-21T21:01:59.851717+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261121-2100-1b304f/cover.jpg"
@@ -499,6 +499,10 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-21T23:28:16+01:00",
+      "msg": "Jahre: Rheinmetall – letzte 5 Jahre: freigegeben"
+    },
     {
       "t": "2026-11-21T22:27:52+01:00",
       "msg": "Duell: BMW vs. Mercedes-Benz – 5 Jahre: verworfen"
