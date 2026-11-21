@@ -335,6 +335,10 @@ def tg_text(text, buttons=None):
 
 
 def tg_album(paths):
+    if len(paths) == 1:
+        with open(paths[0], "rb") as f:
+            _tg("sendPhoto", data={"chat_id": os.getenv("TELEGRAM_CHAT_ID")}, files={"photo": f})
+        return
     files, media = {}, []
     for i, p in enumerate(paths[:10]):
         files[f"p{i}"] = open(p, "rb")
@@ -370,10 +374,20 @@ def taken_slots(state, ch_id):
             if p["channel"] == ch_id and p.get("scheduled") and p["status"] in ("draft", "approved", "published")}
 
 
-def build_post(cfg, ch, topic, hint=""):
-    """Text mit Claude schreiben und Slides rendern. Gibt (post_id, Datensatz) zurück."""
-    data = generate_post(cfg, ch, topic, hint)
+def is_reel_channel(ch):
+    return ch.get("format") == "reel_aktien"
+
+
+def build_post(cfg, ch, topic, hint="", state=None):
+    """Text mit Claude schreiben und Slides rendern (bzw. Aktien-Reel). Gibt (post_id, Datensatz) zurück."""
     post_id = now().strftime("%Y%m%d-%H%M") + "-" + uuid.uuid4().hex[:6]
+    if is_reel_channel(ch):
+        from .aktien import pipeline
+        wish = " – ".join(x for x in (topic, hint) if x)
+        idea = pipeline.plan_idea(cfg, ch, state or load_state(), wish)
+        fields = pipeline.build_reel(cfg, ch, post_id, idea)
+        return post_id, {"channel": ch["id"], "status": "draft", "created": now().isoformat(), **fields}
+    data = generate_post(cfg, ch, topic, hint)
     _paths, urls = render_post(cfg, ch, data, post_id)
     return post_id, {"channel": ch["id"], "topic": topic, "status": "draft", "urls": urls,
                      "caption": build_caption(data), "check": data.get("check") or [],
@@ -389,8 +403,14 @@ def plan_channel(cfg, state, ch, days_ahead=14, limit=None):
             break
         if slot.isoformat()[:16] in taken:
             continue
-        topic = next_topic(state, ch)
-        post_id, post = build_post(cfg, ch, topic)
+        if is_reel_channel(ch):
+            try:
+                topic = next_topic(state, ch)   # optionale Wunschliste in topics.txt
+            except RuntimeError:
+                topic = ""
+        else:
+            topic = next_topic(state, ch)
+        post_id, post = build_post(cfg, ch, topic, state=state)
         post["scheduled"] = slot.isoformat()
         state["posts"][post_id] = post
         save_state(state)  # das Thema gilt erst jetzt als verbraucht
@@ -404,7 +424,10 @@ def regenerate_post(cfg, state, post_id, topic=None, hint=""):
     if old["status"] not in ("draft", "approved"):
         raise ValueError(f"Post ist bereits {old['status']}")
     ch = cfg["channels_by_id"][old["channel"]]
-    new_id, post = build_post(cfg, ch, topic or old["topic"], hint)
+    if is_reel_channel(ch):
+        new_id, post = build_post(cfg, ch, topic if topic and topic != old["topic"] else "", hint, state=state)
+    else:
+        new_id, post = build_post(cfg, ch, topic or old["topic"], hint)
     post["scheduled"] = old.get("scheduled")
     old["status"] = "replaced"
     old["replaced_by"] = new_id
@@ -453,7 +476,11 @@ def publish_post(cfg, state, post_id):
     post = state["posts"][post_id]
     ch = cfg["channels_by_id"][post["channel"]]
     wait_public(post["urls"])
-    media_id = publish_carousel(cfg, ch, post["urls"], post["caption"])
+    if post.get("video"):
+        from .aktien import pipeline
+        media_id = pipeline.publish_reel(cfg, ch, post, get_token(ch), _graph, _ig_call, _wait_ready)
+    else:
+        media_id = publish_carousel(cfg, ch, post["urls"], post["caption"])
     post.update(status="published", media_id=media_id, published=now().isoformat())
     post.pop("error", None)
     save_state(state)
@@ -502,6 +529,8 @@ def send_for_review(ch, post_id, post):
     when = parse_dt(post["scheduled"]).strftime("%d.%m. %H:%M") if post.get("scheduled") else "sofort"
     checks = post.get("check") or []
     check_txt = ("\n\nBITTE PRÜFEN:\n- " + "\n- ".join(checks)) if checks else ""
+    if post.get("video_url"):
+        check_txt += f"\n\n🎬 Video: {post['video_url']}"
     tg_text(f"{ch['handle']} – noch nicht freigegeben, Termin {when}\n{post['topic']}\n\n{post['caption']}{check_txt}",
             buttons=[[{"text": "✅ Freigeben", "callback_data": f"ok:{post_id}"},
                       {"text": "🔁 Neu", "callback_data": f"re:{post_id}"},
@@ -517,6 +546,9 @@ def prune_old(state, days=30):
             continue
         if datetime.fromisoformat(p["created"]).timestamp() < cutoff:
             shutil.rmtree(ROOT / "docs" / "insta" / p["channel"] / pid, ignore_errors=True)
+            if p.get("video"):
+                from .aktien import pipeline
+                pipeline.delete_video(p["video"])
             p["pruned"] = True
     save_state(state)
 
