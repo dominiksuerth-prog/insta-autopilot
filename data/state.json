@@ -64,7 +64,7 @@
     "20261117-1644-8a5ec9": {
       "channel": "stehtdirzu",
       "topic": "Pauschalreise mit Mängeln: So forderst du Minderung",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261117-1644-8a5ec9/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261117-1644-8a5ec9/2.jpg",
@@ -82,7 +82,7 @@
     "20261117-1644-34fe87": {
       "channel": "onebetterthought",
       "topic": "Walk to think: why a short walk makes you more creative",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261117-1644-34fe87/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261117-1644-34fe87/2.jpg",
@@ -356,6 +356,14 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-21T19:28:19+01:00",
+      "msg": "Walk to think: why a short walk makes you more creative: freigegeben"
+    },
+    {
+      "t": "2026-11-21T19:28:19+01:00",
+      "msg": "Pauschalreise mit Mängeln: So forderst du Minderung: freigegeben"
+    },
     {
       "t": "2026-11-20T23:15:26+01:00",
       "msg": "✅ Veröffentlicht auf @onebetterthought: Why hard habits take longer than easy ones"
