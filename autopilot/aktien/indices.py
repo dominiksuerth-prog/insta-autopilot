@@ -57,6 +57,43 @@ def _ohlc_close(symbol: str) -> pd.Series:
     return _CACHE[symbol]
 
 
+class DataError(ValueError):
+    """Kursdaten sehen unplausibel aus – lieber kein Reel als ein falsches."""
+
+
+def check_quality(symbol: str, s: pd.Series, kind: str = "aktie") -> None:
+    """Prüft die letzten 11 Jahre: aktuell, keine Lücken, keine unmöglichen Sprünge, keine Null-/Minuskurse.
+
+    Yahoo liefert gelegentlich Fehler (falsche Splits, fehlende Wochen, Ausreißer). Ein Kanal namens
+    'nachgerechnet' lebt davon, dass die Zahlen stimmen – deshalb wird im Zweifel abgebrochen.
+    """
+    if s is None or s.empty:
+        raise DataError(f"{symbol}: keine Kurse von Yahoo")
+    recent = s[s.index >= s.index[-1] - pd.DateOffset(years=11)]
+    age = (pd.Timestamp.today().normalize() - s.index[-1]).days
+    if age > 6:
+        raise DataError(f"{symbol}: letzter Kurs ist {age} Tage alt ({s.index[-1]:%d.%m.%Y})")
+    if (recent <= 0).any():
+        raise DataError(f"{symbol}: Kurs von 0 oder darunter in den Daten")
+    gaps = recent.index.to_series().diff().dt.days
+    if len(gaps) and gaps.max() > 10:
+        g = gaps.idxmax()
+        raise DataError(f"{symbol}: {int(gaps.max())} Tage ohne Kurs vor dem {g:%d.%m.%Y}")
+    limit = {"index": 0.15, "fx": 0.10}.get(kind, 0.45)
+    jumps = recent.pct_change().abs()
+    if len(jumps.dropna()) and jumps.max() > limit:
+        j = jumps.idxmax()
+        # Ein echter Absturz/Sprung bleibt meist bestehen; ein Datenfehler springt am Folgetag zurück.
+        pos = recent.index.get_loc(j)
+        back = recent.iloc[pos + 1] / recent.iloc[pos] - 1 if pos + 1 < len(recent) else 0.0
+        if abs(back) > limit * 0.6 or kind != "aktie":
+            raise DataError(f"{symbol}: unplausibler Tagessprung von {jumps.max():.0%} am {j:%d.%m.%Y}")
+        ratio = recent.iloc[pos] / recent.iloc[pos - 1]
+        split_like = any(abs(ratio * n - 1) < 0.02 or abs(ratio / n - 1) < 0.02 for n in (2, 3, 4, 5, 8, 10, 20))
+        if split_like or jumps.max() > 0.85:
+            raise DataError(f"{symbol}: Tagessprung von {jumps.max():.0%} am {j:%d.%m.%Y} (vermutlich Split-Fehler)")
+
+
 def ccy_of(symbol: str) -> str:
     if symbol in META:
         return META[symbol]["ccy"]
@@ -75,8 +112,11 @@ def close(symbol: str, eur: bool = False) -> pd.Series:
     if key in _CACHE:
         return _CACHE[key]
     s = _ohlc_close(symbol)
-    if eur and not s.empty and ccy_of(symbol) != "EUR":
-        fx = _ohlc_close(FX.get(ccy_of(symbol), "EURUSD=X"))
+    check_quality(symbol, s, "index" if symbol.startswith("^") else "aktie")
+    if eur and ccy_of(symbol) != "EUR":
+        fx_sym = FX.get(ccy_of(symbol), "EURUSD=X")
+        fx = _ohlc_close(fx_sym)
+        check_quality(fx_sym, fx, "fx")
         if fx.empty:
             s = pd.Series(dtype=float)
         else:
