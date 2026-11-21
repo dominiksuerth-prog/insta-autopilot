@@ -28,7 +28,8 @@ Formate:
   Gut für bekannte Namen mit Gesprächswert (Nvidia, Tesla, SAP, Rheinmetall, Allianz …).
 - "duell": 2 (selten 3) Werte gegeneinander über einen Zeitraum ("1","3","5","10" Jahre). Sinnvolle Paare:
   direkte Konkurrenten (Coca-Cola vs. Pepsi, BMW vs. Mercedes, SAP vs. Microsoft, Visa vs. Mastercard) oder
-  Aktie vs. Index (Apple vs. S&P 500). Werte in Euro umgerechnet.
+  Aktie vs. Index (Apple vs. S&P 500).
+Alle Kurse werden in Euro umgerechnet (Zielgruppe: Deutschland).
 - "mythos": eine Börsenweisheit, geprüft an einem Index (^GSPC, ^GDAXI oder ^NDX).
   Mythen: "sellinmay", "dezember", "januar", "nachminus". Höchstens einmal in 2 Wochen.
 
@@ -39,7 +40,7 @@ Erlaubt sind NUR Kürzel aus dieser Liste (Kürzel – Name):
 
 Bisherige Reels (neueste zuerst, nicht wiederholen):
 {recent}
-{wish}
+{avoid}{wish}
 Optional "question": kurzer Hook für den gelben Sticker, max. 24 Zeichen, deutsch, als Frage,
 ohne Prognose und ohne Kaufaufforderung (z. B. "WER LIEGT VORN?"). Leer lassen ist ok.
 Antworte über das Werkzeug "save_reel"."""
@@ -88,12 +89,13 @@ def recent_ideas(state, ch_id, n=30):
     return [p["topic"] for p in posts[:n]]
 
 
-def plan_idea(cfg, ch, state, wish=""):
+def plan_idea(cfg, ch, state, wish="", avoid=()):
     import anthropic
     uni = "\n".join(f"{s} – {u['name']}" for s, u in UNI.items())
     rec = "\n".join("- " + r for r in recent_ideas(state, ch["id"])) or "- (noch keine)"
     wish_txt = f"\nWUNSCH FÜR DIESES REEL (hat Vorrang): {wish}\n" if wish else ""
-    prompt = IDEA_PROMPT.format(handle=ch["handle"], universe=uni, recent=rec, wish=wish_txt)
+    avoid_txt = ("\nDiese Werte NICHT nehmen (Kursdaten gerade unbrauchbar): " + ", ".join(avoid) + "\n") if avoid else ""
+    prompt = IDEA_PROMPT.format(handle=ch["handle"], universe=uni, recent=rec, wish=wish_txt, avoid=avoid_txt)
     client = anthropic.Anthropic()
     for _ in range(3):
         msg = client.messages.create(model=cfg.get("claude_model", "claude-sonnet-5-5"), max_tokens=600,
@@ -121,14 +123,39 @@ def _params(idea):
         if s.empty:
             raise ValueError(f"Keine Kurse für {t[0]}")
         last = s.index[-1].year
-        return {"ticker": t[0], "years": list(range(last - 4, last + 1)), "eur": False, "question": q}
+        return {"ticker": t[0], "years": list(range(last - 4, last + 1)), "eur": True, "question": q}
     if f == "duell":
         return {"tickers": t, "period": idea.get("period", "10"), "eur": True, "question": q}
     return {"ticker": t[0], "myth": idea.get("myth", "sellinmay"), "eur": False, "question": q}
 
 
-def _caption(fmt, d):
-    text = reel.caption(fmt, d)
+def comment_question(fmt, d, key):
+    """Eine Frage, die man in Sekunden beantworten kann – Kommentare zählen für Instagram am meisten."""
+    import hashlib
+    if fmt == "jahre":
+        name = reel.short_name(d["name"])
+        opts = [f"Hättest du {name} {d['years'][-1]} durchgehalten? Ja oder nein? 👇",
+                f"Überrascht dich das bei {name}? 👇",
+                "Welche Aktie soll ich als Nächstes nachrechnen? Schreib sie in die Kommentare 👇"]
+    elif fmt == "duell":
+        names = [l["name"] for l in d["lines"]]
+        best = max(d["lines"], key=lambda l: l["final"])["name"]
+        opts = [f"Team {' oder Team '.join(names)}? 👇",
+                f"Hättest du vorher auf {best} getippt? 👇",
+                "Welches Duell soll ich als Nächstes nachrechnen? Schreib es in die Kommentare 👇"]
+    else:
+        opts = ["Hast du an diese Börsenregel geglaubt? Ja oder nein? 👇",
+                "Welche Börsenweisheit soll ich als Nächstes prüfen? 👇"]
+    return opts[int(hashlib.sha1(key.encode()).hexdigest()[:6], 16) % len(opts)]
+
+
+def _caption(fmt, d, key=""):
+    lines = reel.FORMATS[fmt].caption(d)
+    lines += ["", comment_question(fmt, d, key)]
+    disc = reel.disclosure(d.get("shown", []))
+    lines += ["", disc] if disc else [""]
+    lines += ["Keine Anlageberatung.", "", reel.HASHTAGS]
+    text = "\n".join(lines).replace("\n\n\n", "\n\n").strip()
     for k, v in VERDICT_TEXT.items():
         text = text.replace(f"Urteil: {k.capitalize()}.", f"Urteil: {v}.")
     return text
@@ -178,12 +205,14 @@ def build_reel(cfg, ch, post_id, idea):
     name = f"{ch['id']}_{post_id}.mp4"
     tmp = Path(tempfile.gettempdir()) / name
     t0 = time.time()
-    reel.render_format(fmt, d, str(tmp), opts=opts)
+    from . import music
+    track = music.track_for(post_id, reel.FORMATS[fmt].total(d) + 2, tempfile.gettempdir())
+    reel.render_format(fmt, d, str(tmp), opts=opts, music=track)
     print(f"Reel gerendert in {time.time() - t0:.0f} s: {name}")
     store_video(tmp)
     base = cfg["public_base_url"].rstrip("/")
     return {"urls": [f"{base}/{ch['id']}/{post_id}/cover.jpg"], "video": name, "video_url": video_url(name),
-            "caption": _caption(fmt, d), "idea": idea, "topic": describe(idea), "check": [], "format": "reel"}
+            "caption": _caption(fmt, d, post_id), "idea": idea, "topic": describe(idea), "check": [], "format": "reel"}
 
 
 # ---------------------------------------------------------------- Veröffentlichen
