@@ -383,9 +383,21 @@ def build_post(cfg, ch, topic, hint="", state=None):
     post_id = now().strftime("%Y%m%d-%H%M") + "-" + uuid.uuid4().hex[:6]
     if is_reel_channel(ch):
         from .aktien import pipeline
+        from .aktien.indices import DataError
         wish = " – ".join(x for x in (topic, hint) if x)
-        idea = pipeline.plan_idea(cfg, ch, state or load_state(), wish)
-        fields = pipeline.build_reel(cfg, ch, post_id, idea)
+        avoid, notes = [], []
+        for attempt in range(3):          # unbrauchbare Kursdaten -> anderes Reel statt falscher Zahlen
+            idea = pipeline.plan_idea(cfg, ch, state or load_state(), wish if attempt == 0 else "", avoid)
+            try:
+                fields = pipeline.build_reel(cfg, ch, post_id, idea)
+                break
+            except DataError as e:
+                print("Kursdaten unplausibel:", e)
+                avoid += idea["tickers"]
+                notes.append(f"⚠️ {pipeline.describe(idea)} übersprungen – {e}")
+        else:
+            raise RuntimeError("Keine brauchbaren Kursdaten gefunden: " + " | ".join(notes))
+        fields["check"] = notes + fields.get("check", [])
         return post_id, {"channel": ch["id"], "status": "draft", "created": now().isoformat(), **fields}
     data = generate_post(cfg, ch, topic, hint)
     _paths, urls = render_post(cfg, ch, data, post_id)
