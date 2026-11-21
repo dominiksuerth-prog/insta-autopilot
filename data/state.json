@@ -385,7 +385,7 @@
     },
     "20261121-2015-6197a1": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "replaced",
       "created": "2026-11-21T20:17:47.802749+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261121-2015-6197a1/cover.jpg"
@@ -403,7 +403,8 @@
       "topic": "Jahre: Nvidia – letzte 5 Jahre",
       "check": [],
       "format": "reel",
-      "scheduled": "2026-11-23T18:30:00+01:00"
+      "scheduled": "2026-11-23T18:30:00+01:00",
+      "replaced_by": "20261121-2102-3efe71"
     },
     "20261121-2100-1b304f": {
       "channel": "aktien_nachgerechnet",
@@ -426,10 +427,36 @@
       "check": [],
       "format": "reel",
       "scheduled": "2026-11-22T18:30:00+01:00"
+    },
+    "20261121-2102-3efe71": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-21T21:03:38.790889+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261121-2102-3efe71/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261121-2102-3efe71.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261121-2102-3efe71.mp4",
+      "caption": "Nvidia: 5 Jahre übereinander gelegt 📈\n\n2026 bisher: -32,5% – Schwächstes Jahr seit 2022.\n2022: -50,3%\n2023: +239,0%\n2024: +171,2%\n2025: +38,9%\n\nJede Linie = ein Kalenderjahr, Kurs seit Jahresbeginn (Vorjahresschluss = 0 %).\nStand: 20.11.2026.\nSaison-Muster einzelner Jahre sind kein Beweis für die Zukunft.\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "jahre",
+        "tickers": [
+          "NVDA"
+        ],
+        "question": "WIE LIEF JEDES JAHR?"
+      },
+      "topic": "Jahre: Nvidia – letzte 5 Jahre",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-11-23T18:30:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-21T21:03:38+01:00",
+      "msg": "Neu geschrieben: Jahre: Nvidia – letzte 5 Jahre"
+    },
     {
       "t": "2026-11-21T21:01:59+01:00",
       "msg": "Neu geschrieben: Jahre: Rheinmetall – letzte 5 Jahre"
