@@ -5,6 +5,9 @@
     },
     "onebetterthought": {
       "topic_index": 11
+    },
+    "aktien_nachgerechnet": {
+      "topic_index": 0
     }
   },
   "posts": {
@@ -356,10 +359,58 @@
       ],
       "created": "2026-11-20T15:37:38.138801+01:00",
       "scheduled": "2026-11-27T18:00:00+01:00"
+    },
+    "20261121-2013-8171b2": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-21T20:15:47.631489+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261121-2013-8171b2/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261121-2013-8171b2.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261121-2013-8171b2.mp4",
+      "caption": "Rheinmetall: 5 Jahre übereinander gelegt 📈\n\n2026 bisher: -55,1% – Schwächstes der letzten 5 Jahre.\n2022: +128,1%\n2023: +56,8%\n2024: +116,5%\n2025: +155,3%\n\nJede Linie = ein Kalenderjahr, Kurs seit Jahresbeginn (Vorjahresschluss = 0 %).\nStand: 20.11.2026.\nSaison-Muster einzelner Jahre sind kein Beweis für die Zukunft.\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "jahre",
+        "tickers": [
+          "RHM.DE"
+        ],
+        "question": "WIE LIEF DIE LETZTEN JAHRE?"
+      },
+      "topic": "Jahre: Rheinmetall – letzte 5 Jahre",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-11-22T18:30:00+01:00"
+    },
+    "20261121-2015-6197a1": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-21T20:17:47.802749+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261121-2015-6197a1/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261121-2015-6197a1.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261121-2015-6197a1.mp4",
+      "caption": "Nvidia: 5 Jahre übereinander gelegt 📈\n\n2026 bisher: -32,5% – Schwächstes Jahr seit 2022.\n2022: -50,3%\n2023: +239,0%\n2024: +171,2%\n2025: +38,9%\n\nJede Linie = ein Kalenderjahr, Kurs seit Jahresbeginn (Vorjahresschluss = 0 %).\nStand: 20.11.2026.\nSaison-Muster einzelner Jahre sind kein Beweis für die Zukunft.\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "jahre",
+        "tickers": [
+          "NVDA"
+        ],
+        "question": "WIE LIEF DIE LETZTEN 5 JAHRE?"
+      },
+      "topic": "Jahre: Nvidia – letzte 5 Jahre",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-11-23T18:30:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-21T20:17:47+01:00",
+      "msg": "@aktien_nachgerechnet: 2 Entwürfe vorproduziert"
+    },
     {
       "t": "2026-11-21T19:39:29+01:00",
       "msg": "Habit took 18 days for one person, 254 for another. Same study.: freigegeben"
