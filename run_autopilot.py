@@ -269,6 +269,14 @@ def something_soon(cfg, minutes):
     return False
 
 
+def next_approved(cfg):
+    """Zeitpunkt (Unix) des nächsten freigegebenen, noch nicht veröffentlichten Posts eines aktiven Kanals."""
+    ts = [parse_dt(p["scheduled"]).timestamp() for p in load_state()["posts"].values()
+          if p["status"] == "approved" and p.get("scheduled")
+          and cfg["channels_by_id"].get(p["channel"], {}).get("active")]
+    return min(ts) if ts else None
+
+
 def tick(cfg, first):
     state = migrate_state(load_state())
     if first:
@@ -285,15 +293,24 @@ def tick(cfg, first):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--minutes", type=int, default=0, help="so lange wach bleiben, solange etwas ansteht")
+    ap.add_argument("--wait-for-posts", type=int, default=0,
+                    help="bis zu so vielen Minuten auf den nächsten freigegebenen Termin warten "
+                         "(GitHub startet zeitgesteuerte Läufe oft verspätet oder gar nicht)")
     args = ap.parse_args()
     cfg = load_config()
     if not cfg.get("enabled"):
         print("Autopilot ist ausgeschaltet (config.yaml: enabled: false).")
         return
     sync("autopilot: Start")
-    deadline = time.time() + args.minutes * 60
+    started = time.time()
+    deadline = started + args.minutes * 60
     tick(cfg, first=True)
     autoplan(cfg)
+    if args.wait_for_posts:
+        nxt = next_approved(cfg)
+        if nxt and nxt - started < args.wait_for_posts * 60:
+            deadline = max(deadline, nxt + 120)
+            print(f"Bleibe wach bis zum nächsten Termin ({(nxt - started) / 60:.0f} Min.)")
     while time.time() < deadline:
         cfg = load_config()  # Kanäle können sich im Cockpit geändert haben
         left = (deadline - time.time()) / 60
