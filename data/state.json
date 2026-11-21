@@ -164,7 +164,7 @@
     "20261120-1533-33faec": {
       "channel": "onebetterthought",
       "topic": "Habit took 18 days for one person, 254 for another. Same study.",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-33faec/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-33faec/2.jpg",
@@ -271,7 +271,7 @@
     "20261120-1536-0a7b3b": {
       "channel": "stehtdirzu",
       "topic": "Homeoffice-Pauschale: So holst du sie dir",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-0a7b3b/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-0a7b3b/2.jpg",
@@ -360,6 +360,14 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-21T19:39:29+01:00",
+      "msg": "Habit took 18 days for one person, 254 for another. Same study.: freigegeben"
+    },
+    {
+      "t": "2026-11-21T19:39:29+01:00",
+      "msg": "Homeoffice-Pauschale: So holst du sie dir: freigegeben"
+    },
     {
       "t": "2026-11-21T19:29:39+01:00",
       "msg": "✅ Veröffentlicht auf @onebetterthought: Walk to think: why a short walk makes you more creative"
