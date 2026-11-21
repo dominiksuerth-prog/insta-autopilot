@@ -2,9 +2,9 @@
   "name": "Aktien nachgerechnet",
   "handle": "@aktien_nachgerechnet",
   "format": "reel_aktien",
-  "active": false,
+  "active": true,
   "language": "de",
-  "ig_user_id": "",
+  "ig_user_id": "17841455905114680",
   "token_env": "IG_TOKEN_STEHTDIRZU",
   "days": [
     "mo",
