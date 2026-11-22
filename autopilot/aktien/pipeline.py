@@ -197,11 +197,9 @@ def build_reel(cfg, ch, post_id, idea):
     opts = {"handle": ch["handle"], "use_logo": ch.get("logos", True)}
     out_dir = ROOT / "docs" / "insta" / ch["id"] / post_id
     out_dir.mkdir(parents=True, exist_ok=True)
-    # Titelbild (Endbild) – klein, liegt im Repo für Cockpit und Instagram-Cover
-    from PIL import Image
-    import io
-    png = reel.preview_png(fmt, d, "end", opts, width=1080)
-    Image.open(io.BytesIO(png)).convert("RGB").save(out_dir / "cover.jpg", "JPEG", quality=88)
+    # Einheitliches Titelbild (Format-Farbe, Name, Frage – ohne Ergebnis) für Profil-Raster und Cockpit
+    from . import cover
+    (out_dir / "cover.jpg").write_bytes(cover.render_stage(fmt, d, opts))   # Variante C "Bühne"
     name = f"{ch['id']}_{post_id}.mp4"
     tmp = Path(tempfile.gettempdir()) / name
     t0 = time.time()
