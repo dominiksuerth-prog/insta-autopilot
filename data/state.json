@@ -501,7 +501,7 @@
     },
     "20261122-0233-8094fa": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "replaced",
       "created": "2026-11-22T02:34:56.033575+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-0233-8094fa/cover.jpg"
@@ -519,7 +519,8 @@
       "topic": "Jahre: SAP – letzte 5 Jahre",
       "check": [],
       "format": "reel",
-      "scheduled": "2026-11-25T18:30:00+01:00"
+      "scheduled": "2026-11-25T18:30:00+01:00",
+      "replaced_by": "20261122-1249-9329ff"
     },
     "20261122-0234-e8f372": {
       "channel": "aktien_nachgerechnet",
@@ -682,10 +683,36 @@
       "check": [],
       "format": "reel",
       "scheduled": "2026-11-23T18:30:00+01:00"
+    },
+    "20261122-1249-9329ff": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-22T12:51:39.165046+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-1249-9329ff/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261122-1249-9329ff.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261122-1249-9329ff.mp4",
+      "caption": "SAP: 5 Jahre übereinander gelegt 📈\n\n2026 bisher: -10,3% – Platz 3 von 5 Jahren.\n2022: -20,7%\n2023: +47,2%\n2024: +71,6%\n2025: -11,0%\n\nJede Linie = ein Kalenderjahr, Kurs seit Jahresbeginn (Vorjahresschluss = 0 %), in Euro.\nStand: 20.11.2026.\nSaison-Muster einzelner Jahre sind kein Beweis für die Zukunft.\n\nWelche Aktie soll ich als Nächstes nachrechnen? Schreib sie in die Kommentare 👇\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "jahre",
+        "tickers": [
+          "SAP.DE"
+        ],
+        "question": "WIE LIEF'S BEI SAP?"
+      },
+      "topic": "Jahre: SAP – letzte 5 Jahre",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-11-25T18:30:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-22T12:51:39+01:00",
+      "msg": "Neu geschrieben: Jahre: SAP – letzte 5 Jahre"
+    },
     {
       "t": "2026-11-22T12:49:03+01:00",
       "msg": "Neu geschrieben: Jahre: Nvidia – letzte 5 Jahre"
