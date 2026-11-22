@@ -189,7 +189,7 @@
     "20261120-1534-032f95": {
       "channel": "onebetterthought",
       "topic": "You wore a shirt you love? Fewer than 10% noticed.",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-032f95/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-032f95/2.jpg",
@@ -292,7 +292,7 @@
     "20261120-1536-2a4906": {
       "channel": "stehtdirzu",
       "topic": "Pendlerpauschale: richtig rechnen",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-2a4906/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-2a4906/2.jpg",
@@ -666,7 +666,7 @@
     },
     "20261122-1246-eb1bf3": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "approved",
       "created": "2026-11-22T12:49:03.680711+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-1246-eb1bf3/cover.jpg"
@@ -688,7 +688,7 @@
     },
     "20261122-1249-9329ff": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "approved",
       "created": "2026-11-22T12:51:39.165046+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-1249-9329ff/cover.jpg"
@@ -711,6 +711,22 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-22T19:05:25+01:00",
+      "msg": "Jahre: SAP – letzte 5 Jahre: freigegeben"
+    },
+    {
+      "t": "2026-11-22T19:05:25+01:00",
+      "msg": "You wore a shirt you love? Fewer than 10% noticed.: freigegeben"
+    },
+    {
+      "t": "2026-11-22T19:05:25+01:00",
+      "msg": "Pendlerpauschale: richtig rechnen: freigegeben"
+    },
+    {
+      "t": "2026-11-22T19:05:25+01:00",
+      "msg": "Jahre: Nvidia – letzte 5 Jahre: freigegeben"
+    },
     {
       "t": "2026-11-22T18:31:03+01:00",
       "msg": "✅ Veröffentlicht auf @aktien_nachgerechnet: Jahre: Rheinmetall – letzte 5 Jahre"
