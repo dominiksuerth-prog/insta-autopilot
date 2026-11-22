@@ -565,7 +565,8 @@
       "topic": "Jahre: Rheinmetall – letzte 5 Jahre",
       "check": [],
       "format": "reel",
-      "scheduled": "2026-11-22T18:30:00+01:00"
+      "scheduled": "2026-11-22T18:30:00+01:00",
+      "reminded": true
     },
     "20261122-0930-4ddeff": {
       "channel": "aktien_nachgerechnet",
