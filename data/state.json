@@ -592,7 +592,7 @@
     },
     "20261122-0932-98265b": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "replaced",
       "created": "2026-11-22T09:35:03.783735+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-0932-98265b/cover.jpg"
@@ -610,11 +610,38 @@
       "topic": "Jahre: Tesla – letzte 5 Jahre",
       "check": [],
       "format": "reel",
+      "scheduled": "2026-11-27T18:30:00+01:00",
+      "replaced_by": "20261122-1241-e0aed6"
+    },
+    "20261122-1241-e0aed6": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-22T12:44:22.108315+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-1241-e0aed6/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261122-1241-e0aed6.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261122-1241-e0aed6.mp4",
+      "caption": "Tesla: 5 Jahre übereinander gelegt 📈\n\n2026 bisher: -17,7% – Schwächstes Jahr seit 2022.\n2022: -62,9%\n2023: +94,3%\n2024: +72,9%\n2025: -1,4%\n\nJede Linie = ein Kalenderjahr, Kurs seit Jahresbeginn (Vorjahresschluss = 0 %), in Euro.\nStand: 20.11.2026.\nSaison-Muster einzelner Jahre sind kein Beweis für die Zukunft.\n\nWelche Aktie soll ich als Nächstes nachrechnen? Schreib sie in die Kommentare 👇\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "jahre",
+        "tickers": [
+          "TSLA"
+        ],
+        "question": "WIE LIEF TESLA?"
+      },
+      "topic": "Jahre: Tesla – letzte 5 Jahre",
+      "check": [],
+      "format": "reel",
       "scheduled": "2026-11-27T18:30:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-22T12:44:22+01:00",
+      "msg": "Neu geschrieben: Jahre: Tesla – letzte 5 Jahre"
+    },
     {
       "t": "2026-11-22T12:30:27+01:00",
       "msg": "Jahre: Rheinmetall – letzte 5 Jahre: freigegeben"
