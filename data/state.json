@@ -571,7 +571,7 @@
     },
     "20261122-0930-4ddeff": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "replaced",
       "created": "2026-11-22T09:32:47.436776+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-0930-4ddeff/cover.jpg"
@@ -589,7 +589,8 @@
       "topic": "Jahre: Nvidia – letzte 5 Jahre",
       "check": [],
       "format": "reel",
-      "scheduled": "2026-11-23T18:30:00+01:00"
+      "scheduled": "2026-11-23T18:30:00+01:00",
+      "replaced_by": "20261122-1246-eb1bf3"
     },
     "20261122-0932-98265b": {
       "channel": "aktien_nachgerechnet",
@@ -659,10 +660,36 @@
       "check": [],
       "format": "reel",
       "scheduled": "2026-11-29T18:30:00+01:00"
+    },
+    "20261122-1246-eb1bf3": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-22T12:49:03.680711+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-1246-eb1bf3/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261122-1246-eb1bf3.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261122-1246-eb1bf3.mp4",
+      "caption": "Nvidia: 5 Jahre übereinander gelegt 📈\n\n2026 bisher: -27,8% – Schwächstes Jahr seit 2022.\n2022: -47,2%\n2023: +226,5%\n2024: +188,5%\n2025: +23,1%\n\nJede Linie = ein Kalenderjahr, Kurs seit Jahresbeginn (Vorjahresschluss = 0 %), in Euro.\nStand: 20.11.2026.\nSaison-Muster einzelner Jahre sind kein Beweis für die Zukunft.\n\nHättest du Nvidia 2026 durchgehalten? Ja oder nein? 👇\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "jahre",
+        "tickers": [
+          "NVDA"
+        ],
+        "question": "WIE LIEF DAS JAHR?"
+      },
+      "topic": "Jahre: Nvidia – letzte 5 Jahre",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-11-23T18:30:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-22T12:49:03+01:00",
+      "msg": "Neu geschrieben: Jahre: Nvidia – letzte 5 Jahre"
+    },
     {
       "t": "2026-11-22T12:46:29+01:00",
       "msg": "Neu geschrieben: Duell: Coca-Cola vs. PepsiCo – 5 Jahre"
