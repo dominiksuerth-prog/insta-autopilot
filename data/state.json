@@ -547,7 +547,7 @@
     },
     "20261122-0928-3af11d": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "approved",
       "created": "2026-11-22T09:30:31.734329+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-0928-3af11d/cover.jpg"
@@ -615,6 +615,10 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-22T12:30:27+01:00",
+      "msg": "Jahre: Rheinmetall – letzte 5 Jahre: freigegeben"
+    },
     {
       "t": "2026-11-22T09:35:03+01:00",
       "msg": "Neu geschrieben: Jahre: Tesla – letzte 5 Jahre"
