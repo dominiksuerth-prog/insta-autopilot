@@ -495,10 +495,60 @@
       "check": [],
       "format": "reel",
       "scheduled": "2026-11-27T18:30:00+01:00"
+    },
+    "20261122-0233-8094fa": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-22T02:34:56.033575+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-0233-8094fa/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261122-0233-8094fa.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261122-0233-8094fa.mp4",
+      "caption": "SAP: 5 Jahre übereinander gelegt 📈\n\n2026 bisher: -10,3% – Platz 3 von 5 Jahren.\n2022: -20,7%\n2023: +47,2%\n2024: +71,6%\n2025: -11,0%\n\nJede Linie = ein Kalenderjahr, Kurs seit Jahresbeginn (Vorjahresschluss = 0 %), in Euro.\nStand: 20.11.2026.\nSaison-Muster einzelner Jahre sind kein Beweis für die Zukunft.\n\nWelche Aktie soll ich als Nächstes nachrechnen? Schreib sie in die Kommentare 👇\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "jahre",
+        "tickers": [
+          "SAP.DE"
+        ],
+        "question": "WIE LIEF SAP BISHER?"
+      },
+      "topic": "Jahre: SAP – letzte 5 Jahre",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-11-25T18:30:00+01:00"
+    },
+    "20261122-0234-e8f372": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-22T02:36:20.339731+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-0234-e8f372/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261122-0234-e8f372.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261122-0234-e8f372.mp4",
+      "caption": "Coca-Cola vs. PepsiCo – 5 Jahre im direkten Vergleich ⚔️\n\nCoca-Cola: +105,9% → aus 10.000 € wurden 20.591 €\nPepsiCo: +2,5% → aus 10.000 € wurden 10.250 €\n\nZeitraum: 11/2021 bis 11/2026, Kursentwicklung ohne Dividenden, in Euro.\nVergangene Renditen sind keine Garantie für die Zukunft.\n\nHättest du vorher auf Coca-Cola getippt? 👇\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "duell",
+        "tickers": [
+          "KO",
+          "PEP"
+        ],
+        "period": "5",
+        "question": "WER LIEGT VORN?"
+      },
+      "topic": "Duell: Coca-Cola vs. PepsiCo – 5 Jahre",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-11-29T18:30:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-22T02:36:20+01:00",
+      "msg": "@aktien_nachgerechnet: 2 neue Entwürfe für die nächsten 7 Tage"
+    },
     {
       "t": "2026-11-21T23:28:16+01:00",
       "msg": "Jahre: Rheinmetall – letzte 5 Jahre: freigegeben"
@@ -576,6 +626,6 @@
       "msg": "@onebetterthought: 4 neue Themen vorgeschlagen (Cockpit → Kanäle → Themen)"
     }
   ],
-  "last_autoplan": "2026-11-21",
+  "last_autoplan": "2026-11-22",
   "last_run": "2026-11-21T23:28:18+01:00"
 }
