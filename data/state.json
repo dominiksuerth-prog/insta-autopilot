@@ -734,6 +734,10 @@
   "tg_offset": 69273751,
   "log": [
     {
+      "t": "2026-11-23T04:06:41+01:00",
+      "msg": "⚠️ @onebetterthought: Vorproduktion fehlgeschlagen – Themenliste für onebetterthought ist aufgebraucht – neue Themen in topics.txt ergänzen."
+    },
+    {
       "t": "2026-11-23T04:06:39+01:00",
       "msg": "@aktien_nachgerechnet: 1 neue Entwürfe für die nächsten 7 Tage"
     },
