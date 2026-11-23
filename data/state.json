@@ -274,7 +274,7 @@
     "20261120-1536-0a7b3b": {
       "channel": "stehtdirzu",
       "topic": "Homeoffice-Pauschale: So holst du sie dir",
-      "status": "approved",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-0a7b3b/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-0a7b3b/2.jpg",
@@ -287,7 +287,9 @@
       "caption": "Du arbeitest im Homeoffice und hast dafür nie etwas angesetzt? Dann lies das.\n\nFür jeden Tag im Homeoffice kannst du 6 € als Werbungskosten geltend machen, maximal 1.260 € pro Jahr. Und wenn du nicht zur Abgabe verpflichtet bist, kannst du die Steuererklärung freiwillig bis zu 4 Jahre rückwirkend machen. Zuletzt lag die durchschnittliche Erstattung bei 1.240 €. Ob und wie viel es bei dir gibt, hängt vom Einzelfall ab. Eine Garantie gibt es nicht.\n\nWichtig: Für das Jahr 2022 endet die Frist am 31.12.2026. Es zählt, wann die Erklärung beim Finanzamt ankommt. Verlängern geht nicht.\n\nSo gehst du vor: Homeoffice-Tage zusammenzählen, Erklärung ausfüllen, rechtzeitig abgeben. Kommt bei der freiwilligen Erklärung eine Nachzahlung raus, kannst du den Antrag per Einspruch innerhalb von 1 Monat nach dem Bescheid zurücknehmen.\n\nDas ist eine allgemeine Info, keine Steuerberatung im Einzelfall.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#homeoffice #homeofficepauschale #steuererklärung #steuertipps #werbungskosten #verbraucherrechte #dassteht­dirzu #geldzurück",
       "check": [],
       "created": "2026-11-20T15:36:10.624008+01:00",
-      "scheduled": "2026-11-23T18:00:00+01:00"
+      "scheduled": "2026-11-23T18:00:00+01:00",
+      "media_id": "18390119266234318",
+      "published": "2026-11-23T18:00:49.973694+01:00"
     },
     "20261120-1536-2a4906": {
       "channel": "stehtdirzu",
@@ -756,6 +758,10 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-23T18:00:49+01:00",
+      "msg": "✅ Veröffentlicht auf @stehtdir.zu: Homeoffice-Pauschale: So holst du sie dir"
+    },
     {
       "t": "2026-11-23T04:07:08+01:00",
       "msg": "@stehtdir.zu: 1 neue Entwürfe für die nächsten 7 Tage"
