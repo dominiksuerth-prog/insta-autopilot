@@ -707,10 +707,36 @@
       "check": [],
       "format": "reel",
       "scheduled": "2026-11-25T18:30:00+01:00"
+    },
+    "20261123-0404-e54280": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-23T04:06:39.860044+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261123-0404-e54280/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261123-0404-e54280.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261123-0404-e54280.mp4",
+      "caption": "Apple: 5 Jahre übereinander gelegt 📈\n\n2026 bisher: +35,4% – Platz 3 von 5 Jahren.\n2022: -21,8%\n2023: +43,5%\n2024: +39,0%\n2025: -3,4%\n\nJede Linie = ein Kalenderjahr, Kurs seit Jahresbeginn (Vorjahresschluss = 0 %), in Euro.\nStand: 20.11.2026.\nSaison-Muster einzelner Jahre sind kein Beweis für die Zukunft.\n\nÜberrascht dich das bei Apple? 👇\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "jahre",
+        "tickers": [
+          "AAPL"
+        ],
+        "question": ""
+      },
+      "topic": "Jahre: Apple – letzte 5 Jahre",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-11-30T18:30:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-23T04:06:39+01:00",
+      "msg": "@aktien_nachgerechnet: 1 neue Entwürfe für die nächsten 7 Tage"
+    },
     {
       "t": "2026-11-22T19:05:25+01:00",
       "msg": "Jahre: SAP – letzte 5 Jahre: freigegeben"
@@ -844,6 +870,6 @@
       "msg": "@onebetterthought: 4 neue Themen vorgeschlagen (Cockpit → Kanäle → Themen)"
     }
   ],
-  "last_autoplan": "2026-11-22",
+  "last_autoplan": "2026-11-23",
   "last_run": "2026-11-22T23:26:46+01:00"
 }
