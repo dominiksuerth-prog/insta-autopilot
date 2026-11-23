@@ -167,7 +167,7 @@
     "20261120-1533-33faec": {
       "channel": "onebetterthought",
       "topic": "Habit took 18 days for one person, 254 for another. Same study.",
-      "status": "approved",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-33faec/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1533-33faec/2.jpg",
@@ -184,7 +184,9 @@
         "The last Try this item (\"Make it easier before you make it bigger\") is a practical reading of the finding on simpler behaviours, not a direct study result. Remove it if it is too loose."
       ],
       "created": "2026-11-20T15:33:58.531815+01:00",
-      "scheduled": "2026-11-23T19:00:00+01:00"
+      "scheduled": "2026-11-23T19:00:00+01:00",
+      "media_id": "18091102517294781",
+      "published": "2026-11-23T20:36:57.112299+01:00"
     },
     "20261120-1534-032f95": {
       "channel": "onebetterthought",
@@ -668,7 +670,7 @@
     },
     "20261122-1246-eb1bf3": {
       "channel": "aktien_nachgerechnet",
-      "status": "approved",
+      "status": "published",
       "created": "2026-11-22T12:49:03.680711+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-1246-eb1bf3/cover.jpg"
@@ -686,7 +688,9 @@
       "topic": "Jahre: Nvidia – letzte 5 Jahre",
       "check": [],
       "format": "reel",
-      "scheduled": "2026-11-23T18:30:00+01:00"
+      "scheduled": "2026-11-23T18:30:00+01:00",
+      "media_id": "18224429155359034",
+      "published": "2026-11-23T20:36:15.326265+01:00"
     },
     "20261122-1249-9329ff": {
       "channel": "aktien_nachgerechnet",
@@ -758,6 +762,14 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-23T20:36:57+01:00",
+      "msg": "✅ Veröffentlicht auf @onebetterthought: Habit took 18 days for one person, 254 for another. Same study."
+    },
+    {
+      "t": "2026-11-23T20:36:57+01:00",
+      "msg": "✅ Veröffentlicht auf @aktien_nachgerechnet: Jahre: Nvidia – letzte 5 Jahre"
+    },
     {
       "t": "2026-11-23T18:00:49+01:00",
       "msg": "✅ Veröffentlicht auf @stehtdir.zu: Homeoffice-Pauschale: So holst du sie dir"
