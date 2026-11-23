@@ -274,6 +274,7 @@ def next_approved(cfg):
     ts = [parse_dt(p["scheduled"]).timestamp() for p in load_state()["posts"].values()
           if p["status"] == "approved" and p.get("scheduled")
           and cfg["channels_by_id"].get(p["channel"], {}).get("active")]
+    ts = [t for t in ts if t > time.time() - 60]   # überfällige werden ohnehin sofort gepostet
     return min(ts) if ts else None
 
 
@@ -303,20 +304,30 @@ def main():
         return
     sync("autopilot: Start")
     started = time.time()
+    hard_end = started + 330 * 60          # GitHub bricht nach 350 Min. ab – vorher sauber beenden
     deadline = started + args.minutes * 60
+
+    def extend(deadline):
+        """Bis zum nächsten freigegebenen Termin wach bleiben – nach jedem Post neu berechnet."""
+        if not args.wait_for_posts:
+            return deadline
+        nxt = next_approved(cfg)
+        if nxt and nxt - time.time() < args.wait_for_posts * 60:
+            return min(max(deadline, nxt + 120), hard_end)
+        return deadline
+
     tick(cfg, first=True)
     autoplan(cfg)
-    if args.wait_for_posts:
-        nxt = next_approved(cfg)
-        if nxt and nxt - started < args.wait_for_posts * 60:
-            deadline = max(deadline, nxt + 120)
-            print(f"Bleibe wach bis zum nächsten Termin ({(nxt - started) / 60:.0f} Min.)")
+    deadline = extend(deadline)
+    if deadline > started + args.minutes * 60:
+        print(f"Bleibe wach bis zum nächsten Termin ({(deadline - started) / 60:.0f} Min.)")
     while time.time() < deadline:
         cfg = load_config()  # Kanäle können sich im Cockpit geändert haben
         left = (deadline - time.time()) / 60
         if not something_soon(cfg, left) and not any(INBOX.glob("*.json")):
             break
         tick(cfg, first=False)
+        deadline = extend(deadline)
     sync("autopilot: Ende")
     state = load_state()
     state["last_run"] = now().isoformat(timespec="seconds")
