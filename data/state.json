@@ -1,7 +1,7 @@
 {
   "channels": {
     "stehtdirzu": {
-      "topic_index": 11
+      "topic_index": 12
     },
     "onebetterthought": {
       "topic_index": 11
@@ -729,10 +729,37 @@
       "check": [],
       "format": "reel",
       "scheduled": "2026-11-30T18:30:00+01:00"
+    },
+    "20261123-0406-8871f6": {
+      "channel": "stehtdirzu",
+      "topic": "Verträge nach Mindestlaufzeit: monatlich kündbar",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261123-0406-8871f6/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261123-0406-8871f6/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261123-0406-8871f6/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261123-0406-8871f6/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261123-0406-8871f6/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261123-0406-8871f6/6.jpg"
+      ],
+      "caption": "Du zahlst für einen Vertrag, den du längst nicht mehr willst? Dann lies das.\n\nBei Verträgen, die du ab März 2022 abgeschlossen hast (z. B. Handy, Internet, Fitnessstudio), gilt: Nach der Mindestlaufzeit ist dein Vertrag monatlich kündbar. Kein Festsitzen in langen Verlängerungen mehr.\n\nSo gehst du vor:\n1. Abschlussdatum prüfen. Steht es im Vertrag oder in der Bestätigungsmail?\n2. Ende der Mindestlaufzeit und Kündigungsfrist im Vertrag oder Kundenkonto nachschauen und im Kalender notieren.\n3. Kündigen. Bei Online-Verträgen gibt es seit Juli 2022 den Kündigungsbutton auf der Website. Sonst schriftlich kündigen und den Nachweis aufbewahren.\n4. Kündigungsbestätigung einfordern und aufheben.\n\nWichtig: Das sind allgemeine Infos, keine Rechtsberatung für deinen Einzelfall. Bei älteren Verträgen oder Streit mit dem Anbieter kannst du dich bei der Verbraucherzentrale informieren.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#stehtdirzu #verbraucherrechte #vertragkündigen #kündigungsbutton #handyvertrag #fitnessstudio #verbrauchertipps #geldsparen",
+      "check": [
+        "Aktuelle gesetzliche Kündigungsfrist nach der Mindestlaufzeit ist nicht in der Faktenbasis: bewusst keine Zahl genannt. Bei Bedarf ergänzen und prüfen.",
+        "Gilt die Regel (Abschluss ab März 2022) für alle genannten Vertragsarten gleich? Faktenbasis nennt Handy, Internet, Fitnessstudio als Beispiele: Formulierung 'z. B.' beibehalten.",
+        "Kündigungsbutton gilt nur für online abgeschlossene Verbraucherverträge: Formulierung prüfen.",
+        "Aussage zu 'Verlängerung um ein Jahr' im Mythos bezieht sich auf die alte Rechtslage: juristisch gegenprüfen.",
+        "Verweis auf Verbraucherzentrale in der Caption: ist keine Zahl, aber redaktionell freigeben."
+      ],
+      "created": "2026-11-23T04:07:08.285147+01:00",
+      "scheduled": "2026-11-30T18:00:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-23T04:07:08+01:00",
+      "msg": "@stehtdir.zu: 1 neue Entwürfe für die nächsten 7 Tage"
+    },
     {
       "t": "2026-11-23T04:06:41+01:00",
       "msg": "⚠️ @onebetterthought: Vorproduktion fehlgeschlagen – Themenliste für onebetterthought ist aufgebraucht – neue Themen in topics.txt ergänzen."
