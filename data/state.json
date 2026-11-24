@@ -245,7 +245,7 @@
     "20261120-1534-032f95": {
       "channel": "onebetterthought",
       "topic": "You wore a shirt you love? Fewer than 10% noticed.",
-      "status": "approved",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-032f95/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-032f95/2.jpg",
@@ -262,7 +262,9 @@
         "Title of the cover: 'noticed' relates to the follow-up with liked shirts, not a favourite shirt of every individual."
       ],
       "created": "2026-11-20T15:34:22.783625+01:00",
-      "scheduled": "2026-11-24T19:00:00+01:00"
+      "scheduled": "2026-11-24T19:00:00+01:00",
+      "media_id": "18080373944440917",
+      "published": "2026-11-24T20:38:29.592909+01:00"
     },
     "20261120-1534-d8f661": {
       "channel": "onebetterthought",
@@ -362,7 +364,7 @@
     "20261120-1536-2a4906": {
       "channel": "stehtdirzu",
       "topic": "Pendlerpauschale: richtig rechnen",
-      "status": "approved",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-2a4906/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1536-2a4906/2.jpg",
@@ -381,7 +383,9 @@
         "Frist 31.12.2026 für das Steuerjahr 2022 gegen den Stand der Faktenbasis (14.11.2026) prüfen."
       ],
       "created": "2026-11-20T15:36:41.655988+01:00",
-      "scheduled": "2026-11-24T18:00:00+01:00"
+      "scheduled": "2026-11-24T18:00:00+01:00",
+      "media_id": "18120841882789782",
+      "published": "2026-11-24T20:37:43.949411+01:00"
     },
     "20261120-1537-e188a7": {
       "channel": "stehtdirzu",
@@ -932,6 +936,14 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-24T20:38:30+01:00",
+      "msg": "✅ Veröffentlicht auf @onebetterthought: You wore a shirt you love? Fewer than 10% noticed."
+    },
+    {
+      "t": "2026-11-24T20:38:29+01:00",
+      "msg": "✅ Veröffentlicht auf @stehtdir.zu: Pendlerpauschale: richtig rechnen"
+    },
     {
       "t": "2026-11-24T20:36:49+01:00",
       "msg": "Neu geschrieben: Jahre: Apple – letzte 5 Jahre"
