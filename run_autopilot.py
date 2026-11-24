@@ -282,6 +282,12 @@ def tick(cfg, first):
     state = migrate_state(load_state())
     if first:
         prune_old(state)
+        try:
+            n = core.refresh_stats(cfg, load_state())
+            if n:
+                print(f"Statistik für {n} Posts aktualisiert")
+        except Exception as e:
+            print("Statistik-Abruf fehlgeschlagen:", e)
     process_inbox(cfg)
     poll_telegram(cfg, wait=0 if first else 25)
     for m in publish_due(cfg, load_state()):
