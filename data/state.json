@@ -275,7 +275,7 @@
     "20261120-1534-d8f661": {
       "channel": "onebetterthought",
       "topic": "Treadmill or park? Walking helped creativity either way",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-d8f661/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-d8f661/2.jpg",
@@ -296,7 +296,7 @@
     "20261120-1534-0a892d": {
       "channel": "onebetterthought",
       "topic": "What happens in your brain when you say \"angry\" out loud?",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-0a892d/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-0a892d/2.jpg",
@@ -402,7 +402,7 @@
     "20261120-1537-e188a7": {
       "channel": "stehtdirzu",
       "topic": "Handwerker und Haushaltshilfe: 20 % direkt von der Steuer",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-e188a7/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-e188a7/2.jpg",
@@ -427,7 +427,7 @@
     "20261120-1537-b7da6e": {
       "channel": "stehtdirzu",
       "topic": "Preiserhöhung bekommen? Dein Sonderkündigungsrecht",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-b7da6e/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-b7da6e/2.jpg",
@@ -834,7 +834,7 @@
     "20261123-0406-8871f6": {
       "channel": "stehtdirzu",
       "topic": "Verträge nach Mindestlaufzeit: monatlich kündbar",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261123-0406-8871f6/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261123-0406-8871f6/2.jpg",
@@ -857,7 +857,7 @@
     "20261124-0118-040898": {
       "channel": "onebetterthought",
       "topic": "Your phone steals focus even when you don't touch it",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-040898/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-040898/2.jpg",
@@ -879,7 +879,7 @@
     "20261124-0118-8b98c9": {
       "channel": "onebetterthought",
       "topic": "Phone on the desk vs. in another room: what one study found",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-8b98c9/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-8b98c9/2.jpg",
@@ -902,7 +902,7 @@
     "20261124-0119-495902": {
       "channel": "stehtdirzu",
       "topic": "Der Kündigungsbutton: So kündigst du online in 1 Minute",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261124-0119-495902/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261124-0119-495902/2.jpg",
@@ -948,6 +948,38 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-24T20:46:46+01:00",
+      "msg": "Phone on the desk vs. in another room: what one study found: freigegeben"
+    },
+    {
+      "t": "2026-11-24T20:46:46+01:00",
+      "msg": "Der Kündigungsbutton: So kündigst du online in 1 Minute: freigegeben"
+    },
+    {
+      "t": "2026-11-24T20:46:46+01:00",
+      "msg": "Your phone steals focus even when you don't touch it: freigegeben"
+    },
+    {
+      "t": "2026-11-24T20:46:46+01:00",
+      "msg": "Verträge nach Mindestlaufzeit: monatlich kündbar: freigegeben"
+    },
+    {
+      "t": "2026-11-24T20:46:46+01:00",
+      "msg": "What happens in your brain when you say \"angry\" out loud?: freigegeben"
+    },
+    {
+      "t": "2026-11-24T20:46:46+01:00",
+      "msg": "Preiserhöhung bekommen? Dein Sonderkündigungsrecht: freigegeben"
+    },
+    {
+      "t": "2026-11-24T20:46:46+01:00",
+      "msg": "Treadmill or park? Walking helped creativity either way: freigegeben"
+    },
+    {
+      "t": "2026-11-24T20:46:46+01:00",
+      "msg": "Handwerker und Haushaltshilfe: 20 % direkt von der Steuer: freigegeben"
+    },
     {
       "t": "2026-11-24T20:45:37+01:00",
       "msg": "Jahre: Apple – letzte 5 Jahre: freigegeben"
