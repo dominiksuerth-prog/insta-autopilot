@@ -226,11 +226,27 @@ def _particles(S, col, seed):
     ax.scatter(x[white], y[white], s=size[white] * 0.6, c=rgba_w, linewidths=0)
 
 
+def _tile_color(img):
+    """Weiße Kachel – außer das Logo ist selbst hell (z. B. weißer Apfel auf transparent), dann dunkel."""
+    try:
+        a = np.asarray(img, dtype=float)
+        if a.max() > 1.5:
+            a = a / 255.0
+        rgb = a[..., :3]
+        mask = a[..., 3] > 0.3 if a.shape[-1] == 4 else np.ones(rgb.shape[:2], bool)
+        if mask.mean() < 0.02:
+            return "#ffffff"
+        lum = (rgb[mask] @ np.array([0.299, 0.587, 0.114])).mean()
+        return "#1C1E24" if lum > 0.82 else "#ffffff"
+    except Exception:
+        return "#ffffff"
+
+
 def _white_tile(S, img, rect, pad=0.13):
     ax = S.fig.add_axes(rect)
     ax.axis("off")
     ax.add_patch(S.mpl.patches.FancyBboxPatch((0.02, 0.02), 0.96, 0.96, boxstyle="round,pad=0,rounding_size=0.16",
-                                              transform=ax.transAxes, fc="#ffffff", ec="none"))
+                                              transform=ax.transAxes, fc=_tile_color(img), ec="none"))
     ins = ax.inset_axes([pad, pad, 1 - 2 * pad, 1 - 2 * pad])
     ins.axis("off")
     ins.imshow(img, interpolation="lanczos")
