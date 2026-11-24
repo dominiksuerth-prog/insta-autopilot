@@ -10,76 +10,151 @@
 :root{
   --bg:#F4F2EE; --panel:#FFFFFF; --ink:#16181D; --muted:#6B6F78; --line:#E4E1DA; --soft:#EEEBE5;
   --draft:#B7791F; --draft-bg:#FDF3E1; --ok:#1F7A4D; --ok-bg:#E3F4EA; --bad:#B42318; --bad-bg:#FDE8E6;
-  --pub:#4B5563; --pub-bg:#ECEDEF; --accent:#16181D; --r:14px;
+  --pub:#4B5563; --pub-bg:#ECEDEF; --info:#2F6FCC; --info-bg:#E6F0FD; --r:14px;
+  --shadow:0 1px 2px rgba(20,20,30,.05),0 4px 14px rgba(20,20,30,.05);
   --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 var(--font);-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit;color:inherit}
 a{color:inherit}
-.wrap{max-width:980px;margin:0 auto;padding:0 16px 110px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px 120px}
 header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.hbar{max-width:980px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.hbar{max-width:1120px;margin:0 auto;padding:12px 16px 8px;display:flex;align-items:center;gap:12px}
 .logo{font-weight:750;letter-spacing:-.02em;font-size:18px;white-space:nowrap}
 .logo span{color:var(--muted);font-weight:500}
 .status{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);min-width:0}
 .status .txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dot{width:8px;height:8px;border-radius:50%;background:#A3A3A3;flex:none}
-.dot.run{background:#2F80ED;animation:pulse 1.2s infinite}
+.dot.run{background:var(--info);animation:pulse 1.2s infinite}
 .dot.ok{background:var(--ok)} .dot.err{background:var(--bad)}
 @keyframes pulse{50%{opacity:.3}}
 .iconbtn{border:1px solid var(--line);background:var(--panel);border-radius:10px;height:34px;min-width:34px;padding:0 10px;cursor:pointer}
-.tabs{display:flex;gap:4px;max-width:980px;margin:0 auto;padding:0 12px 10px}
-.tab{border:0;background:transparent;padding:8px 14px;border-radius:999px;cursor:pointer;color:var(--muted);font-weight:600}
+.navrow{max-width:1120px;margin:0 auto;padding:0 12px 10px;display:flex;gap:10px;align-items:center}
+.tabs{display:flex;gap:4px}
+.tab{border:0;background:transparent;padding:8px 14px;border-radius:999px;cursor:pointer;color:var(--muted);font-weight:650;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.tab .ic{font-size:15px}
 .tab.on{background:var(--ink);color:#fff}
-@media (max-width:640px){
+.tab .cnt{background:var(--draft);color:#fff;border-radius:999px;font-size:11px;padding:0 6px;line-height:17px;font-weight:700}
+.chanbar{max-width:1120px;margin:0 auto;padding:0 16px 10px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.chanbar::-webkit-scrollbar{display:none}
+@media (max-width:700px){
   header{backdrop-filter:none;background:var(--bg)}
-  .tabs{position:fixed;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom));justify-content:space-around;z-index:30}
-  .tab{flex:1}
+  .tabs{position:fixed;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom));justify-content:space-around;z-index:30}
+  .tab{flex:1;flex-direction:column;gap:1px;padding:6px 2px;font-size:11px;border-radius:12px;position:relative}
+  .tab .ic{font-size:19px}
+  .tab .cnt{position:absolute;top:2px;right:calc(50% - 22px)}
+  .navrow{padding:0}
 }
-h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:26px 0 10px;font-weight:700}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:28px 0 10px;font-weight:700;display:flex;align-items:center;gap:8px}
+h2 .more{margin-left:auto;text-transform:none;letter-spacing:0;font-weight:600;font-size:13px;color:var(--ink);background:none;border:0;cursor:pointer}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.btn{border:1px solid var(--line);background:var(--panel);padding:9px 14px;border-radius:10px;cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.btn{border:1px solid var(--line);background:var(--panel);padding:9px 14px;border-radius:10px;cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .btn:hover{border-color:#cfcac0}
 .btn.pri{background:var(--ink);border-color:var(--ink);color:#fff}
 .btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
 .btn.danger{color:var(--bad)}
 .btn.sm{padding:6px 10px;font-size:13px;border-radius:9px}
 .btn:disabled{opacity:.45;cursor:default}
-.chips{display:flex;gap:6px;flex-wrap:wrap}
-.chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13px;font-weight:650;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;flex:none}
 .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.cdot{width:9px;height:9px;border-radius:50%;flex:none}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
-@media (max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}}
-.kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
-.kpi b{display:block;font-size:24px;letter-spacing:-.02em;line-height:1.1}
-.kpi small{color:var(--muted);font-size:12.5px}
-.kpi.warn b{color:var(--draft)}
-.day{margin-top:18px}
-.dayh{display:flex;align-items:baseline;gap:8px;margin:0 2px 8px}
-.dayh b{font-size:15px}
-.dayh span{color:var(--muted);font-size:13px}
-.dayh.today b::after{content:"Heute";margin-left:8px;font-size:11px;background:var(--ink);color:#fff;padding:2px 7px;border-radius:999px;vertical-align:2px}
-.post{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:10px;margin-bottom:8px;cursor:pointer}
-.post:hover{border-color:#d6d1c6}
-.thumb{width:56px;height:70px;border-radius:8px;object-fit:cover;background:var(--soft);flex:none}
-.pmain{min-width:0;flex:1}
-.ptop{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
-.ptitle{font-weight:650;margin-top:2px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.cdot{width:9px;height:9px;border-radius:50%;flex:none;display:inline-block}
+.muted{color:var(--muted)} .small{font-size:13px}
+.empty{background:var(--panel);border:1px dashed #d4cfc5;border-radius:var(--r);padding:22px;text-align:center;color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
 .badge{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
 .b-draft{background:var(--draft-bg);color:var(--draft)} .b-approved{background:var(--ok-bg);color:var(--ok)}
 .b-published{background:var(--pub-bg);color:var(--pub)} .b-rejected{background:var(--bad-bg);color:var(--bad)}
-.b-pend{background:#E6F0FD;color:#2F6FCC} .b-late{background:var(--bad-bg);color:var(--bad)}
-.qa{display:flex;gap:6px;flex:none}
-.qa .btn{width:38px;height:38px;justify-content:center;padding:0;font-size:16px}
-.post.done{opacity:.62}
-.empty{background:var(--panel);border:1px dashed #d4cfc5;border-radius:var(--r);padding:22px;text-align:center;color:var(--muted)}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.b-pend{background:var(--info-bg);color:var(--info)} .b-late{background:var(--bad-bg);color:var(--bad)}
+
+/* ---------- Heute */
+.hello{font-size:26px;letter-spacing:-.02em;margin:22px 0 2px;font-weight:750}
+.sub{color:var(--muted);margin:0 0 6px}
+.tasks{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.task{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;box-shadow:var(--shadow)}
+.task .ti{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:18px;flex:none}
+.task.t-draft .ti{background:var(--draft-bg)} .task.t-bad .ti{background:var(--bad-bg)} .task.t-info .ti{background:var(--info-bg)}
+.task .tm{flex:1;min-width:0}
+.task .tt{font-weight:700}
+.task .ts{color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis}
+.alldone{display:flex;gap:14px;align-items:center;background:var(--ok-bg);border-radius:var(--r);padding:16px 18px;margin-top:14px;color:#14532D}
+.alldone b{font-size:17px}
+.alldone .big{font-size:30px}
+.strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity}
+.strip .tile{width:150px;flex:none;scroll-snap-align:start}
+.amp{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.ampc{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;cursor:pointer;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+.ampc:hover{border-color:#d6d1c6}
+.amph{display:flex;align-items:center;gap:8px;font-weight:700}
+.amph .lt{margin-left:auto;font-size:12px;font-weight:650;white-space:nowrap}
+.amph .light{width:10px;height:10px;border-radius:50%;flex:none}
+.ampl{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;font-size:13px;color:var(--muted)}
+.ampl b{color:var(--ink)}
+.ampl .warn{color:var(--bad)}
+
+/* ---------- Kacheln (Vorschau) */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+@media (max-width:520px){.grid{grid-template-columns:repeat(3,1fr);gap:4px}.grid .tile .tb{display:none}.grid .tile{border-radius:6px}}
+.tile{position:relative;border-radius:12px;overflow:hidden;background:var(--soft);cursor:pointer;aspect-ratio:4/5;box-shadow:var(--shadow)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile .noimg{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:12px;padding:10px;text-align:center}
+.tile .tt{position:absolute;top:6px;left:6px;right:6px;display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.tile .tt .cdot{box-shadow:0 0 0 2px #fff}
+.tile .vid{position:absolute;top:6px;right:8px;color:#fff;font-size:14px;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.tile .tb{position:absolute;left:0;right:0;bottom:0;padding:22px 8px 7px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-size:12px;line-height:1.3}
+.tile .tb b{display:block;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile .stat{display:flex;gap:8px;margin-top:2px;opacity:.92}
+.tile.s-draft{outline:3px solid var(--draft);outline-offset:-3px}
+.tile.s-late{outline:3px solid var(--bad);outline-offset:-3px}
+.tile.s-approved{outline:3px solid var(--ok);outline-offset:-3px}
+.tile.dim{opacity:.55}
+
+/* ---------- Kanalkopf */
+.chhead{display:flex;gap:14px;align-items:center;margin-top:20px;flex-wrap:wrap}
+.avatar{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:22px;flex:none}
+.chhead h1{margin:0;font-size:22px;letter-spacing:-.02em}
+.chstats{display:flex;gap:22px;flex-wrap:wrap;margin-top:12px}
+.chstats div{display:flex;flex-direction:column}
+.chstats b{font-size:20px;letter-spacing:-.02em;line-height:1.1}
+.chstats small{color:var(--muted);font-size:12.5px}
+.seg{display:inline-flex;background:var(--soft);border-radius:999px;padding:3px;gap:2px;margin-top:18px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:7px 14px;font-weight:650;cursor:pointer;color:var(--muted)}
+.seg button.on{background:var(--panel);color:var(--ink);box-shadow:var(--shadow)}
+
+/* ---------- Woche */
+.weekbar{display:flex;align-items:center;gap:8px;margin-top:18px;flex-wrap:wrap}
+.weekbar b{font-size:17px;margin-right:auto}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:12px}
+.wday{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:8px;min-height:180px;display:flex;flex-direction:column;gap:6px}
+.wday.today{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.wday.past{background:#FAF9F6}
+.wdh{display:flex;align-items:baseline;gap:6px;font-size:13px}
+.wdh b{font-size:14px}
+.wdh span{color:var(--muted)}
+.wcard{display:flex;gap:7px;align-items:center;border-radius:10px;padding:5px;cursor:pointer;border-left:4px solid var(--line);background:#FBFAF8}
+.wcard:hover{background:var(--soft)}
+.wcard img{width:34px;height:42px;object-fit:cover;border-radius:6px;background:var(--soft);flex:none}
+.wcard{overflow:hidden}
+.wcard .wm{min-width:0;flex:1;font-size:12px;line-height:1.3}
+.wcard .wm b,.wcard .wm div{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wcard .wm b{font-size:12.5px}
+.wcard .wm div{color:var(--muted)}
+.wcard.st-draft{border-left-color:var(--draft)} .wcard.st-approved{border-left-color:var(--ok)}
+.wcard.st-published{border-left-color:#A3A3A3;opacity:.75} .wcard.st-late{border-left-color:var(--bad)}
+.wfree{border:1.5px dashed #d4cfc5;border-radius:10px;padding:6px;font-size:12px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.wfree:hover{border-color:var(--ink);color:var(--ink)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+@media (max-width:860px){
+  .week{grid-template-columns:1fr}
+  .wday{min-height:0;flex-direction:row;flex-wrap:wrap;align-items:center}
+  .wdh{width:100%}
+  .wcard,.wfree{flex:1 1 220px}
+}
+
+/* ---------- Formulare & Karten (Kanäle) */
 .chead{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .chead h3{margin:0;font-size:17px;letter-spacing:-.01em}
-.muted{color:var(--muted)}
-.small{font-size:13px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
 @media (max-width:640px){.grid2{grid-template-columns:1fr}}
 label.f{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--muted);font-weight:600}
@@ -87,7 +162,7 @@ input[type=text],input[type=time],input[type=number],input[type=datetime-local],
   border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 11px;width:100%;color:var(--ink);font-weight:400;font-size:15px}
 textarea{min-height:110px;resize:vertical;line-height:1.45}
 textarea.code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;min-height:280px}
-.daysel{display:flex;gap:4px}
+.daysel{display:flex;gap:4px;flex-wrap:wrap}
 .daysel button{width:36px;height:34px;border-radius:9px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:12.5px;font-weight:700}
 .daysel button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:600}
@@ -98,7 +173,8 @@ textarea.code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace
 .stats b{color:var(--ink)}
 .warnbox{background:var(--draft-bg);color:#7A4E0E;border-radius:10px;padding:10px 12px;font-size:13.5px;margin:10px 0}
 .infobox{background:#EEF2F7;color:#33445C;border-radius:10px;padding:10px 12px;font-size:13.5px;margin:10px 0}
-/* Overlay */
+
+/* ---------- Overlays */
 .ov{position:fixed;inset:0;background:rgba(18,18,22,.45);z-index:50;display:flex;align-items:flex-end;justify-content:center}
 @media (min-width:760px){.ov{align-items:center}}
 .sheet{background:var(--bg);width:100%;max-width:760px;max-height:94vh;overflow:auto;border-radius:18px 18px 0 0;padding:16px 16px calc(18px + env(safe-area-inset-bottom))}
@@ -110,7 +186,41 @@ textarea.code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace
 .checks{background:var(--draft-bg);border-radius:10px;padding:8px 12px;margin:10px 0;font-size:13.5px;color:#7A4E0E}
 .checks ul{margin:4px 0 0;padding-left:18px}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;z-index:80;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.18);max-width:90vw}
+.pstats{display:flex;gap:16px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-top:10px;font-size:13px;color:var(--muted)}
+.pstats b{color:var(--ink);font-size:16px;display:block}
+
+/* Stapel-Freigabe */
+.stack{position:fixed;inset:0;z-index:60;background:#121318;color:#fff;display:flex;flex-direction:column}
+.stk-top{display:flex;align-items:center;gap:12px;padding:12px 16px}
+.stk-top .prog{flex:1;height:4px;background:#2A2C33;border-radius:9px;overflow:hidden}
+.stk-top .prog i{display:block;height:100%;background:#fff;border-radius:9px;transition:width .25s}
+.stk-top button{background:#23252C;border:0;color:#fff;border-radius:10px;height:34px;min-width:34px;cursor:pointer}
+.stk-body{flex:1;overflow:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:20px;padding:4px 20px 20px;max-width:1100px;width:100%;margin:0 auto}
+@media (max-width:860px){.stk-body{grid-template-columns:1fr;padding:4px 12px 12px;gap:12px}}
+.stk-media{display:flex;justify-content:center;align-items:flex-start;min-width:0}
+.stk-info{min-width:0}
+.stk-info h3{overflow-wrap:anywhere}
+.stk-media video{max-height:calc(100vh - 190px);max-width:100%;aspect-ratio:9/16;border-radius:14px;background:#000}
+.stk-media .slides{max-width:100%}
+.stk-media .slides img{height:min(calc(100vh - 210px),560px)}
+@media (max-width:860px){.stk-media video{max-height:58vh}.stk-media .slides img{height:52vh}}
+@media (max-width:560px){.stk-bar{flex-wrap:nowrap;gap:6px;padding-left:8px;padding-right:8px}.stk-bar button{padding:12px 10px;font-size:14px}.stk-bar .kbd{display:none}.sb-yes{min-width:0;flex:1}.stk-media .slides img{height:46vh}.stk-media video{max-height:50vh}}
+.stk-info .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:#B9BBC3;font-size:13px}
+.stk-info h3{margin:8px 0 10px;font-size:20px;letter-spacing:-.01em;line-height:1.25}
+.stk-info .cap{white-space:pre-wrap;background:#1C1E24;border-radius:12px;padding:12px;font-size:14px;line-height:1.5;color:#DADCE2;max-height:34vh;overflow:auto}
+.stk-info .checks{background:#3A2D12;color:#F5D9A0}
+.stk-bar{display:flex;gap:8px;justify-content:center;padding:12px 16px calc(14px + env(safe-area-inset-bottom));background:#17181D;border-top:1px solid #23252C;flex-wrap:wrap}
+.stk-bar button{border:0;border-radius:14px;padding:13px 18px;font-weight:750;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:7px}
+.sb-no{background:#3A1E1C;color:#FFB4A9} .sb-re{background:#23252C;color:#fff} .sb-skip{background:#23252C;color:#B9BBC3}
+.sb-yes{background:#22A060;color:#fff;min-width:170px;justify-content:center}
+.stk-bar button:disabled{opacity:.5}
+.stk-regen{display:none;gap:8px;margin-top:12px}
+.stk-regen input{background:#1C1E24;border:1px solid #2E3038;color:#fff}
+.stk-done{flex:1;display:grid;place-items:center;text-align:center;padding:30px}
+.stk-done .big{font-size:56px}
+.kbd{font-size:11px;opacity:.55;font-weight:600}
+
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;z-index:80;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.18);max-width:90vw}
 .log{background:var(--panel);border:1px solid var(--line);border-radius:var(--r)}
 .log div{padding:9px 14px;border-bottom:1px solid var(--soft);font-size:14px;display:flex;gap:12px}
 .log div:last-child{border:0}
@@ -125,15 +235,20 @@ code{background:var(--soft);padding:1px 5px;border-radius:5px;font-size:13px}
 <body>
 <header>
   <div class="hbar">
-    <div class="logo">Kanal-Cockpit <span>· KI-Kanäle</span></div>
+    <div class="logo">Kanal-Cockpit</div>
     <div class="status" id="status"><span class="dot"></span><span class="txt">lädt …</span></div>
     <button class="iconbtn" id="reload" title="Aktualisieren">↻</button>
   </div>
-  <nav class="tabs" id="tabs">
-    <button class="tab on" data-v="plan">Plan</button>
-    <button class="tab" data-v="channels">Kanäle</button>
-    <button class="tab" data-v="log">Protokoll</button>
-  </nav>
+  <div class="navrow">
+    <nav class="tabs" id="tabs">
+      <button class="tab on" data-v="today"><span class="ic">☀︎</span><span>Heute</span></button>
+      <button class="tab" data-v="week"><span class="ic">▦</span><span>Woche</span></button>
+      <button class="tab" data-v="posts"><span class="ic">◫</span><span>Beiträge</span></button>
+      <button class="tab" data-v="channels"><span class="ic">⚙︎</span><span>Kanäle</span></button>
+      <button class="tab" data-v="log"><span class="ic">≡</span><span>Protokoll</span></button>
+    </nav>
+  </div>
+  <div class="chanbar" id="chanbar"></div>
 </header>
 <div class="wrap" id="app"></div>
 
@@ -148,7 +263,9 @@ const DAYNAMES = {mo:"Mo",di:"Di",mi:"Mi",do:"Do",fr:"Fr",sa:"Sa",so:"So"};
 const PALETTE = ["#E0A100","#2F6FCC","#C2410C","#0F766E","#7C3AED","#BE185D","#4D7C0F","#334155"];
 const DEMO = new URLSearchParams(location.search).has("demo");
 
-const S = { view:"plan", filter:"all", showDone:false, channels:[], state:{posts:{},channels:{},log:[]}, inbox:[], runs:[], loaded:false };
+const S = { view:"today", filter:"all", weekOffset:0, showAllPub:false, showRej:false,
+            channels:[], state:{posts:{},channels:{},log:[]}, inbox:[], runs:[], loaded:false };
+try{ const v = localStorage.getItem("ck_view"); if (v) S.view = v; const f = localStorage.getItem("ck_filter"); if (f) S.filter = f; }catch{}
 const $ = (s,el=document)=>el.querySelector(s);
 const esc = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
@@ -168,9 +285,14 @@ async function gh(path, opts={}){
   if (r.status===204) return {};
   return r.json();
 }
-async function readFile(path){           // -> {text, sha} oder null
+async function readFile(path){
   const j = await gh(`/repos/${REPO}/contents/${path}?ref=${BRANCH}&t=${Date.now()}`);
   if (!j || Array.isArray(j)) return null;
+  if (!j.content && j.download_url && !DEMO){        // Dateien > 1 MB (z. B. state.json) liefert die API ohne Inhalt
+    const r = await fetch("https://api.github.com"+`/repos/${REPO}/contents/${path}?ref=${BRANCH}&t=${Date.now()}`,
+      {cache:"no-store", headers:{"Authorization":"Bearer "+token(),"Accept":"application/vnd.github.raw"}});
+    return {text: await r.text(), sha:j.sha};
+  }
   return {text: b64dec(j.content||""), sha:j.sha};
 }
 async function listDir(path){
@@ -182,21 +304,21 @@ async function writeFile(path, text, sha, message){
     body: JSON.stringify({message, content:b64enc(text), branch:BRANCH, ...(sha?{sha}:{})})});
 }
 let dispatchTimer=null;
-function kickAutopilot(){            // mehrere Klicks -> ein Start
+function kickAutopilot(now=false){
   clearTimeout(dispatchTimer);
   dispatchTimer = setTimeout(async ()=>{
     try{ await gh(`/repos/${REPO}/actions/workflows/${WORKFLOW}/dispatches`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ref:BRANCH})}); }
     catch(e){ toast("Start fehlgeschlagen: "+e.message); }
     setTimeout(loadRuns, 4000);
-  }, 1500);
+  }, now?0:1500);
 }
-async function sendJob(job){
+async function sendJob(job, {quiet=false}={}){
   const name = `${Date.now()}-${Math.random().toString(36).slice(2,7)}.json`;
   job.at = new Date().toISOString();
   await writeFile(`data/inbox/${name}`, JSON.stringify(job, null, 1), null, `cockpit: ${job.action}`);
   S.inbox.push({name, job});
   kickAutopilot();
-  render();
+  if (!quiet) render();
 }
 
 /* ------------------------------------------------------------ Demo-Modus (lokaler Test ohne GitHub) */
@@ -207,9 +329,7 @@ async function demoGh(path, opts){
   if (!m) return null;
   const p = m[1];
   if (opts.method==="PUT"){ DEMO_FILES[p]=JSON.parse(opts.body); console.log("PUT",p,b64dec(DEMO_FILES[p].content)); return {content:{sha:"x"}}; }
-  if (p.endsWith("/") || !p.includes(".")) {
-    const r = await fetch("demo/"+p+"/_dir.json"); return r.ok ? r.json() : [];
-  }
+  if (p.endsWith("/") || !p.includes(".")) { const r = await fetch("demo/"+p+"/_dir.json"); return r.ok ? r.json() : []; }
   const r = await fetch("demo/"+p); if(!r.ok) return null;
   return {content: b64enc(await r.text()), sha:"demo"};
 }
@@ -221,7 +341,7 @@ async function loadAll(){
   S.state = stateF ? JSON.parse(stateF.text) : {posts:{},channels:{}};
   S.state.posts ||= {}; S.state.channels ||= {}; S.state.log ||= [];
   const dirs = chDir.filter(d=>d.type==="dir").map(d=>d.name);
-  S.channels = (await Promise.all(dirs.map(async (id,i)=>{
+  S.channels = (await Promise.all(dirs.map(async id=>{
     const [st, topics, facts] = await Promise.all([readFile(`channels/${id}/settings.json`), readFile(`channels/${id}/topics.txt`), readFile(`channels/${id}/facts.md`)]);
     if (!st) return null;
     const s = JSON.parse(st.text);
@@ -230,6 +350,7 @@ async function loadAll(){
             _pruefen:((facts?.text||"").match(/\[PRÜFEN\]/g)||[]).length};
   }))).filter(Boolean);
   S.channels.forEach((c,i)=>c._color = c.color || PALETTE[i % PALETTE.length]);
+  if (S.filter!=="all" && !S.channels.some(c=>c.id===S.filter)) S.filter="all";
   const files = inboxDir.filter(f=>f.name.endsWith(".json"));
   S.inbox = (await Promise.all(files.map(async f=>{ const r = await readFile(`data/inbox/${f.name}`); try{return {name:f.name, job:JSON.parse(r.text)}}catch{return null} }))).filter(Boolean);
   S.loaded = true;
@@ -237,11 +358,10 @@ async function loadAll(){
   loadRuns();
 }
 async function loadRuns(){
-  try{
-    const j = await gh(`/repos/${REPO}/actions/workflows/${WORKFLOW}/runs?per_page=6`);
-    S.runs = j?.workflow_runs || [];
-  }catch(e){ S.runs=[]; }
+  try{ const j = await gh(`/repos/${REPO}/actions/workflows/${WORKFLOW}/runs?per_page=6`); S.runs = j?.workflow_runs || []; }
+  catch(e){ S.runs=[]; }
   setStatus();
+  if (S.view==="today" && S.loaded && !document.querySelector(".ov,.stack")) render();
   const busy = S.runs.some(r=>r.status!=="completed");
   clearTimeout(loadRuns._t);
   if (busy || S.inbox.length) loadRuns._t = setTimeout(async()=>{ const was=S.runs[0]?.status; await loadRuns(); if (was!=="completed" && S.runs[0]?.status==="completed") loadAll(); }, 12000);
@@ -261,26 +381,37 @@ function setStatus(mode){
 
 /* ------------------------------------------------------------ Zeit */
 const fmt = (d,o)=>new Intl.DateTimeFormat("de-DE",{timeZone:TZ,...o}).format(d);
-const dayKey = d => fmt(d,{year:"numeric",month:"2-digit",day:"2-digit"});
+const dayKey = d => toLocalInput(d instanceof Date ? d.toISOString() : d).slice(0,10);   // "2026-11-23" in Berlin
 function rel(iso){
   const m = Math.round((Date.now()-new Date(iso))/60000);
   if (m<1) return "gerade eben"; if (m<60) return `vor ${m} Min.`;
-  const h = Math.round(m/60); if (h<24) return `vor ${h} Std.`; return `am ${fmt(new Date(iso),{day:"2-digit",month:"2-digit"})}`;
+  const h = Math.round(m/60); if (h<24) return `vor ${h} Std.`;
+  const d = Math.round(h/24); if (d<7) return `vor ${d} Tag${d>1?"en":""}`;
+  return `am ${fmt(new Date(iso),{day:"2-digit",month:"2-digit"})}`;
+}
+function when(iso){                     // "heute 18:30", "morgen 19:00", "Do 26.11., 18:30"
+  const d = new Date(iso), k = dayKey(d), t = fmt(d,{hour:"2-digit",minute:"2-digit"});
+  const today = dayKey(new Date()), tom = dayKey(new Date(Date.now()+864e5)), yest = dayKey(new Date(Date.now()-864e5));
+  if (k===today) return `heute ${t}`; if (k===tom) return `morgen ${t}`; if (k===yest) return `gestern ${t}`;
+  return `${fmt(d,{weekday:"short",day:"2-digit",month:"2-digit"})}, ${t}`;
 }
 function toLocalInput(iso){
   const d = new Date(iso);
   const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA",{timeZone:TZ,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(d).map(x=>[x.type,x.value]));
   return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}`;
 }
-function fromLocalInput(v){           // "2026-11-23T18:00" (Berlin) -> ISO mit Offset
+function fromLocalInput(v){
   for (const off of ["+01:00","+02:00"]) { const iso = `${v}:00${off}`; if (toLocalInput(iso)===v) return iso; }
   return `${v}:00+01:00`;
 }
+function addDays(ymd, n){ const d = new Date(ymd+"T12:00:00Z"); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); }
+const wdOf = ymd => DAYS[(new Date(ymd+"T12:00:00Z").getUTCDay()+6)%7];
 
 /* ------------------------------------------------------------ Hilfen */
-const chan = id => S.channels.find(c=>c.id===id) || {id, handle:id, _color:"#999"};
+const chan = id => S.channels.find(c=>c.id===id) || {id, handle:id, _color:"#999", _topics:[]};
+const inFilter = p => S.filter==="all" || p.channel===S.filter;
 function pendingFor(pid){ return S.inbox.filter(i=>i.job.post_id===pid).map(i=>i.job); }
-function viewPost(pid){             // Post inkl. noch nicht übernommener Cockpit-Entscheidungen
+function viewPost(pid){
   const p = {...S.state.posts[pid], id:pid};
   const pend = pendingFor(pid);
   for (const j of pend){
@@ -292,101 +423,254 @@ function viewPost(pid){             // Post inkl. noch nicht übernommener Cockp
     if (j.action==="regenerate") p._regen=true;
   }
   p._pending = pend.length>0;
+  p._late = p.status==="draft" && p.scheduled && new Date(p.scheduled) < Date.now();
   return p;
 }
+function allPosts(){ return Object.keys(S.state.posts).map(viewPost).filter(p=>p.status!=="replaced"); }
+const cover = p => p.thumb && p.pruned ? p.thumb : ((p.urls||[])[0] || p.thumb || "");
+function topicsLeft(c){ const cs = S.state.channels[c.id] || {}; return Math.max(0, (c._topics||[]).length - (cs.topic_index||0)); }
+const isReel = c => c.format==="reel_aktien";
 function toast(t){ const el=document.createElement("div"); el.className="toast"; el.textContent=t; document.body.appendChild(el); setTimeout(()=>el.remove(),3200); }
 const BADGE = {draft:["b-draft","Entwurf"],approved:["b-approved","Freigegeben"],published:["b-published","Veröffentlicht"],rejected:["b-rejected","Verworfen"]};
 function badge(p){
-  if (p._regen) return `<span class="badge b-pend">wird neu geschrieben …</span>`;
-  const late = p.status==="draft" && p.scheduled && new Date(p.scheduled) < Date.now();
-  const [c,t] = late ? ["b-late","Termin verpasst"] : (BADGE[p.status]||["b-pub",p.status]);
+  if (p._regen) return `<span class="badge b-pend">wird neu erzeugt …</span>`;
+  const [c,t] = p._late ? ["b-late","Termin verpasst"] : (BADGE[p.status]||["b-pub",p.status]);
   return `<span class="badge ${c}">${t}</span>${p._pending?` <span class="badge b-pend">wird übernommen</span>`:""}`;
 }
+function num(n){ if (n==null) return "–"; return n>=10000 ? (n/1000).toFixed(n>=100000?0:1).replace(".",",")+"k" : n.toLocaleString("de-DE"); }
+/* Termine eines Kanals im Zeitraum [fromYmd, toYmd] laut Posting-Tagen */
+function slotsBetween(c, fromYmd, toYmd){
+  const out=[]; const [hh,mm] = (c.time||"18:00").split(":");
+  for (let d=fromYmd; d<=toYmd; d=addDays(d,1)){
+    if (!(c.days||[]).includes(wdOf(d))) continue;
+    out.push(fromLocalInput(`${d}T${hh.padStart(2,"0")}:${mm}`));
+  }
+  return out;
+}
+function postAt(c, iso){
+  const k = toLocalInput(iso);
+  return allPosts().find(p=>p.channel===c.id && p.scheduled && toLocalInput(p.scheduled)===k && ["draft","approved","published"].includes(p.status));
+}
 
-/* ------------------------------------------------------------ Ansichten */
+/* ------------------------------------------------------------ Rahmen */
 function render(){
   document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on", t.dataset.v===S.view));
+  try{ localStorage.setItem("ck_view", S.view); localStorage.setItem("ck_filter", S.filter); }catch{}
   const app = $("#app");
-  if (!DEMO && !token()) { app.innerHTML = setupView(); bindSetup(); $("#status").innerHTML = `<span class="dot"></span><span class="txt">nicht verbunden</span>`; return; }
+  if (!DEMO && !token()) { $("#chanbar").innerHTML=""; app.innerHTML = setupView(); bindSetup(); $("#status").innerHTML = `<span class="dot"></span><span class="txt">nicht verbunden</span>`; return; }
   if (!S.loaded) { app.innerHTML = `<p class="muted" style="margin-top:30px"><span class="spin"></span> Lade Daten aus GitHub …</p>`; return; }
-  app.innerHTML = S.view==="plan" ? planView() : S.view==="channels" ? channelsView() : logView();
+  const open = allPosts().filter(p=>p.status==="draft" && !p._regen).length;
+  const tabToday = document.querySelector('.tab[data-v="today"] span:last-child');
+  tabToday.innerHTML = `Heute${open?` <span class="cnt">${open}</span>`:""}`;
+  const showBar = ["today","week","posts"].includes(S.view);
+  $("#chanbar").style.display = showBar ? "" : "none";
+  $("#chanbar").innerHTML = showBar ? `<button class="chip ${S.filter==="all"?"on":""}" data-filter="all">Alle Kanäle</button>` +
+    S.channels.map(c=>`<button class="chip ${S.filter===c.id?"on":""}" data-filter="${c.id}"><span class="cdot" style="background:${c._color}"></span>${esc(c.handle)}${c.active?"":" <span style='opacity:.6'>(pausiert)</span>"}</button>`).join("") : "";
+  app.innerHTML = {today:todayView, week:weekView, posts:postsView, channels:channelsView, log:logView}[S.view]();
   setStatus();
 }
 
-function planView(){
-  const posts = Object.keys(S.state.posts).map(viewPost)
-    .filter(p=>p.scheduled && p.status!=="replaced")
-    .filter(p=>S.filter==="all" || p.channel===S.filter);
-  const nowT = Date.now(), weekAgo = nowT-7*864e5;
-  const open = posts.filter(p=>["draft","approved"].includes(p.status));
-  const late = open.filter(p=>p.status==="draft" && new Date(p.scheduled)<nowT);
-  const upcoming = posts.filter(p=>new Date(p.scheduled)>=nowT || (S.showDone && new Date(p.scheduled)>=weekAgo))
-                        .filter(p=>S.showDone || ["draft","approved"].includes(p.status))
-                        .filter(p=>!late.includes(p))
-                        .sort((a,b)=>a.scheduled.localeCompare(b.scheduled));
-  const drafts = open.filter(p=>p.status==="draft").length, appr = open.filter(p=>p.status==="approved").length;
-  const nextAppr = open.filter(p=>p.status==="approved" && new Date(p.scheduled)>=nowT).sort((a,b)=>a.scheduled.localeCompare(b.scheduled))[0];
-  const coveredUntil = open.filter(p=>p.status==="approved").map(p=>p.scheduled).sort().pop();
-  const chipsHtml = `<button class="chip ${S.filter==="all"?"on":""}" data-filter="all">Alle Kanäle</button>` +
-    S.channels.map(c=>`<button class="chip ${S.filter===c.id?"on":""}" data-filter="${c.id}"><span class="cdot" style="background:${c._color}"></span>${esc(c.handle)}${c.active?"":" <span class='muted'>(pausiert)</span>"}</button>`).join("");
-  let html = `
-  <div class="kpis">
-    <div class="kpi ${drafts?"warn":""}"><b>${drafts}</b><small>warten auf Freigabe</small></div>
-    <div class="kpi"><b>${appr}</b><small>freigegeben &amp; eingeplant</small></div>
-    <div class="kpi"><b>${nextAppr?fmt(new Date(nextAppr.scheduled),{weekday:"short",hour:"2-digit",minute:"2-digit"}):"–"}</b><small>nächster Post geht raus</small></div>
-    <div class="kpi"><b>${coveredUntil?fmt(new Date(coveredUntil),{day:"2-digit",month:"2-digit"}):"–"}</b><small>freigegeben bis</small></div>
-  </div>
-  <div class="row" style="margin-top:16px;justify-content:space-between">
-    <div class="chips">${chipsHtml}</div>
-  </div>
-  <div class="row" style="margin-top:12px">
-    <button class="btn pri" data-act="plan">＋ Vorproduzieren</button>
-    <button class="btn" data-act="addpost">Eigener Post</button>
-    <label class="switch small" style="margin-left:auto"><input type="checkbox" id="showDone" ${S.showDone?"checked":""}> Erledigte zeigen</label>
-  </div>`;
-  if (late.length){
-    html += `<h2>Termin verpasst – nicht freigegeben</h2>` + late.map(postRow).join("") +
-      `<p class="small muted" style="margin:4px 2px 0">Freigeben = geht sofort raus. Oder neuen Termin setzen bzw. verwerfen.</p>`;
+/* ------------------------------------------------------------ Heute */
+function tasks(){
+  const nowT = Date.now(), out = [];
+  const posts = allPosts().filter(inFilter);
+  const drafts = posts.filter(p=>p.status==="draft" && !p._regen && !p._late).sort((a,b)=>(a.scheduled||"").localeCompare(b.scheduled||""));
+  const late = posts.filter(p=>p._late && !p._regen);
+  if (drafts.length){
+    const n = drafts[0], c = chan(n.channel);
+    const urgent = n.scheduled && new Date(n.scheduled)-nowT < 30*36e5;
+    out.push({cls:urgent?"t-bad":"t-draft", icon:"📝", title:`${drafts.length} Entwurf${drafts.length>1?"e warten":" wartet"} auf deine Freigabe`,
+      sub:`Als Nächstes: ${esc(n.topic)} · ${esc(c.handle)} · ${when(n.scheduled)}`, btn:`<button class="btn ${urgent?"pri":"pri"}" data-stack="drafts">Durchgehen</button>`});
   }
-  html += `<h2>Kommende Termine</h2>`;
-  if (!upcoming.length) html += `<div class="empty">Noch nichts geplant.<br>Tipp auf <b>Vorproduzieren</b> – Claude schreibt Entwürfe für die freien Termine, du gibst sie hier frei.</div>`;
-  let cur="";
-  for (const p of upcoming){
-    const d = new Date(p.scheduled), k = dayKey(d);
-    if (k!==cur){
-      if (cur) html += `</div>`;
-      cur=k;
-      const isToday = k===dayKey(new Date());
-      html += `<div class="day"><div class="dayh ${isToday?"today":""}"><b>${fmt(d,{weekday:"long"})}</b><span>${fmt(d,{day:"numeric",month:"long"})}</span></div>`;
+  if (late.length) out.push({cls:"t-bad", icon:"⏰", title:`${late.length} Termin${late.length>1?"e":""} verpasst – nicht freigegeben`,
+      sub:"Freigeben = geht sofort raus. Oder neuen Termin setzen bzw. verwerfen.", btn:`<button class="btn" data-stack="late">Ansehen</button>`});
+  for (const p of posts.filter(p=>p.status==="approved" && p.error))
+    out.push({cls:"t-bad", icon:"⚠️", title:`Posten fehlgeschlagen: ${esc(p.topic)}`, sub:esc(p.error), btn:`<button class="btn" data-open="${p.id}">Öffnen</button>`});
+  // Lücken: aktive Kanäle mit Termin in den nächsten 2 Tagen, für den es gar keinen Post gibt
+  const today = dayKey(new Date());
+  for (const c of S.channels.filter(c=>c.active && (S.filter==="all"||S.filter===c.id))){
+    const gaps = slotsBetween(c, today, addDays(today,2)).filter(iso=>new Date(iso)>nowT && !postAt(c, iso));
+    if (gaps.length) out.push({cls:"t-draft", icon:"🕳️", title:`${esc(c.handle)}: ${when(gaps[0])} ist nichts geplant`,
+      sub:gaps.length>1?`und ${gaps.length-1} weitere${gaps.length>2?"":"r"} Termin${gaps.length>2?"e":""} in den nächsten 2 Tagen`:"Claude kann jetzt einen Entwurf schreiben.",
+      btn:`<button class="btn" data-plan-now="${c.id}">Entwurf erstellen</button>`});
+    if (!isReel(c)){
+      const left = topicsLeft(c);
+      if (left<6) out.push({cls:left?"t-draft":"t-bad", icon:"💡", title:left?`${esc(c.handle)}: nur noch ${left} Themen übrig`:`${esc(c.handle)}: Themenliste aufgebraucht`,
+        sub:"Ohne Themen produziert der Autopilot hier nichts vor.", btn:`<button class="btn" data-edit="topics" data-id="${c.id}">Themen</button>`});
     }
-    html += postRow(p);
+    if (c._pruefen) out.push({cls:"t-draft", icon:"🔎", title:`${esc(c.handle)}: ${c._pruefen} Fakten ungeprüft`, sub:"Mit [PRÜFEN] markierte Zeilen an der Quelle prüfen.", btn:`<button class="btn" data-edit="facts" data-id="${c.id}">Fakten</button>`});
   }
-  if (cur) html += `</div>`;
+  // Warnungen aus dem Protokoll (48 Std.), nur wenn sie nicht schon oben stehen
+  const seen = new Set();
+  for (const e of (S.state.log||[])){
+    if (new Date(e.t) < nowT-48*36e5) break;
+    if (!/⚠️|fehlgeschlagen|Fehler/.test(e.msg) || /Themenliste/.test(e.msg) || seen.has(e.msg)) continue;
+    if (S.filter!=="all" && !e.msg.includes(chan(S.filter).handle)) continue;
+    seen.add(e.msg);
+    out.push({cls:"t-info", icon:"ℹ️", title:esc(e.msg.replace(/^⚠️\s*/,"")).slice(0,160), sub:rel(e.t), btn:""});
+    if (seen.size>=3) break;
+  }
+  const last = S.runs.find(r=>r.status==="completed"), busy = S.runs.some(r=>r.status!=="completed");
+  const lastT = last ? new Date(last.updated_at) : (S.state.last_run ? new Date(S.state.last_run) : null);
+  if (!busy && lastT && nowT-lastT > 3*36e5)
+    out.push({cls:"t-info", icon:"🤖", title:`Autopilot lief seit ${Math.round((nowT-lastT)/36e5)} Std. nicht`, sub:"GitHub lässt geplante Läufe manchmal aus. Freigegebene Posts holt der nächste Lauf nach.", btn:`<button class="btn" data-act="kick">Jetzt starten</button>`});
+  return out;
+}
+function tile(p, {big=false}={}){
+  const c = chan(p.channel);
+  const st = p.status==="published" ? "" : p._late ? "s-late" : p.status==="draft" ? "s-draft" : p.status==="approved" ? "s-approved" : "";
+  const img = cover(p);
+  const s = p.stats || {};
+  const statHtml = p.status==="published" && (s.likes!=null || s.views!=null || s.reach!=null)
+    ? `<div class="stat">${s.views!=null?`<span>▶ ${num(s.views)}</span>`:s.reach!=null?`<span>👁 ${num(s.reach)}</span>`:""}${s.likes!=null?`<span>♥ ${num(s.likes)}</span>`:""}${s.comments?`<span>💬 ${num(s.comments)}</span>`:""}</div>` : "";
+  const label = p.status==="published" ? (p.published?when(p.published):"") : (p.scheduled?when(p.scheduled):"ohne Termin");
+  return `<div class="tile ${st} ${p.status==="rejected"?"dim":""}" data-open="${p.id}" title="${esc(p.topic)}">
+    ${img?`<img loading="lazy" src="${esc(img)}" alt="" onerror="this.remove()">`:""}<div class="noimg" ${img?'style="z-index:-1"':""}>${esc(p.topic)}</div>
+    <div class="tt">${S.filter==="all"?`<span class="cdot" style="background:${c._color}"></span>`:""}${p.status!=="published"?badge(p):""}</div>
+    ${p.video?`<span class="vid">▶</span>`:""}
+    <div class="tb"><b>${esc(p.topic)}</b>${esc(label)}${statHtml}</div>
+  </div>`;
+}
+function todayView(){
+  const h = +fmt(new Date(),{hour:"2-digit",hourCycle:"h23"});
+  const hello = h<11?"Guten Morgen":h<18?"Hallo":"Guten Abend";
+  const posts = allPosts().filter(inFilter);
+  const nowT = Date.now();
+  const t = tasks();
+  const action = t.filter(x=>x.cls!=="t-info");
+  const appr = posts.filter(p=>p.status==="approved").map(p=>p.scheduled).sort();
+  const coveredUntil = appr.length ? appr[appr.length-1] : null;
+  const next = posts.filter(p=>["draft","approved"].includes(p.status) && p.scheduled && new Date(p.scheduled)>=nowT-36e5).sort((a,b)=>a.scheduled.localeCompare(b.scheduled)).slice(0,10);
+  const recent = posts.filter(p=>p.status==="published").sort((a,b)=>(b.published||"").localeCompare(a.published||"")).slice(0,10);
+  let html = `<div class="hello">${hello}</div>
+    <p class="sub">${action.length ? `${action.length} Sache${action.length>1?"n brauchen":" braucht"} dich.` : "Alles im Plan."}${coveredUntil?` Freigegeben bis <b style="color:var(--ink)">${fmt(new Date(coveredUntil),{weekday:"short",day:"2-digit",month:"2-digit"})}</b>.`:""}</p>`;
+  if (!action.length) html += `<div class="alldone"><span class="big">✓</span><div><b>Alles erledigt</b><br><span class="small">Kein Entwurf wartet, keine Lücke in den nächsten Tagen.</span></div></div>`;
+  if (t.length) html += `<div class="tasks">${t.map(x=>`<div class="task ${x.cls}"><div class="ti">${x.icon}</div><div class="tm"><div class="tt">${x.title}</div><div class="ts">${x.sub}</div></div>${x.btn}</div>`).join("")}</div>`;
+  html += `<h2>Als Nächstes <button class="more" data-goto="week">Woche ›</button></h2>`;
+  html += next.length ? `<div class="strip">${next.map(p=>tile(p)).join("")}</div>`
+    : `<div class="empty">Nichts geplant. <button class="btn sm" data-act="plan">＋ Vorproduzieren</button></div>`;
+  if (recent.length) html += `<h2>Zuletzt veröffentlicht <button class="more" data-goto="posts">Alle ›</button></h2><div class="strip">${recent.map(p=>tile(p)).join("")}</div>`;
+  html += `<h2>Kanäle</h2><div class="amp">${S.channels.filter(c=>S.filter==="all"||c.id===S.filter).map(ampCard).join("")}</div>`;
   return html;
 }
-function postRow(p){
-  const c = chan(p.channel);
-  const done = !["draft","approved"].includes(p.status);
-  const qa = p.status==="draft" && !p._regen
-    ? `<div class="qa"><button class="btn ok" title="Freigeben" data-quick="approve" data-id="${p.id}">✓</button><button class="btn danger" title="Verwerfen" data-quick="reject" data-id="${p.id}">✕</button></div>` : "";
-  return `<div class="post ${done?"done":""}" data-open="${p.id}">
-    <img class="thumb" loading="lazy" src="${esc((p.urls||[])[0]||"")}" alt="">
-    <div class="pmain">
-      <div class="ptop"><span class="cdot" style="background:${c._color}"></span>${esc(c.handle)} · ${fmt(new Date(p.scheduled),{hour:"2-digit",minute:"2-digit"})} ${badge(p)}</div>
-      <div class="ptitle">${p.video?"🎬 ":""}${esc(p.topic)}</div>
-      ${p.error?`<div class="small" style="color:var(--bad)">⚠️ ${esc(p.error)}</div>`:""}
-    </div>${qa}</div>`;
+function ampCard(c){
+  const posts = allPosts().filter(p=>p.channel===c.id);
+  const nowT = Date.now();
+  const appr = posts.filter(p=>p.status==="approved").map(p=>p.scheduled).sort();
+  const dr = posts.filter(p=>p.status==="draft" && !p._late).length;
+  const pub = posts.filter(p=>p.status==="published").sort((a,b)=>(b.published||"").localeCompare(a.published||""));
+  const left = topicsLeft(c);
+  const today = dayKey(new Date());
+  const gaps = c.active ? slotsBetween(c, today, addDays(today,2)).filter(iso=>new Date(iso)>nowT && !postAt(c, iso)).length : 0;
+  const errs = posts.some(p=>p.status==="approved" && p.error) || posts.some(p=>p._late);
+  let light = "var(--ok)", lt="läuft";
+  if (!c.active){ light="#A3A3A3"; lt="pausiert"; }
+  else if (errs || (!isReel(c) && left===0)) { light="var(--bad)"; lt="braucht dich"; }
+  else if (dr || gaps || (!isReel(c) && left<6)) { light="var(--draft)"; lt="bald etwas tun"; }
+  const likes = pub.slice(0,10).map(p=>p.stats?.likes).filter(x=>x!=null);
+  return `<div class="ampc" data-goto="posts" data-filter-to="${c.id}">
+    <div class="amph"><span class="cdot" style="background:${c._color};width:11px;height:11px"></span><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(c.handle)}</span><span class="lt" style="color:${light}">${lt}</span><span class="light" style="background:${light}"></span></div>
+    <div class="ampl">
+      <span>Freigegeben bis <b>${appr.length?fmt(new Date(appr[appr.length-1]),{weekday:"short",day:"2-digit",month:"2-digit"}):"–"}</b></span>
+      <span><b>${dr}</b> Entwürfe offen</span>
+      <span>${isReel(c)?"Themen: <b>Claude wählt</b>":`<b class="${left<6?"warn":""}">${left}</b> Themen übrig`}</span>
+      <span>Letzter Post <b>${pub[0]?rel(pub[0].published):"–"}</b></span>
+      ${likes.length?`<span>Ø Likes (letzte ${likes.length}) <b>${Math.round(likes.reduce((a,b)=>a+b,0)/likes.length)}</b></span>`:""}
+      <span><b>${pub.length}</b> veröffentlicht</span>
+    </div></div>`;
 }
 
+/* ------------------------------------------------------------ Woche */
+function weekView(){
+  const today = dayKey(new Date());
+  const monday = addDays(today, -((new Date(today+"T12:00:00Z").getUTCDay()+6)%7) + S.weekOffset*7);
+  const days = [...Array(7)].map((_,i)=>addDays(monday,i));
+  const posts = allPosts().filter(inFilter).filter(p=>p.scheduled || p.published);
+  const nowT = Date.now();
+  const kw = (()=>{ const d=new Date(monday+"T12:00:00Z"); d.setUTCDate(d.getUTCDate()+3); const y=new Date(Date.UTC(d.getUTCFullYear(),0,4)); return 1+Math.round(((d-y)/864e5-3+((y.getUTCDay()+6)%7))/7); })();
+  let html = `<div class="weekbar"><b>KW ${kw} · ${fmt(new Date(monday+"T12:00:00Z"),{day:"numeric",month:"short"})} – ${fmt(new Date(addDays(monday,6)+"T12:00:00Z"),{day:"numeric",month:"short"})}</b>
+    <button class="btn sm" data-week="-1">‹</button><button class="btn sm" data-week="0">Heute</button><button class="btn sm" data-week="1">›</button>
+    <button class="btn sm pri" data-act="plan">＋ Vorproduzieren</button><button class="btn sm" data-act="addpost">Eigener Post</button></div><div class="week">`;
+  for (const d of days){
+    const isPast = d < today;
+    const items = posts.filter(p=>dayKey(p.status==="published" && p.published ? p.published : p.scheduled)===d && p.status!=="rejected")
+                       .sort((a,b)=>(a.scheduled||a.published).localeCompare(b.scheduled||b.published));
+    let cards = items.map(p=>{
+      const c = chan(p.channel);
+      const st = p._late ? "st-late" : "st-"+p.status;
+      const t = fmt(new Date(p.status==="published"&&p.published?p.published:p.scheduled),{hour:"2-digit",minute:"2-digit"});
+      return `<div class="wcard ${st}" data-open="${p.id}"><img loading="lazy" src="${esc(cover(p))}" alt="" onerror="this.style.visibility='hidden'"><div class="wm"><b>${p.video?"▶ ":""}${esc(p.topic)}</b><div><span class="cdot" style="background:${c._color};width:7px;height:7px"></span> ${t} · ${esc(c.handle)}</div></div></div>`;
+    }).join("");
+    if (!isPast){
+      for (const c of S.channels.filter(c=>c.active && (S.filter==="all"||S.filter===c.id))){
+        for (const iso of slotsBetween(c, d, d)){
+          if (new Date(iso) < nowT || postAt(c, iso)) continue;
+          cards += `<div class="wfree" data-plan-now="${c.id}" title="Entwurf für diesen Termin erstellen"><span class="cdot" style="background:${c._color};width:7px;height:7px"></span>frei · ${fmt(new Date(iso),{hour:"2-digit",minute:"2-digit"})} · ${esc(c.handle)}</div>`;
+        }
+      }
+    }
+    const dd = new Date(d+"T12:00:00Z");
+    html += `<div class="wday ${d===today?"today":""} ${isPast?"past":""}"><div class="wdh"><b>${fmt(dd,{weekday:"short"})}</b><span>${fmt(dd,{day:"numeric",month:"numeric"})}</span>${d===today?`<span class="badge" style="background:var(--ink);color:#fff;margin-left:auto">Heute</span>`:""}</div>${cards||`<span class="small muted">–</span>`}</div>`;
+  }
+  html += `</div><div class="legend"><span><i style="background:var(--draft)"></i>Entwurf</span><span><i style="background:var(--ok)"></i>freigegeben</span><span><i style="background:#A3A3A3"></i>veröffentlicht</span><span><i style="background:var(--bad)"></i>verpasst / Fehler</span><span><i style="border:1.5px dashed #bbb"></i>freier Termin</span></div>`;
+  return html;
+}
+
+/* ------------------------------------------------------------ Beiträge (Kanal-Ansicht) */
+function postsView(){
+  const posts = allPosts().filter(inFilter);
+  const nowT = Date.now();
+  const upcoming = posts.filter(p=>["draft","approved"].includes(p.status)).sort((a,b)=>(a.scheduled||"9").localeCompare(b.scheduled||"9"));
+  const published = posts.filter(p=>p.status==="published").sort((a,b)=>(b.published||"").localeCompare(a.published||""));
+  const rejected = posts.filter(p=>p.status==="rejected").sort((a,b)=>(b.created||"").localeCompare(a.created||""));
+  let html = "";
+  if (S.filter!=="all"){
+    const c = chan(S.filter);
+    const s = published.map(p=>p.stats||{});
+    const sum = k => s.reduce((a,x)=>a+(x[k]||0),0), has = k => s.some(x=>x[k]!=null);
+    const handle = (c.handle||"").replace(/^@/,"");
+    html += `<div class="chhead"><div class="avatar" style="background:${c._color}">${esc((c.name||c.handle||"?").replace(/^@/,"")[0].toUpperCase())}</div>
+      <div style="min-width:0;flex:1"><h1>${esc(c.name||c.handle)}</h1><div class="muted small">${esc(c.handle)} · ${c.active?"aktiv":"pausiert"} · postet ${(c.days||[]).map(d=>DAYNAMES[d]).join(", ")||"–"} um ${esc(c.time||"–")}</div></div>
+      <div class="row"><a class="btn sm" href="https://www.instagram.com/${esc(handle)}/" target="_blank" rel="noopener">Profil auf Instagram ↗</a><button class="btn sm" data-act="plan" data-id="${c.id}">＋ Vorproduzieren</button></div></div>
+      <div class="chstats">
+        <div><b>${published.length}</b><small>veröffentlicht</small></div>
+        <div><b>${upcoming.filter(p=>p.status==="approved").length}</b><small>freigegeben</small></div>
+        <div><b>${upcoming.filter(p=>p.status==="draft").length}</b><small>Entwürfe</small></div>
+        ${has("likes")?`<div><b>${num(sum("likes"))}</b><small>Likes gesamt</small></div>`:""}
+        ${has("views")?`<div><b>${num(sum("views"))}</b><small>Aufrufe gesamt</small></div>`:has("reach")?`<div><b>${num(sum("reach"))}</b><small>Reichweite gesamt</small></div>`:""}
+        ${has("saved")?`<div><b>${num(sum("saved"))}</b><small>gespeichert</small></div>`:""}
+        ${isReel(c)?"":`<div><b>${topicsLeft(c)}</b><small>Themen übrig</small></div>`}
+      </div>`;
+  } else {
+    html += `<div class="row" style="margin-top:20px"><button class="btn pri" data-act="plan">＋ Vorproduzieren</button><button class="btn" data-act="addpost">Eigener Post</button></div>`;
+  }
+  const dr = upcoming.filter(p=>p.status==="draft" && !p._regen).length;
+  html += `<h2>Kommend (${upcoming.length})${dr?` <button class="btn sm pri" style="margin-left:auto;text-transform:none;letter-spacing:0" data-stack="drafts">✓ ${dr} Entwurf${dr>1?"e":""} durchgehen</button>`:""}</h2>`;
+  html += upcoming.length ? `<div class="grid">${upcoming.map(p=>tile(p)).join("")}</div>`
+    : `<div class="empty">Nichts geplant – tippe auf <b>Vorproduzieren</b>.</div>`;
+  html += `<h2>Veröffentlicht (${published.length})</h2>`;
+  html += published.length ? `<div class="grid">${published.slice(0, S.showAllPub?9999:24).map(p=>tile(p)).join("")}</div>` +
+      (published.length>24 && !S.showAllPub ? `<div class="row" style="margin-top:10px"><button class="btn sm" data-act="morepub">Alle ${published.length} zeigen</button></div>` : "")
+    : `<div class="empty">Noch nichts veröffentlicht.</div>`;
+  if (published.length && !published.some(p=>p.stats))
+    html += `<p class="small muted" style="margin-top:10px">Likes und Aufrufe erscheinen nach dem nächsten Lauf des Autopiloten.</p>`;
+  else if (published.length && S.state.insights_off)
+    html += `<p class="small muted" style="margin-top:10px">Reichweite/Aufrufe: Der Instagram-Zugang hat keine Statistik-Berechtigung – angezeigt werden Likes und Kommentare.</p>`;
+  if (rejected.length){
+    html += `<h2>Verworfen (${rejected.length}) <button class="more" data-act="togglerej">${S.showRej?"ausblenden":"anzeigen"}</button></h2>`;
+    if (S.showRej) html += `<div class="grid">${rejected.map(p=>tile(p)).join("")}</div>`;
+  }
+  return html;
+}
+
+/* ------------------------------------------------------------ Kanäle (Einstellungen) */
 function channelsView(){
   let html = `<div class="row" style="margin-top:18px"><button class="btn pri" data-act="newchannel">＋ Neuen Kanal anlegen</button></div>`;
   for (const c of S.channels){
-    const cs = S.state.channels[c.id] || {topic_index:0};
-    const left = Math.max(0, c._topics.length - (cs.topic_index||0));
+    const left = topicsLeft(c);
     const posts = Object.values(S.state.posts).filter(p=>p.channel===c.id);
     const pub = posts.filter(p=>p.status==="published").sort((a,b)=>(b.published||"").localeCompare(a.published||""));
     const dr = posts.filter(p=>p.status==="draft").length, ap = posts.filter(p=>p.status==="approved").length;
-    const isReel = c.format==="reel_aktien";
     const missing = [];
     if (!c.ig_user_id) missing.push("Instagram-ID fehlt");
     if (c._pruefen) missing.push(`${c._pruefen} Fakten noch ungeprüft`);
@@ -396,7 +680,7 @@ function channelsView(){
         <label class="switch" style="margin-left:auto"><input type="checkbox" data-field="active" ${c.active?"checked":""}> ${c.active?"Aktiv":"Pausiert"}</label></div>
       ${c.note?`<div class="infobox">${esc(c.note)}</div>`:""}
       <div class="stats"><span><b>${pub.length}</b> veröffentlicht</span><span><b>${ap}</b> freigegeben</span><span><b>${dr}</b> Entwürfe</span>
-        ${isReel?`<span>Reels: Claude wählt aus DAX &amp; S&amp;P 500</span>`:`<span style="${left<6?"color:var(--bad)":""}"><b style="${left<6?"color:var(--bad)":""}">${left}</b> Themen übrig</span>`}
+        ${isReel(c)?`<span>Reels: Claude wählt aus DAX &amp; S&amp;P 500</span>`:`<span style="${left<6?"color:var(--bad)":""}"><b style="${left<6?"color:var(--bad)":""}">${left}</b> Themen übrig</span>`}
         ${pub[0]?`<span>zuletzt ${rel(pub[0].published)}</span>`:""}</div>
       ${missing.length?`<div class="warnbox">Vor dem Aktivieren: ${missing.join(" · ")}</div>`:""}
       <div class="grid2">
@@ -408,10 +692,10 @@ function channelsView(){
       </div>
       <div class="actions">
         <button class="btn pri sm" data-save="${c.id}">Speichern</button>
-        <button class="btn sm" data-edit="topics" data-id="${c.id}">${isReel?`Wunschliste (${left})`:`Themen (${left})`}</button>
-        ${isReel?"":`<button class="btn sm" data-edit="facts" data-id="${c.id}">Fakten${c._pruefen?` ⚠️`:""}</button>`}
+        <button class="btn sm" data-edit="topics" data-id="${c.id}">${isReel(c)?`Wunschliste (${left})`:`Themen (${left})`}</button>
+        ${isReel(c)?"":`<button class="btn sm" data-edit="facts" data-id="${c.id}">Fakten${c._pruefen?` ⚠️`:""}</button>`}
         <button class="btn sm" data-edit="style" data-id="${c.id}">Stil</button>
-        <button class="btn sm" data-act="plan" data-id="${c.id}">Vorproduzieren</button>
+        <button class="btn sm" data-goto="posts" data-filter-to="${c.id}">Beiträge ansehen</button>
       </div>
     </div>`;
   }
@@ -420,9 +704,10 @@ function channelsView(){
 
 function logView(){
   const entries = S.state.log || [];
-  const runs = S.runs.map(r=>`<div><time>${rel(r.updated_at)}</time><span>${r.status!=="completed"?"läuft":r.conclusion==="success"?"✓ erfolgreich":"✕ "+esc(r.conclusion)} · ${r.event==="schedule"?"stündlich":"vom Cockpit"} · <a href="${esc(r.html_url)}" target="_blank" rel="noopener">Details</a></span></div>`).join("");
+  const runs = S.runs.map(r=>`<div><time>${rel(r.updated_at)}</time><span>${r.status!=="completed"?"läuft":r.conclusion==="success"?"✓ erfolgreich":"✕ "+esc(r.conclusion)} · ${r.event==="schedule"?"automatisch":"vom Cockpit"} · <a href="${esc(r.html_url)}" target="_blank" rel="noopener">Details</a></span></div>`).join("");
   return `<h2>Was passiert ist</h2><div class="log">${entries.length?entries.map(e=>`<div><time>${fmt(new Date(e.t),{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})}</time><span>${esc(e.msg)}</span></div>`).join(""):`<div><span class="muted">Noch keine Einträge.</span></div>`}</div>
   <h2>Läufe des Autopiloten</h2><div class="log">${runs||`<div><span class="muted">keine</span></div>`}</div>
+  <div class="row" style="margin-top:10px"><button class="btn sm" data-act="kick">Autopilot jetzt starten</button></div>
   <h2>Gerät</h2><div class="row"><button class="btn sm danger" data-act="logout">Zugangsschlüssel auf diesem Gerät löschen</button></div>`;
 }
 
@@ -459,14 +744,27 @@ function sheet(title, body, onBind){
   onBind && onBind(ov, ()=>ov.remove());
   return ov;
 }
+function mediaHtml(p, h="min(62vh,540px)"){
+  if (p.video_url && !p.pruned) return `<div class="slides"><video controls playsinline preload="metadata" poster="${esc((p.urls||[])[0]||"")}" src="${esc(p.video_url)}" style="height:${h};aspect-ratio:9/16;border-radius:10px;background:#000"></video></div>`;
+  const urls = p.pruned ? (p.thumb?[p.thumb]:[]) : (p.urls||[]);
+  if (!urls.length) return `<div class="empty">Keine Vorschau mehr gespeichert.</div>`;
+  return `<div class="slides">${urls.map(u=>`<img src="${esc(u)}" loading="lazy" alt="">`).join("")}</div>`;
+}
+function statsHtml(p){
+  const s = p.stats; if (!s) return "";
+  const items = [["views","Aufrufe"],["reach","Reichweite"],["likes","Likes"],["comments","Kommentare"],["saved","Gespeichert"],["shares","Geteilt"]].filter(([k])=>s[k]!=null);
+  if (!items.length) return "";
+  return `<div class="pstats">${items.map(([k,t])=>`<div><b>${num(s[k])}</b>${t}</div>`).join("")}<div style="margin-left:auto;align-self:end">Stand ${rel(s.at)}</div></div>`;
+}
 
 function openPost(pid){
   const p = viewPost(pid), c = chan(p.channel);
   const editable = ["draft","approved"].includes(p.status) && !p._regen;
   const body = `
-    <div class="ptop" style="margin-bottom:10px"><span class="cdot" style="background:${c._color}"></span>${esc(c.handle)} ${badge(p)}</div>
-    ${p.video_url ? `<div class="slides"><video controls playsinline preload="metadata" poster="${esc((p.urls||[])[0]||"")}" src="${esc(p.video_url)}" style="height:min(62vh,540px);aspect-ratio:9/16;border-radius:10px;background:#000"></video></div>`
-      : `<div class="slides">${(p.urls||[]).map(u=>`<img src="${esc(u)}" loading="lazy" alt="">`).join("")}</div>`}
+    <div class="row small" style="margin-bottom:10px;gap:8px"><span class="cdot" style="background:${c._color}"></span>${esc(c.handle)} ${badge(p)}
+      ${p.permalink?`<a class="btn sm" style="margin-left:auto" href="${esc(p.permalink)}" target="_blank" rel="noopener">Auf Instagram ansehen ↗</a>`:""}</div>
+    ${mediaHtml(p)}
+    ${statsHtml(p)}
     ${(p.check||[]).length?`<div class="checks"><b>Bitte prüfen</b><ul>${p.check.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:""}
     <div class="grid2" style="margin-top:12px">
       <label class="f">Termin<input type="datetime-local" id="pSched" value="${p.scheduled?toLocalInput(p.scheduled):""}" ${editable?"":"disabled"}></label>
@@ -474,17 +772,17 @@ function openPost(pid){
     </div>
     <label class="f" style="margin-top:10px">Caption<textarea id="pCap" rows="9" ${editable?"":"disabled"}>${esc(p.caption)}</textarea></label>
     ${p.error?`<div class="warnbox">Letzter Versuch fehlgeschlagen: ${esc(p.error)}</div>`:""}
-    ${p.published?`<p class="small muted">Veröffentlicht ${rel(p.published)}.</p>`:""}
+    ${p.published?`<p class="small muted">Veröffentlicht ${rel(p.published)} (${fmt(new Date(p.published),{weekday:"short",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})}).</p>`:""}
     <div class="actions">${editable ? `
       ${p.status==="draft"?`<button class="btn ok" data-a="approve">✓ Freigeben</button>`:`<button class="btn" data-a="unapprove">Freigabe zurücknehmen</button>`}
       <button class="btn" data-a="edit">Änderungen speichern</button>
-      <button class="btn" data-a="regen">🔁 Neu schreiben</button>
+      <button class="btn" data-a="regen">🔁 Neu erzeugen</button>
       <button class="btn danger" data-a="reject">Verwerfen</button>` : ""}
     </div>
     <div id="regenBox" style="display:none;margin-top:12px" class="card">
       <label class="f">${p.video?"Wunsch für das neue Reel (leer = Claude wählt neu)":"Anderes Thema (leer = gleiches Thema)"}<input type="text" id="rTopic" placeholder="${p.video?"z. B. Duell: Coca-Cola vs. Pepsi":esc(p.topic)}"></label>
       <label class="f" style="margin-top:8px">Was soll anders werden? (optional)<input type="text" id="rHint" placeholder="z. B. kürzer, anderer Einstieg, mehr Beispiel"></label>
-      <div class="actions"><button class="btn pri" data-a="regenGo">Neu schreiben lassen</button></div>
+      <div class="actions"><button class="btn pri" data-a="regenGo">Neu erzeugen lassen</button></div>
     </div>`;
   sheet(esc(p.topic), body, (ov, close)=>{
     ov.addEventListener("click", async e=>{
@@ -502,27 +800,95 @@ function openPost(pid){
       try{
         await sendJob(job);
         close();
-        toast({approve:"Freigegeben – geht zum Termin raus", unapprove:"Freigabe zurückgenommen", reject:"Verworfen", edit:"Gespeichert", regenGo:"Claude schreibt neu – dauert 1–3 Minuten"}[a]);
+        toast({approve:"Freigegeben – geht zum Termin raus", unapprove:"Freigabe zurückgenommen", reject:"Verworfen", edit:"Gespeichert", regenGo:"Wird neu erzeugt – dauert 1–3 Minuten"}[a]);
       }catch(err){ toast(err.message); e.target.disabled=false; }
     });
   });
 }
 
+/* ------------------------------------------------------------ Schnellfreigabe (Stapel) */
+function openStack(kind){
+  const nowT = Date.now();
+  let list = allPosts().filter(inFilter).filter(p=>p.status==="draft" && !p._regen);
+  list = kind==="late" ? list.filter(p=>p._late) : list.filter(p=>!p._late);
+  list.sort((a,b)=>(a.scheduled||"9").localeCompare(b.scheduled||"9"));
+  if (!list.length) return toast("Keine offenen Entwürfe");
+  let i = 0; const res = {approve:0, reject:0, regenerate:0, skip:0};
+  const el = document.createElement("div"); el.className="stack";
+  document.body.appendChild(el); document.body.style.overflow="hidden";
+  const close = ()=>{ el.remove(); document.body.style.overflow=""; document.removeEventListener("keydown", key); render(); };
+  function show(){
+    if (i>=list.length){
+      el.innerHTML = `<div class="stk-top"><div class="prog"><i style="width:100%"></i></div><button data-x>✕</button></div>
+        <div class="stk-done"><div><div class="big">🎉</div><h2 style="color:#fff;text-transform:none;letter-spacing:0;font-size:22px;justify-content:center">Durch!</h2>
+        <p style="color:#B9BBC3">${res.approve} freigegeben · ${res.regenerate} werden neu erzeugt · ${res.reject} verworfen · ${res.skip} übersprungen</p>
+        <button class="btn pri" data-x style="margin-top:10px;background:#fff;color:#111">Fertig</button></div></div>`;
+      return;
+    }
+    const p = list[i], c = chan(p.channel);
+    el.innerHTML = `<div class="stk-top"><span style="font-weight:700;white-space:nowrap">${i+1} / ${list.length}</span><div class="prog"><i style="width:${i/list.length*100}%"></i></div><button data-x title="Schließen (Esc)">✕</button></div>
+      <div class="stk-body">
+        <div class="stk-media">${mediaHtml(p, "min(calc(100vh - 190px),640px)")}</div>
+        <div class="stk-info">
+          <div class="meta"><span class="cdot" style="background:${c._color}"></span>${esc(c.handle)} · ${p.scheduled?when(p.scheduled):"ohne Termin"} ${p._late?`<span class="badge b-late">Termin verpasst – Freigeben postet sofort</span>`:""}</div>
+          <h3>${esc(p.topic)}</h3>
+          ${(p.check||[]).length?`<div class="checks"><b>Bitte prüfen</b><ul>${p.check.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:""}
+          <div class="cap">${esc(p.caption)}</div>
+          <div class="stk-regen" id="stkRegen"><input type="text" id="stkHint" placeholder="${p.video?"Wunsch, z. B. Duell: Visa vs. Mastercard (leer = Claude wählt)":"Was soll anders werden? (optional)"}"><button class="btn pri" data-s="regenGo">Los</button></div>
+          <p class="small" style="margin-top:12px"><a href="#" data-s="full" style="color:#B9BBC3">Caption oder Termin bearbeiten …</a></p>
+        </div>
+      </div>
+      <div class="stk-bar">
+        <button class="sb-no" data-s="reject">✕ Verwerfen <span class="kbd">X</span></button>
+        <button class="sb-re" data-s="regen">🔁 Neu <span class="kbd">N</span></button>
+        <button class="sb-skip" data-s="skip">Später › <span class="kbd">→</span></button>
+        <button class="sb-yes" data-s="approve">✓ Freigeben <span class="kbd">A</span></button>
+      </div>`;
+    const v = el.querySelector("video"); if (v){ v.muted = true; v.play().catch(()=>{}); }
+  }
+  async function act(a){
+    const p = list[i]; if (!p) return;
+    if (a==="regen"){ const b=$("#stkRegen",el); b.style.display="flex"; $("#stkHint",el).focus(); return; }
+    if (a==="full"){ close(); openPost(p.id); return; }
+    if (a==="skip"){ res.skip++; i++; show(); return; }
+    el.querySelectorAll(".stk-bar button,[data-s=regenGo]").forEach(b=>b.disabled=true);
+    try{
+      if (a==="regenGo"){ const h=$("#stkHint",el).value.trim(); await sendJob(p.video?{action:"regenerate",post_id:p.id,topic:h,hint:""}:{action:"regenerate",post_id:p.id,topic:"",hint:h},{quiet:true}); res.regenerate++; }
+      else { await sendJob({action:a, post_id:p.id},{quiet:true}); res[a]++; }
+      i++; show();
+    }catch(err){ toast(err.message); el.querySelectorAll(".stk-bar button").forEach(b=>b.disabled=false); }
+  }
+  function key(e){
+    if (e.target.tagName==="INPUT"){ if (e.key==="Enter") act("regenGo"); if (e.key==="Escape") e.target.blur(); return; }
+    if (e.key==="Escape") close();
+    else if (e.key==="ArrowRight") act("skip");
+    else if (e.key==="a"||e.key==="A") act("approve");
+    else if (e.key==="x"||e.key==="X") act("reject");
+    else if (e.key==="n"||e.key==="N") act("regen");
+  }
+  el.addEventListener("click", e=>{
+    if (e.target.closest("[data-x]")) return close();
+    const s = e.target.closest("[data-s]"); if (s){ e.preventDefault(); act(s.dataset.s); }
+  });
+  document.addEventListener("keydown", key);
+  show();
+}
+
 function openPlan(cid){
   const opts = S.channels.map(c=>`<option value="${c.id}" ${c.id===cid?"selected":""}>${esc(c.handle)}${c.active?"":" (pausiert)"}</option>`).join("");
   sheet("Vorproduzieren", `
-    <p class="small muted" style="margin-top:0">Claude füllt alle <b>freien Termine</b> (laut Posting-Tagen des Kanals) mit Entwürfen. Du gibst sie danach im Plan frei. Kosten: ca. 2–4 Cent pro Post.</p>
+    <p class="small muted" style="margin-top:0">Claude füllt alle <b>freien Termine</b> (laut Posting-Tagen des Kanals) mit Entwürfen. Du gibst sie danach frei. Kosten: ca. 2–4 Cent pro Post.</p>
     <div class="grid2">
       <label class="f">Kanal<select id="plCh"><option value="all" ${cid?"":"selected"}>Alle aktiven Kanäle</option>${opts}</select></label>
-      <label class="f">Zeitraum<select id="plDays"><option value="7">nächste 7 Tage</option><option value="14" selected>nächste 14 Tage</option><option value="21">nächste 21 Tage</option><option value="28">nächste 28 Tage</option></select></label>
+      <label class="f">Zeitraum<select id="plDays"><option value="3">nächste 3 Tage</option><option value="7">nächste 7 Tage</option><option value="14" selected>nächste 14 Tage</option><option value="21">nächste 21 Tage</option><option value="28">nächste 28 Tage</option></select></label>
     </div>
     <div id="plInfo" class="infobox"></div>
     <div class="actions"><button class="btn pri" id="plGo">Entwürfe erstellen</button></div>`, (ov, close)=>{
       const info = ()=>{
         const ch = $("#plCh",ov).value, days = +$("#plDays",ov).value;
         const list = ch==="all" ? S.channels.filter(c=>c.active) : [chan(ch)];
-        const parts = list.map(c=>{ const n = freeSlots(c, days); const cs=S.state.channels[c.id]||{}; const left=Math.max(0,c._topics.length-(cs.topic_index||0));
-          return `${esc(c.handle)}: ${n} freie Termine${c.format!=="reel_aktien" && left<n?` – <b style="color:var(--bad)">nur ${left} Themen übrig</b>`:""}`; });
+        const parts = list.map(c=>{ const n = freeSlots(c, days); const left=topicsLeft(c);
+          return `${esc(c.handle)}: ${n} freie Termine${!isReel(c) && left<n?` – <b style="color:var(--bad)">nur ${left} Themen übrig</b>`:""}`; });
         $("#plInfo",ov).innerHTML = parts.join("<br>") || "Kein aktiver Kanal.";
       };
       $("#plCh",ov).onchange = info; $("#plDays",ov).onchange = info; info();
@@ -534,26 +900,17 @@ function openPlan(cid){
   });
 }
 function freeSlots(c, days){
-  const taken = new Set(Object.values(S.state.posts).filter(p=>p.channel===c.id && p.scheduled && ["draft","approved","published"].includes(p.status)).map(p=>toLocalInput(p.scheduled)));
-  let n=0; const [hh,mm] = (c.time||"18:00").split(":");
-  for (let i=0;i<=days;i++){
-    const d = new Date(Date.now()+i*864e5);
-    const local = toLocalInput(d.toISOString()).slice(0,10)+`T${hh.padStart(2,"0")}:${mm}`;
-    const wd = DAYS[(new Date(local+":00Z").getUTCDay()+6)%7];
-    if (!(c.days||[]).includes(wd)) continue;
-    if (new Date(fromLocalInput(local)) <= Date.now()) continue;
-    if (!taken.has(local)) n++;
-  }
-  return n;
+  const today = dayKey(new Date());
+  return slotsBetween(c, today, addDays(today, days)).filter(iso=>new Date(iso)>Date.now() && !postAt(c, iso)).length;
 }
 
 function openAddPost(){
-  const opts = S.channels.map(c=>`<option value="${c.id}">${esc(c.handle)}</option>`).join("");
+  const opts = S.channels.map(c=>`<option value="${c.id}" ${S.filter===c.id?"selected":""}>${esc(c.handle)}</option>`).join("");
   const def = toLocalInput(new Date(Date.now()+864e5).toISOString()).slice(0,11)+"18:00";
   sheet("Eigenen Post planen", `
     <label class="f">Kanal<select id="apCh">${opts}</select></label>
-    <label class="f" style="margin-top:10px">Thema<input type="text" id="apTopic" placeholder="z. B. Widerrufsrecht beim Online-Kauf: 5 Irrtümer"></label>
-    <label class="f" style="margin-top:10px">Wunsch an Claude (optional)<input type="text" id="apHint" placeholder="z. B. mit Rechenbeispiel"></label>
+    <label class="f" style="margin-top:10px">Thema bzw. Wunsch<input type="text" id="apTopic" placeholder="z. B. Widerrufsrecht beim Online-Kauf: 5 Irrtümer"></label>
+    <label class="f" style="margin-top:10px">Hinweis an Claude (optional)<input type="text" id="apHint" placeholder="z. B. mit Rechenbeispiel"></label>
     <label class="f" style="margin-top:10px">Termin<input type="datetime-local" id="apWhen" value="${def}"></label>
     <p class="small muted">Zahlen kommen nur aus der Faktenbasis des Kanals. Fehlt etwas, landet es unter „Bitte prüfen“.</p>
     <div class="actions"><button class="btn pri" id="apGo">Entwurf erstellen</button></div>`, (ov, close)=>{
@@ -581,12 +938,12 @@ async function openEditor(kind, cid){
   } else if (kind==="facts"){
     hint = "Nur was hier steht, darf als Zahl, Betrag, Frist oder Studie in Posts vorkommen. Zeilen mit [PRÜFEN] an der Quelle prüfen und die Markierung dann löschen – erst danach lässt sich der Kanal aktivieren.";
   } else hint = "Ton, Zielgruppe und Regeln für Claude.";
-  const title = {topics:"Themen",facts:"Faktenbasis",style:"Stil"}[kind] + " – " + esc(c.handle);
+  const title = {topics:isReel(c)?"Wunschliste":"Themen",facts:"Faktenbasis",style:"Stil"}[kind] + " – " + esc(c.handle);
   sheet(title, `
     <p class="small muted" style="margin-top:0">${hint}</p>
     <textarea class="code" id="edTxt">${esc(text)}</textarea>
     <div class="actions"><button class="btn pri" id="edSave">Speichern</button>
-    ${kind==="topics" && c.format!=="reel_aktien"?`<button class="btn" id="edSuggest">✨ 20 Themen vorschlagen lassen</button>`:""}</div>`, (ov, close)=>{
+    ${kind==="topics" && !isReel(c)?`<button class="btn" id="edSuggest">✨ 20 Themen vorschlagen lassen</button>`:""}</div>`, (ov, close)=>{
       $("#edSave",ov).onclick = async e=>{
         e.target.disabled=true;
         let out = $("#edTxt",ov).value.replace(/\s+$/,"")+"\n";
@@ -660,21 +1017,28 @@ function openNewChannel(){
 /* ------------------------------------------------------------ Klicks */
 document.addEventListener("click", async e=>{
   const t = e.target;
-  const tab = t.closest(".tab"); if (tab){ S.view = tab.dataset.v; render(); return; }
+  const tab = t.closest(".tab"); if (tab){ S.view = tab.dataset.v; render(); window.scrollTo(0,0); return; }
   if (t.closest("#reload")){ loadAll().catch(err=>toast(err.message)); return; }
+  const f = t.closest("[data-filter]"); if (f && t.closest("#chanbar")){ S.filter=f.dataset.filter; render(); return; }
   if (!$("#app").contains(t)) return;
-  const f = t.closest("[data-filter]"); if (f){ S.filter=f.dataset.filter; render(); return; }
-  const q = t.closest("[data-quick]");
-  if (q){ e.stopPropagation(); q.disabled=true;
-    try{ await sendJob({action:q.dataset.quick, post_id:q.dataset.id}); toast(q.dataset.quick==="approve"?"Freigegeben ✓":"Verworfen"); }
-    catch(err){ toast(err.message); q.disabled=false; } return; }
+  const go = t.closest("[data-goto]");
+  if (go){ S.view = go.dataset.goto; if (go.dataset.filterTo) S.filter = go.dataset.filterTo; render(); window.scrollTo(0,0); return; }
+  const wk = t.closest("[data-week]"); if (wk){ const v=+wk.dataset.week; S.weekOffset = v===0 ? 0 : S.weekOffset+v; render(); return; }
+  const st = t.closest("[data-stack]"); if (st){ openStack(st.dataset.stack); return; }
+  const pn = t.closest("[data-plan-now]");
+  if (pn){ pn.style.pointerEvents="none";
+    try{ await sendJob({action:"plan", channel:pn.dataset.planNow, days:3}); toast("Claude schreibt Entwürfe für die freien Termine – ca. 1–2 Min. pro Post"); }
+    catch(err){ toast(err.message); } return; }
   const o = t.closest("[data-open]"); if (o){ openPost(o.dataset.open); return; }
   const a = t.closest("[data-act]");
   if (a){
     const act=a.dataset.act;
-    if (act==="plan") openPlan(a.dataset.id);
+    if (act==="plan") openPlan(a.dataset.id || (S.filter!=="all"?S.filter:undefined));
     if (act==="addpost") openAddPost();
     if (act==="newchannel") openNewChannel();
+    if (act==="morepub"){ S.showAllPub=true; render(); }
+    if (act==="togglerej"){ S.showRej=!S.showRej; render(); }
+    if (act==="kick"){ kickAutopilot(true); toast("Autopilot wird gestartet"); }
     if (act==="logout" && confirm("Zugangsschlüssel auf diesem Gerät löschen?")){ localStorage.removeItem("gh_token"); S.loaded=false; render(); }
     return;
   }
@@ -687,10 +1051,9 @@ document.addEventListener("click", async e=>{
     sv.disabled=false; }
 });
 document.addEventListener("change", e=>{
-  if (e.target.id==="showDone"){ S.showDone=e.target.checked; render(); }
   if (e.target.matches('[data-field="active"]')) e.target.parentElement.lastChild.textContent = e.target.checked?" Aktiv":" Pausiert";
 });
-document.addEventListener("visibilitychange", ()=>{ if (!document.hidden && S.loaded) loadAll().catch(()=>{}); });
+document.addEventListener("visibilitychange", ()=>{ if (!document.hidden && S.loaded && !document.querySelector(".ov,.stack")) loadAll().catch(()=>{}); });
 
 render();
 if (DEMO || token()) loadAll().catch(err=>{ toast(err.message); render(); });
