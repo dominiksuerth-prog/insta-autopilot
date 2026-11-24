@@ -550,19 +550,100 @@ def send_for_review(ch, post_id, post):
 
 
 def prune_old(state, days=30):
-    """Löscht Bilder erledigter Posts, die älter als `days` Tage sind (Instagram hat sie längst kopiert)."""
+    """Löscht Bilder/Videos erledigter Posts nach `days` Tagen (Instagram hat sie längst kopiert).
+    Ein kleines Vorschaubild (thumb.jpg, ~360 px) bleibt für die Rückschau im Cockpit erhalten."""
     import shutil
     cutoff = now().timestamp() - days * 86400
     for pid, p in state["posts"].items():
         if p["status"] in ("draft", "approved") or p.get("pruned"):
             continue
         if datetime.fromisoformat(p["created"]).timestamp() < cutoff:
-            shutil.rmtree(ROOT / "docs" / "insta" / p["channel"] / pid, ignore_errors=True)
+            folder = ROOT / "docs" / "insta" / p["channel"] / pid
+            if p["status"] == "published":
+                _keep_thumb(cfg_base_url(), p, folder)
+                for f in folder.glob("*"):
+                    if f.name != "thumb.jpg":
+                        f.unlink(missing_ok=True)
+            else:
+                shutil.rmtree(folder, ignore_errors=True)
             if p.get("video"):
                 from .aktien import pipeline
                 pipeline.delete_video(p["video"])
             p["pruned"] = True
     save_state(state)
+
+
+def cfg_base_url():
+    try:
+        return load_config().get("public_base_url", "").rstrip("/")
+    except Exception:
+        return ""
+
+
+def _keep_thumb(base_url, p, folder):
+    """Erstes Bild/Titelbild verkleinert als thumb.jpg sichern und im Post vermerken."""
+    try:
+        from PIL import Image
+        first = (p.get("urls") or [""])[0].split("/")[-1]
+        src = folder / first
+        if not src.exists():
+            return
+        im = Image.open(src).convert("RGB")
+        im.thumbnail((360, 640))
+        im.save(folder / "thumb.jpg", "JPEG", quality=82)
+        if base_url:
+            p["thumb"] = f"{base_url}/{p['channel']}/{folder.name}/thumb.jpg"
+    except Exception as e:  # Vorschaubild ist nice-to-have
+        print("Vorschaubild nicht erstellt:", e)
+
+
+STAT_METRICS = "reach,saved,shares,views,total_interactions"
+
+
+def refresh_stats(cfg, state, max_posts=30, every_hours=6, max_age_days=60):
+    """Holt Link, Likes, Kommentare und (wenn der Zugang es erlaubt) Reichweite/Aufrufe/Speicherungen."""
+    t_now = now()
+    done = 0
+    for pid, p in sorted(state["posts"].items(), key=lambda kv: kv[1].get("published") or "", reverse=True):
+        if p["status"] != "published" or not p.get("media_id") or done >= max_posts:
+            continue
+        pub = datetime.fromisoformat(p["published"])
+        if (t_now - pub).days > max_age_days:
+            continue
+        last = (p.get("stats") or {}).get("at")
+        if last and (t_now - datetime.fromisoformat(last)).total_seconds() < every_hours * 3600:
+            continue
+        ch = cfg["channels_by_id"].get(p["channel"])
+        if not ch:
+            continue
+        try:
+            token = get_token(ch)
+            info = _ig_call("GET", _graph(cfg, f"/{p['media_id']}"),
+                            fields="permalink,like_count,comments_count", access_token=token)
+        except Exception as e:
+            print("Statistik nicht abrufbar:", pid, e)
+            continue
+        st = {"likes": info.get("like_count"), "comments": info.get("comments_count"),
+              "at": t_now.isoformat(timespec="seconds")}
+        if info.get("permalink"):
+            p["permalink"] = info["permalink"]
+        if not state.get("insights_off"):
+            try:
+                ins = _ig_call("GET", _graph(cfg, f"/{p['media_id']}/insights"), metric=STAT_METRICS,
+                               access_token=token)
+                for m in ins.get("data", []):
+                    vals = m.get("values") or [{}]
+                    st[m["name"]] = vals[0].get("value")
+            except Exception as e:
+                # z. B. fehlende Berechtigung instagram_manage_insights – dann nur Likes/Kommentare
+                print("Insights nicht verfügbar:", e)
+                if "permission" in str(e).lower() or "(#10)" in str(e) or "(#200)" in str(e):
+                    state["insights_off"] = str(e)[:200]
+        p["stats"] = st
+        done += 1
+    if done:
+        save_state(state)
+    return done
 
 
 def migrate_state(state):
