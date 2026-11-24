@@ -1,7 +1,7 @@
 {
   "channels": {
     "stehtdirzu": {
-      "topic_index": 12
+      "topic_index": 13
     },
     "onebetterthought": {
       "topic_index": 13
@@ -803,10 +803,38 @@
       ],
       "created": "2026-11-24T01:19:06.197055+01:00",
       "scheduled": "2026-12-01T19:00:00+01:00"
+    },
+    "20261124-0119-495902": {
+      "channel": "stehtdirzu",
+      "topic": "Der Kündigungsbutton: So kündigst du online in 1 Minute",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261124-0119-495902/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261124-0119-495902/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261124-0119-495902/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261124-0119-495902/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261124-0119-495902/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261124-0119-495902/6.jpg"
+      ],
+      "caption": "Abo-Falle? Nicht mit dir.\n\nSeit Juli 2022 müssen Online-Verträge einen Kündigungsbutton auf der Website haben. Das heißt: Wer online abschließt, muss auch online kündigen können. Ohne Brief, ohne Hotline-Warteschleife.\n\nSo gehst du vor: Button auf der Website suchen, Vertrag und Daten angeben, Kündigung abschicken, Bestätigung als Screenshot sichern. Bei Verträgen ab März 2022 kannst du nach der Mindestlaufzeit monatlich kündigen. Prüf trotzdem in deinem Vertrag, bis wann deine Kündigung vorliegen muss.\n\nFindest du keinen Button oder hakt etwas? Screenshots machen, alles dokumentieren und zusätzlich schriftlich kündigen. Das hier ist eine allgemeine Info und keine Beratung im Einzelfall.\n\nMach heute den Check: Welche Handy-, Internet- und Studio-Verträge laufen bei dir noch, und wo kannst du schon raus?\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#verbraucherrecht #kündigen #kündigungsbutton #abofalle #verträge #dasstehtdirzu #verbrauchertipps #fitnessstudio",
+      "check": [
+        "Die Zeitangabe „in 1 Minute“ aus dem Thema steht nicht in der Faktenbasis und wurde bewusst weggelassen. Nicht im Titel oder Hook versprechen.",
+        "Der Kündigungsbutton gilt nur für Verträge, die online abgeschlossen werden können. Prüfen, ob „Online-Verträge“ in der Faktenbasis genau genug formuliert ist (z. B. Dauerschuldverhältnisse, Ausnahmen).",
+        "Die Empfehlung „zusätzlich schriftlich kündigen, wenn der Button fehlt“ ist eine allgemeine praktische Empfehlung und steht nicht in der Faktenbasis. Vor dem Posten rechtlich gegenlesen.",
+        "Die Pflicht zur Kündigungsbestätigung und der genaue Button-Text („Verträge hier kündigen“) stehen nicht in der Faktenbasis und wurden nicht genannt. Bei Bedarf ergänzen und prüfen.",
+        "Die Kündigungsfrist nach der Mindestlaufzeit steht nicht in der Faktenbasis und wurde bewusst nicht beziffert. Der Post verweist nur auf den Vertrag.",
+        "Der Stand der Faktenbasis ist 11/2026. Vor dem Posten prüfen, ob die Regeln noch gelten."
+      ],
+      "created": "2026-11-24T01:19:36.886107+01:00",
+      "scheduled": "2026-12-01T18:00:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-24T01:19:36+01:00",
+      "msg": "@stehtdir.zu: 1 neue Entwürfe für die nächsten 7 Tage"
+    },
     {
       "t": "2026-11-24T01:19:06+01:00",
       "msg": "@onebetterthought: 2 neue Entwürfe für die nächsten 7 Tage"
