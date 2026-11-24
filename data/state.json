@@ -4,7 +4,7 @@
       "topic_index": 12
     },
     "onebetterthought": {
-      "topic_index": 11
+      "topic_index": 13
     },
     "aktien_nachgerechnet": {
       "topic_index": 0
@@ -758,10 +758,59 @@
       ],
       "created": "2026-11-23T04:07:08.285147+01:00",
       "scheduled": "2026-11-30T18:00:00+01:00"
+    },
+    "20261124-0118-040898": {
+      "channel": "onebetterthought",
+      "topic": "Your phone steals focus even when you don't touch it",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-040898/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-040898/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-040898/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-040898/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-040898/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-040898/6.jpg"
+      ],
+      "caption": "Your phone can take up space in your head, even when it's silent.\n\nHere is one study on that. Ward and colleagues (2017) ran two experiments with nearly 800 smartphone users. Everyone silenced their phone. Then it was placed on the desk, in a pocket or bag, or in another room. After that, people took tests of working memory and fluid intelligence.\n\nIn this study, the more noticeable the phone was, the less cognitive capacity people had. People with the phone in another room did best, even though nobody used or checked it. The costs were highest for people who were most dependent on their phone. The authors call this \"brain drain.\"\n\nAn honest limit: later replication attempts found smaller or no effects. So this is not a rule. It is a small, low-effort idea to test for yourself.\n\nTry it: next time you need to focus, put your phone in another room. If that's not possible, at least get it off your desk. Then notice what changes, if anything.\n\nSource: Ward et al. (2017), Journal of the Association for Consumer Research.\n\nSave this for later – and send it to someone who needs it.\n\n#onebetterthought #focus #smartphone #digitalwellbeing #psychology #studytips #deepwork #mindset",
+      "check": [
+        "Check the Ward et al. (2017) paper: is 'nearly 800 smartphone users' the combined total across both experiments?",
+        "Confirm that the paper's results justify 'at least off the desk' (pocket/bag results sit between desk and another room).",
+        "Replication caveat is included on slide 4 and in the caption. Check the wording is balanced.",
+        "Caption length: confirm it falls between 500 and 1200 characters in the final tool."
+      ],
+      "created": "2026-11-24T01:18:42.622044+01:00",
+      "scheduled": "2026-11-30T19:00:00+01:00"
+    },
+    "20261124-0118-8b98c9": {
+      "channel": "onebetterthought",
+      "topic": "Phone on the desk vs. in another room: what one study found",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-8b98c9/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-8b98c9/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-8b98c9/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-8b98c9/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-8b98c9/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-8b98c9/6.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261124-0118-8b98c9/7.jpg"
+      ],
+      "caption": "Your phone is silent. Face down. You are not even touching it. Surely it can't bother you?\n\nIn one study, it might. Ward and colleagues (2017) ran two experiments with nearly 800 smartphone users. Everyone silenced their phone. Then it went on the desk, in a pocket or bag, or in another room. After that, everyone took tests of working memory and fluid intelligence.\n\nOn average, the more noticeable the phone was, the less cognitive capacity people had available. The group with the phone in another room did best, even though nobody used or checked their phone. The costs were highest for people who were most dependent on their phone. The authors call it \"brain drain\".\n\nHonest limit: later attempts to repeat this found smaller or no effects. So this is not a rule for everyone. It is a small, cheap experiment you can run yourself: next time you need to focus, put the phone in another room and see what happens.\n\nSave this for later – and send it to someone who needs it.\n\n#onebetterthought #focus #smartphone #deepwork #productivity #psychology #studytips",
+      "check": [
+        "Spot-check the Ward et al. (2017) wording against the paper: 'nearly 800 users', 'two experiments', phone in another room did best.",
+        "Replication caveat: later studies found smaller or no effects. Slide 5 and caption say so. Check that the tone is right.",
+        "'Fluid intelligence' may be unclear to some readers. Consider a plain-words gloss.",
+        "'A phone you never touch may still take up mental space' is a plain-words paraphrase of 'brain drain'. It is not a quote from the fact base. Check that it is not too strong."
+      ],
+      "created": "2026-11-24T01:19:06.197055+01:00",
+      "scheduled": "2026-12-01T19:00:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-24T01:19:06+01:00",
+      "msg": "@onebetterthought: 2 neue Entwürfe für die nächsten 7 Tage"
+    },
     {
       "t": "2026-11-23T20:36:57+01:00",
       "msg": "✅ Veröffentlicht auf @onebetterthought: Habit took 18 days for one person, 254 for another. Same study."
