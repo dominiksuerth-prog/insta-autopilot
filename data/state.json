@@ -264,7 +264,13 @@
       "created": "2026-11-20T15:34:22.783625+01:00",
       "scheduled": "2026-11-24T19:00:00+01:00",
       "media_id": "18080373944440917",
-      "published": "2026-11-24T20:38:29.592909+01:00"
+      "published": "2026-11-24T20:38:29.592909+01:00",
+      "permalink": "https://www.instagram.com/p/DgIuWzPmgcy/",
+      "stats": {
+        "likes": 0,
+        "comments": 0,
+        "at": "2026-11-24T20:45:35+01:00"
+      }
     },
     "20261120-1534-d8f661": {
       "channel": "onebetterthought",
@@ -385,7 +391,13 @@
       "created": "2026-11-20T15:36:41.655988+01:00",
       "scheduled": "2026-11-24T18:00:00+01:00",
       "media_id": "18120841882789782",
-      "published": "2026-11-24T20:37:43.949411+01:00"
+      "published": "2026-11-24T20:37:43.949411+01:00",
+      "permalink": "https://www.instagram.com/p/DgIuRLvmly7/",
+      "stats": {
+        "likes": 0,
+        "comments": 0,
+        "at": "2026-11-24T20:45:35+01:00"
+      }
     },
     "20261120-1537-e188a7": {
       "channel": "stehtdirzu",
@@ -700,7 +712,7 @@
     },
     "20261122-1241-e0aed6": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "approved",
       "created": "2026-11-22T12:44:22.108315+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-1241-e0aed6/cover.jpg"
@@ -722,7 +734,7 @@
     },
     "20261122-1244-2dfe1a": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "approved",
       "created": "2026-11-22T12:46:29.484166+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-1244-2dfe1a/cover.jpg"
@@ -913,7 +925,7 @@
     },
     "20261124-2034-11d33a": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "approved",
       "created": "2026-11-24T20:36:49.411505+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261124-2034-11d33a/cover.jpg"
@@ -936,6 +948,18 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-24T20:45:37+01:00",
+      "msg": "Jahre: Apple – letzte 5 Jahre: freigegeben"
+    },
+    {
+      "t": "2026-11-24T20:45:37+01:00",
+      "msg": "Duell: Coca-Cola vs. PepsiCo – 5 Jahre: freigegeben"
+    },
+    {
+      "t": "2026-11-24T20:45:37+01:00",
+      "msg": "Jahre: Tesla – letzte 5 Jahre: freigegeben"
+    },
     {
       "t": "2026-11-24T20:38:30+01:00",
       "msg": "✅ Veröffentlicht auf @onebetterthought: You wore a shirt you love? Fewer than 10% noticed."
