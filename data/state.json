@@ -788,7 +788,7 @@
     },
     "20261122-1249-9329ff": {
       "channel": "aktien_nachgerechnet",
-      "status": "approved",
+      "status": "published",
       "created": "2026-11-22T12:51:39.165046+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-1249-9329ff/cover.jpg"
@@ -806,7 +806,9 @@
       "topic": "Jahre: SAP – letzte 5 Jahre",
       "check": [],
       "format": "reel",
-      "scheduled": "2026-11-25T18:30:00+01:00"
+      "scheduled": "2026-11-25T18:30:00+01:00",
+      "media_id": "18105996071049564",
+      "published": "2026-11-25T18:30:54.479879+01:00"
     },
     "20261123-0404-e54280": {
       "channel": "aktien_nachgerechnet",
@@ -972,6 +974,10 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-25T18:30:54+01:00",
+      "msg": "✅ Veröffentlicht auf @aktien_nachgerechnet: Jahre: SAP – letzte 5 Jahre"
+    },
     {
       "t": "2026-11-25T05:09:01+01:00",
       "msg": "@aktien_nachgerechnet: 1 neue Entwürfe für die nächsten 7 Tage"
