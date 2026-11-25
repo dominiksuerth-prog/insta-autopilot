@@ -4,7 +4,7 @@
       "topic_index": 13
     },
     "onebetterthought": {
-      "topic_index": 13
+      "topic_index": 14
     },
     "aktien_nachgerechnet": {
       "topic_index": 0
@@ -976,10 +976,37 @@
       "check": [],
       "format": "reel",
       "scheduled": "2026-12-02T18:30:00+01:00"
+    },
+    "20261126-0017-65462a": {
+      "channel": "onebetterthought",
+      "topic": "Why Monday, birthdays and the 1st of the month feel like a fresh start",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261126-0017-65462a/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261126-0017-65462a/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261126-0017-65462a/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261126-0017-65462a/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261126-0017-65462a/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261126-0017-65462a/6.jpg"
+      ],
+      "caption": "Why does Monday feel like the right day to start over?\n\nIt's not just you. In three field studies, Dai, Milkman and Riis (2014) looked at what happens around \"temporal landmarks\": the start of a new week, month, year or semester, a birthday or a holiday. Around these dates, Google searches for \"diet\", gym visits and sign-ups for goal commitments all went up.\n\nThe authors' explanation: these dates feel like a new chapter. They help us separate from past failures. This is called the fresh start effect.\n\nTwo honest notes. This is a pattern on average, not a promise for every person. And the dates are not magic. They are a nudge you can use on purpose.\n\nSo pick your next landmark, choose one small thing, and start there. If it doesn't go well, the next landmark is never far away.\n\nSave this for later – and send it to someone who needs it.\n\n#onebetterthought #freshstart #psychology #habits #motivation #mindset #selfimprovement",
+      "check": [
+        "Fact base gives no sample sizes for Dai, Milkman & Riis (2014), so none are named. Check against the paper if you want to add them.",
+        "The 'why it happens' slide is the authors' explanation, not a proven mechanism. Wording says 'the authors' explanation'.",
+        "Myth slide ('Only January 1st counts') is a common belief, not a quote from a source. Check if the tone fits.",
+        "Slide 4 says the boost showed up for new weeks, months, semesters and birthdays. Confirm this matches the paper's results for each landmark.",
+        "Try-this tips ('put it in your calendar', 'wait for the next landmark') are practical suggestions, not findings of the study."
+      ],
+      "created": "2026-11-26T00:18:23.194045+01:00",
+      "scheduled": "2026-12-03T19:00:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-26T00:18:23+01:00",
+      "msg": "@onebetterthought: 1 neue Entwürfe für die nächsten 7 Tage"
+    },
     {
       "t": "2026-11-25T18:30:54+01:00",
       "msg": "✅ Veröffentlicht auf @aktien_nachgerechnet: Jahre: SAP – letzte 5 Jahre"
