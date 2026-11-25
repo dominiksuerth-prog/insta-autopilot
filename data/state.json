@@ -1,7 +1,7 @@
 {
   "channels": {
     "stehtdirzu": {
-      "topic_index": 13
+      "topic_index": 14
     },
     "onebetterthought": {
       "topic_index": 14
@@ -999,10 +999,37 @@
       ],
       "created": "2026-11-26T00:18:23.194045+01:00",
       "scheduled": "2026-12-03T19:00:00+01:00"
+    },
+    "20261126-0018-1495d7": {
+      "channel": "stehtdirzu",
+      "topic": "Fitnessstudio kündigen: Diese Regeln kennt kaum jemand",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261126-0018-1495d7/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261126-0018-1495d7/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261126-0018-1495d7/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261126-0018-1495d7/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261126-0018-1495d7/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261126-0018-1495d7/6.jpg"
+      ],
+      "caption": "Du zahlst fürs Fitnessstudio und gehst seit Monaten nicht mehr hin? Dann lies das.\n\nBei Verträgen, die du ab März 2022 abgeschlossen hast, gilt: Nach der Mindestlaufzeit kannst du monatlich kündigen. Du hängst nicht automatisch wieder lange fest.\n\nAußerdem müssen Anbieter, bei denen du online abschließen kannst, seit Juli 2022 einen Kündigungsbutton auf der Website haben. Du musst also nicht mehr nach Faxnummern suchen.\n\nSo gehst du vor: Abschlussdatum, Mindestlaufzeit und Kündigungsfrist im Vertrag prüfen. Dann per Button oder schriftlich kündigen. Und ganz wichtig: Lass dir die Kündigung bestätigen und speichere die Bestätigung. Ohne Beleg wird es später mühsam.\n\nHast du gerade erst online abgeschlossen? Beim Online-Kauf gilt ein Widerrufsrecht von 14 Tagen. Prüfe, ob das auf deinen Vertrag zutrifft.\n\nDas ist eine allgemeine Info und keine Rechtsberatung im Einzelfall. Bei Streit hilft die Verbraucherzentrale.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#stehtdirzu #verbraucherrechte #fitnessstudio #kündigen #verträge #geldsparen #kündigungsbutton #verbrauchertipps",
+      "check": [
+        "Kündigungsbutton: Die Pflicht gilt für Verträge, die online abgeschlossen werden können. Prüfen, ob die Formulierung 'Online-Verträge' passt.",
+        "Widerrufsrecht 14 Tage: Gilt bei Fernabsatz (z. B. Online-Abschluss), nicht bei Abschluss im Studio. Fristbeginn und Ausnahmen prüfen.",
+        "Verträge vor März 2022: Dort können noch alte Verlängerungsklauseln gelten. Auf den Slides nur 'ab März 2022' genannt.",
+        "Kündigungsfrist und Mindestlaufzeit werden bewusst ohne Zahl genannt, weil die Faktenbasis dazu keine Werte enthält.",
+        "Hinweis auf die Verbraucherzentrale in der Caption steht nicht in der Faktenbasis. Vor dem Posten bestätigen."
+      ],
+      "created": "2026-11-26T00:19:07.141168+01:00",
+      "scheduled": "2026-12-03T18:00:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-26T00:19:07+01:00",
+      "msg": "@stehtdir.zu: 1 neue Entwürfe für die nächsten 7 Tage"
+    },
     {
       "t": "2026-11-26T00:18:23+01:00",
       "msg": "@onebetterthought: 1 neue Entwürfe für die nächsten 7 Tage"
