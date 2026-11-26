@@ -402,7 +402,7 @@
     "20261120-1537-e188a7": {
       "channel": "stehtdirzu",
       "topic": "Handwerker und Haushaltshilfe: 20 % direkt von der Steuer",
-      "status": "approved",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-e188a7/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-e188a7/2.jpg",
@@ -422,7 +422,9 @@
         "Faktenbasis ist Stand 11/2026. Frist und Höchstbeträge vor dem Posten nochmals prüfen."
       ],
       "created": "2026-11-20T15:37:11.290266+01:00",
-      "scheduled": "2026-11-26T18:00:00+01:00"
+      "scheduled": "2026-11-26T18:00:00+01:00",
+      "media_id": "18087379628687857",
+      "published": "2026-11-26T18:00:49.742310+01:00"
     },
     "20261120-1537-b7da6e": {
       "channel": "stehtdirzu",
@@ -1026,6 +1028,10 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-26T18:00:49+01:00",
+      "msg": "✅ Veröffentlicht auf @stehtdir.zu: Handwerker und Haushaltshilfe: 20 % direkt von der Steuer"
+    },
     {
       "t": "2026-11-26T00:19:07+01:00",
       "msg": "@stehtdir.zu: 1 neue Entwürfe für die nächsten 7 Tage"
