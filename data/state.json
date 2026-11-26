@@ -293,7 +293,13 @@
       "created": "2026-11-20T15:34:43.928003+01:00",
       "scheduled": "2026-11-26T19:00:00+01:00",
       "media_id": "18204302698387254",
-      "published": "2026-11-26T19:01:00.645872+01:00"
+      "published": "2026-11-26T19:01:00.645872+01:00",
+      "permalink": "https://www.instagram.com/p/DgNsysvDeQ6/",
+      "stats": {
+        "likes": 0,
+        "comments": 0,
+        "at": "2026-11-26T20:15:43+01:00"
+      }
     },
     "20261120-1534-0a892d": {
       "channel": "onebetterthought",
@@ -426,7 +432,13 @@
       "created": "2026-11-20T15:37:11.290266+01:00",
       "scheduled": "2026-11-26T18:00:00+01:00",
       "media_id": "18087379628687857",
-      "published": "2026-11-26T18:00:49.742310+01:00"
+      "published": "2026-11-26T18:00:49.742310+01:00",
+      "permalink": "https://www.instagram.com/p/DgNl6Khjb76/",
+      "stats": {
+        "likes": 0,
+        "comments": 0,
+        "at": "2026-11-26T20:15:43+01:00"
+      }
     },
     "20261120-1537-b7da6e": {
       "channel": "stehtdirzu",
@@ -959,7 +971,7 @@
     },
     "20261125-0506-9520d8": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "approved",
       "created": "2026-11-25T05:09:01.539236+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261125-0506-9520d8/cover.jpg"
@@ -984,7 +996,7 @@
     "20261126-0017-65462a": {
       "channel": "onebetterthought",
       "topic": "Why Monday, birthdays and the 1st of the month feel like a fresh start",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261126-0017-65462a/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261126-0017-65462a/2.jpg",
@@ -1007,7 +1019,7 @@
     "20261126-0018-1495d7": {
       "channel": "stehtdirzu",
       "topic": "Fitnessstudio kündigen: Diese Regeln kennt kaum jemand",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261126-0018-1495d7/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261126-0018-1495d7/2.jpg",
@@ -1030,6 +1042,18 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-26T20:15:45+01:00",
+      "msg": "Why Monday, birthdays and the 1st of the month feel like a fresh start: freigegeben"
+    },
+    {
+      "t": "2026-11-26T20:15:45+01:00",
+      "msg": "Fitnessstudio kündigen: Diese Regeln kennt kaum jemand: freigegeben"
+    },
+    {
+      "t": "2026-11-26T20:15:45+01:00",
+      "msg": "Duell: Allianz vs. Münchener Rück – 5 Jahre: freigegeben"
+    },
     {
       "t": "2026-11-26T19:01:00+01:00",
       "msg": "✅ Veröffentlicht auf @onebetterthought: Treadmill or park? Walking helped creativity either way"
