@@ -275,7 +275,7 @@
     "20261120-1534-d8f661": {
       "channel": "onebetterthought",
       "topic": "Treadmill or park? Walking helped creativity either way",
-      "status": "approved",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-d8f661/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-d8f661/2.jpg",
@@ -291,7 +291,9 @@
         "Try-this tips (walk before writing, voice memo, brainstorming only) are practical suggestions and not study findings. Check that the framing is fine."
       ],
       "created": "2026-11-20T15:34:43.928003+01:00",
-      "scheduled": "2026-11-26T19:00:00+01:00"
+      "scheduled": "2026-11-26T19:00:00+01:00",
+      "media_id": "18204302698387254",
+      "published": "2026-11-26T19:01:00.645872+01:00"
     },
     "20261120-1534-0a892d": {
       "channel": "onebetterthought",
@@ -1028,6 +1030,10 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-26T19:01:00+01:00",
+      "msg": "✅ Veröffentlicht auf @onebetterthought: Treadmill or park? Walking helped creativity either way"
+    },
     {
       "t": "2026-11-26T18:00:49+01:00",
       "msg": "✅ Veröffentlicht auf @stehtdir.zu: Handwerker und Haushaltshilfe: 20 % direkt von der Steuer"
