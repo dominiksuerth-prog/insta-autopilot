@@ -31,9 +31,17 @@ Formate:
   Aktie vs. Index (Apple vs. S&P 500).
 Alle Kurse werden in Euro umgerechnet (Zielgruppe: Deutschland).
 - "mythos": eine Börsenweisheit, geprüft an einem Index (^GSPC, ^GDAXI oder ^NDX).
-  Mythen: "sellinmay", "dezember", "januar", "nachminus". Höchstens einmal in 2 Wochen.
+  Mythen: "sellinmay" (Sell in May), "dezember" (Dezember immer grün), "januar" (Januar-Barometer),
+  "nachminus" (nach Minus-Jahr kommt Plus-Jahr), "september" (September fällt), "rekord" (nach Rekordhoch
+  geht es bergab), "zehnjahre" (wer 10 Jahre hält, verliert nie). Denselben Mythos frühestens nach 6 Wochen
+  wieder, dann an einem anderen Index.
 
-Mischung pro Woche: meist "jahre", dazu ein "duell"; "mythos" nur ab und zu.
+Ziel: Reels, die man einem Freund schickt ("Siehst du!", "Hab ich doch gesagt"). Das schaffen Überraschungen
+gegen das Bauchgefühl und Lager-Fragen, über die Leute streiten – kein Rückblick für Aktionäre.
+Mischung: etwa 40 % "mythos", 40 % "duell", 20 % "jahre". Schau auf die bisherigen Reels unten und nimm das
+Format, das gemessen daran gerade zu kurz kommt; nie zweimal hintereinander "jahre".
+Gute Duelle sind Lager-Fragen: DAX vs. S&P 500, Aktie vs. ihr Index, Nvidia vs. AMD, Rivalen einer Branche.
+"jahre" nur für Namen, über die gerade alle reden.
 Abwechslung: Nimm keinen Wert, der in den letzten Reels schon vorkam, und wechsle zwischen DAX und USA.
 Erlaubt sind NUR Kürzel aus dieser Liste (Kürzel – Name):
 {universe}
@@ -52,7 +60,7 @@ IDEA_TOOL = {
         "format": {"type": "string", "enum": ["jahre", "duell", "mythos"]},
         "tickers": {"type": "array", "items": {"type": "string"}, "description": "1 Kürzel (jahre/mythos) oder 2–3 (duell)"},
         "period": {"type": "string", "enum": ["1", "3", "5", "10"]},
-        "myth": {"type": "string", "enum": ["sellinmay", "dezember", "januar", "nachminus"]},
+        "myth": {"type": "string", "enum": ["sellinmay", "dezember", "januar", "nachminus", "september", "rekord", "zehnjahre"]},
         "question": {"type": "string"},
     }, "required": ["format", "tickers"]},
 }
@@ -149,9 +157,21 @@ def comment_question(fmt, d, key):
     return opts[int(hashlib.sha1(key.encode()).hexdigest()[:6], 16) % len(opts)]
 
 
+def send_line(fmt, d):
+    """Ein Satz, der zum Weiterschicken per DM anregt – Sends sind Instagrams stärkstes Signal für neue Reichweite."""
+    if fmt == "mythos":
+        v, _ = reel.verdict(d["hits"], len(d["rows"]))
+        who = {"STIMMT NICHT": "der noch an", "STIMMT MEISTENS": "der nicht an"}.get(v, "der fest an")
+        return f"📩 Schick das jemandem, {who} „{d['meta']['short']}“ glaubt."
+    if fmt == "duell":
+        worst = min(d["lines"], key=lambda l: l["final"])["name"]
+        return f"📩 Schick das jemandem aus Team {worst}."
+    return f"📩 Schick das jemandem, der {reel.short_name(d['name'])} im Depot hat."
+
+
 def _caption(fmt, d, key=""):
     lines = reel.FORMATS[fmt].caption(d)
-    lines += ["", comment_question(fmt, d, key)]
+    lines += ["", comment_question(fmt, d, key), send_line(fmt, d)]
     disc = reel.disclosure(d.get("shown", []))
     lines += ["", disc] if disc else [""]
     lines += ["Keine Anlageberatung.", "", reel.HASHTAGS]
