@@ -1,7 +1,7 @@
 {
   "channels": {
     "stehtdirzu": {
-      "topic_index": 14
+      "topic_index": 15
     },
     "onebetterthought": {
       "topic_index": 15
@@ -1082,10 +1082,38 @@
       ],
       "created": "2026-11-27T01:34:10.186472+01:00",
       "scheduled": "2026-12-04T19:00:00+01:00"
+    },
+    "20261127-0134-539cc1": {
+      "channel": "stehtdirzu",
+      "topic": "Abo-Fallen erkennen und wieder rauskommen",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261127-0134-539cc1/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261127-0134-539cc1/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261127-0134-539cc1/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261127-0134-539cc1/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261127-0134-539cc1/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261127-0134-539cc1/6.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261127-0134-539cc1/7.jpg"
+      ],
+      "caption": "Gratis-Probe, und plötzlich wird jeden Monat abgebucht? Willkommen in der Abo-Falle.\n\nDas Gute: Du hast mehr Rechte, als dir die Anbieter zeigen. Online abgeschlossen? Dann hast du 14 Tage Widerrufsrecht. Bei Verträgen ab März 2022 kannst du nach der Mindestlaufzeit monatlich kündigen. Und seit Juli 2022 müssen Online-Verträge einen Kündigungsbutton auf der Website haben.\n\nDein Plan: Kontoauszug durchgehen, unbekannte Abbuchungen markieren, Vertrag raussuchen, kündigen und die Bestätigung aufheben. Findest du keinen Button, kündige schriftlich und mit Nachweis.\n\nDas ist eine allgemeine Info, keine Rechtsberatung im Einzelfall. Ob und wie du aus deinem Vertrag kommst, hängt von den Details ab.\n\nSpeichern, bevor du es brauchst – und teil es mit jemandem, der es wissen muss.\n\n#stehtdirzu #aboFalle #verbraucherrechte #kündigen #verbraucherschutz #vertragkündigen #widerruf",
+      "check": [
+        "Widerruf 14 Tage: Fristbeginn hängt vom Einzelfall ab (z. B. Vertragsschluss, Belehrung). Slide bewusst allgemein gehalten.",
+        "Kündigungsbutton-Pflicht gilt für Verbraucherverträge im Online-Abschluss, die auf Dauer angelegt sind. Faktenbasis nennt nur 'Online-Verträge'. Formulierung ggf. präzisieren.",
+        "Monatliche Kündbarkeit nach Mindestlaufzeit gilt für Verträge ab März 2022 und nur für bestimmte Dauerschuldverhältnisse. Beispiele (Handy, Internet, Fitnessstudio) stammen aus der Faktenbasis.",
+        "Warnsignale auf Slide 2 sind allgemeine Erfahrungswerte, nicht in der Faktenbasis belegt. Inhaltlich kurz gegenprüfen.",
+        "Faktenbasis-Stand 11/2026: Gelten Fristen und Regeln noch unverändert?"
+      ],
+      "created": "2026-11-27T01:34:44.178906+01:00",
+      "scheduled": "2026-12-04T18:00:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-27T01:34:44+01:00",
+      "msg": "@stehtdir.zu: 1 neue Entwürfe für die nächsten 7 Tage"
+    },
     {
       "t": "2026-11-27T01:34:10+01:00",
       "msg": "@onebetterthought: 1 neue Entwürfe für die nächsten 7 Tage"
