@@ -220,7 +220,9 @@ class Stage:
         size = min(self.fit(ln, self.ANTON, base, 0.94 - x0) for ln in title_lines[:3])
         lh = size * 1.39 / H                       # Zeilenhoehe als Anteil der Bildhoehe (Punkt -> Pixel)
         y0 = 0.912 - 0.78 * lh
-        ys = [y0 - k * lh * 0.92 for k in range(n)]
+        ys = [y0]
+        for ln in title_lines[1:n]:                # Zeile mit Umlaut: etwas mehr Abstand, sonst kleben die Punkte oben an
+            ys.append(ys[-1] - lh * (1.06 if any(c in ln for c in "ÄÖÜ") else 0.92))
         qy = ys[-1] - 0.048
         for ln, y in zip(title_lines[:3], ys):
             self.text(x0, y, ln, self.ANTON, size)
@@ -633,6 +635,14 @@ MYTHS = {
                "bar": "Rendite Feb–Dez (Farbe: Januar)"},
     "nachminus": {"claim": "NACH EINEM MINUS-JAHR KOMMT EIN PLUS-JAHR", "short": "Erholung nach Minus-Jahr",
                   "what": "Das Jahr nach einem Minus-Jahr endet im Plus", "bar": "Rendite im Folgejahr"},
+    "september": {"claim": "IM SEPTEMBER FÄLLT DIE BÖRSE", "short": "September-Effekt",
+                  "what": "Der September endet im Minus", "bar": "Rendite im September"},
+    "rekord": {"claim": "NACH EINEM REKORDHOCH GEHT ES BERGAB", "short": "Nie am Rekordhoch kaufen",
+               "what": "Endet ein Jahr auf Rekordhoch, schließt das Folgejahr im Minus",
+               "bar": "Rendite im Jahr nach Rekord-Jahresende"},
+    "zehnjahre": {"claim": "WER 10 JAHRE HÄLT, VERLIERT NIE", "short": "10 Jahre halten",
+                  "what": "Über jeden 10-Jahres-Zeitraum (Jahresende bis Jahresende) steht ein Plus",
+                  "bar": "Rendite über 10 Jahre bis Jahresende"},
 }
 
 
@@ -680,8 +690,29 @@ def myth_rows(s, key, n_years):
                 continue
             r = (c.iloc[0] / p1.iloc[0] - 1) * 100
             rows.append({"year": y, "value": r, "hit": r > 0, "prev": prev})
-    if key == "nachminus":
-        return rows                       # wenige Faelle: alle nehmen, die es gibt
+        elif key == "september":
+            a, sp = at(y, 8), at(y, 9)
+            if a.empty or sp.empty:
+                continue
+            r = (sp.iloc[0] / a.iloc[0] - 1) * 100
+            rows.append({"year": y, "value": r, "hit": r < 0})
+        elif key == "rekord":
+            p1, c = at(y - 1, 12), at(y, 12)
+            if p1.empty or c.empty:
+                continue
+            before = m[m.index <= p1.index[0]]
+            if len(before) < 24 or p1.iloc[0] < before.max() * 0.999:      # Jahresende nicht auf Rekordhoch
+                continue
+            r = (c.iloc[0] / p1.iloc[0] - 1) * 100
+            rows.append({"year": y, "value": r, "hit": r < 0})
+        elif key == "zehnjahre":
+            b, c = at(y - 10, 12), at(y, 12)
+            if b.empty or c.empty:
+                continue
+            r = (c.iloc[0] / b.iloc[0] - 1) * 100
+            rows.append({"year": y, "value": r, "hit": r > 0})
+    if key in ("nachminus", "rekord"):
+        return rows[-25:]                 # wenige Faelle: alle nehmen, die es gibt (max. 25 Balken)
     return rows[-n_years:]
 
 
@@ -744,6 +775,8 @@ class Mythos:
         vals = np.array([r["value"] for r in rows])
         lim = max(5.0, float(np.abs(vals).max()) * 1.15)
         ax.set_xlim(-0.7, n - 0.3); ax.set_ylim(-lim, lim)
+        if d["myth"] == "zehnjahre":          # fast nur Plus: Platz nicht an leere Minus-Haelfte verschenken
+            ax.set_ylim(min(-0.12 * lim, float(vals.min()) * 1.15), lim)
         ax.yaxis.set_major_locator(S.mpl.ticker.MaxNLocator(4))
         ax.yaxis.set_major_formatter(S.mpl.ticker.FuncFormatter(lambda v, _: pct(v, 0)))
         step = max(1, math.ceil(n / 6))
@@ -791,6 +824,13 @@ class Mythos:
                     f"Ø Nov–Apr {pct(avg([r['b'] for r in rows]))}")
         if d["myth"] == "nachminus":
             return f"Ø Rendite im Folgejahr {pct(avg([r['value'] for r in rows]))}\n{len(rows)} Minus-Jahre seit {rows[0]['year'] - 1}"
+        if d["myth"] == "rekord":
+            return f"Ø Rendite im Folgejahr {pct(avg([r['value'] for r in rows]))}"
+        if d["myth"] == "zehnjahre":
+            worst = min(rows, key=lambda r: r["value"])
+            return f"Schlechteste 10 Jahre: {worst['year'] - 10}–{worst['year']} {pct(worst['value'], 0)}"
+        if d["myth"] == "september":
+            return f"Ø September {pct(avg([r['value'] for r in rows]))}"
         return f"Ø {pct(avg([r['value'] for r in rows]))} je Jahr"
 
     def caption(self, d):
