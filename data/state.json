@@ -323,7 +323,13 @@
       "created": "2026-11-20T15:35:03.547549+01:00",
       "scheduled": "2026-11-27T19:00:00+01:00",
       "media_id": "17927418522446619",
-      "published": "2026-11-27T19:54:54.261699+01:00"
+      "published": "2026-11-27T19:54:54.261699+01:00",
+      "permalink": "https://www.instagram.com/p/DgQXwZiDaVy/",
+      "stats": {
+        "likes": 0,
+        "comments": 0,
+        "at": "2026-11-27T23:08:30+01:00"
+      }
     },
     "20261120-1535-06f9f6": {
       "channel": "stehtdirzu",
@@ -464,7 +470,13 @@
       "created": "2026-11-20T15:37:38.138801+01:00",
       "scheduled": "2026-11-27T18:00:00+01:00",
       "media_id": "18376892827214294",
-      "published": "2026-11-27T19:53:42.992784+01:00"
+      "published": "2026-11-27T19:53:42.992784+01:00",
+      "permalink": "https://www.instagram.com/p/DgQXnaYjicP/",
+      "stats": {
+        "likes": 0,
+        "comments": 0,
+        "at": "2026-11-27T23:08:30+01:00"
+      }
     },
     "20261121-2013-8171b2": {
       "channel": "aktien_nachgerechnet",
@@ -752,7 +764,13 @@
       "format": "reel",
       "scheduled": "2026-11-27T18:30:00+01:00",
       "media_id": "18433947994147506",
-      "published": "2026-11-27T19:54:20.172616+01:00"
+      "published": "2026-11-27T19:54:20.172616+01:00",
+      "permalink": "https://www.instagram.com/reel/DgQXpcNoza0/",
+      "stats": {
+        "likes": 0,
+        "comments": 0,
+        "at": "2026-11-27T23:08:30+01:00"
+      }
     },
     "20261122-1244-2dfe1a": {
       "channel": "aktien_nachgerechnet",
@@ -1047,7 +1065,7 @@
     },
     "20261127-0131-0cbd31": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "approved",
       "created": "2026-11-27T01:33:45.556626+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261127-0131-0cbd31/cover.jpg"
@@ -1070,7 +1088,7 @@
     "20261127-0133-e3251e": {
       "channel": "onebetterthought",
       "topic": "Missed your New Year's goal? You don't have to wait for January",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261127-0133-e3251e/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261127-0133-e3251e/2.jpg",
@@ -1092,7 +1110,7 @@
     "20261127-0134-539cc1": {
       "channel": "stehtdirzu",
       "topic": "Abo-Fallen erkennen und wieder rauskommen",
-      "status": "draft",
+      "status": "approved",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261127-0134-539cc1/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261127-0134-539cc1/2.jpg",
@@ -1116,6 +1134,18 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-27T23:08:31+01:00",
+      "msg": "Missed your New Year's goal? You don't have to wait for January: freigegeben"
+    },
+    {
+      "t": "2026-11-27T23:08:31+01:00",
+      "msg": "Jahre: Amazon – letzte 5 Jahre: freigegeben"
+    },
+    {
+      "t": "2026-11-27T23:08:31+01:00",
+      "msg": "Abo-Fallen erkennen und wieder rauskommen: freigegeben"
+    },
     {
       "t": "2026-11-27T19:54:54+01:00",
       "msg": "✅ Veröffentlicht auf @onebetterthought: What happens in your brain when you say \"angry\" out loud?"
