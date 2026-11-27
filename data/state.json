@@ -1038,10 +1038,36 @@
       ],
       "created": "2026-11-26T00:19:07.141168+01:00",
       "scheduled": "2026-12-03T18:00:00+01:00"
+    },
+    "20261127-0131-0cbd31": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-27T01:33:45.556626+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261127-0131-0cbd31/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261127-0131-0cbd31.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261127-0131-0cbd31.mp4",
+      "caption": "Amazon: 5 Jahre übereinander gelegt 📈\n\n2026 bisher: +13,5% – Platz 3 von 5 Jahren.\n2022: -46,5%\n2023: +74,2%\n2024: +53,6%\n2025: -6,8%\n\nJede Linie = ein Kalenderjahr, Kurs seit Jahresbeginn (Vorjahresschluss = 0 %), in Euro.\nStand: 25.11.2026.\nSaison-Muster einzelner Jahre sind kein Beweis für die Zukunft.\n\nHättest du Amazon 2026 durchgehalten? Ja oder nein? 👇\n\nTransparenz: Ich kann in gezeigten Aktien investiert sein.\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "jahre",
+        "tickers": [
+          "AMZN"
+        ],
+        "question": "WELCHES JAHR WAR STARK?"
+      },
+      "topic": "Jahre: Amazon – letzte 5 Jahre",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-12-04T18:30:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-27T01:33:45+01:00",
+      "msg": "@aktien_nachgerechnet: 1 neue Entwürfe für die nächsten 7 Tage"
+    },
     {
       "t": "2026-11-26T20:15:45+01:00",
       "msg": "Why Monday, birthdays and the 1st of the month feel like a fresh start: freigegeben"
@@ -1299,7 +1325,7 @@
       "msg": "@onebetterthought: 4 neue Themen vorgeschlagen (Cockpit → Kanäle → Themen)"
     }
   ],
-  "last_autoplan": "2026-11-26",
+  "last_autoplan": "2026-11-27",
   "last_run": "2026-11-26T20:16:47+01:00",
   "insights_off": "Instagram-API-Fehler 400: (#10) Application does not have permission for this action"
 }
