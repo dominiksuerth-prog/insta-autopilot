@@ -31,7 +31,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261116-1617-c4e5be": {
@@ -55,7 +55,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261116-1617-ed1fec": {
@@ -79,7 +79,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261117-1644-8a5ec9": {
@@ -105,7 +105,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261117-1644-34fe87": {
@@ -130,7 +130,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261119-1629-dc7847": {
@@ -154,7 +154,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261119-1630-122d99": {
@@ -177,7 +177,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261120-1533-265395": {
@@ -209,7 +209,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261120-1533-33faec": {
@@ -239,7 +239,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261120-1534-032f95": {
@@ -269,7 +269,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261120-1534-d8f661": {
@@ -298,13 +298,13 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261120-1534-0a892d": {
       "channel": "onebetterthought",
       "topic": "What happens in your brain when you say \"angry\" out loud?",
-      "status": "approved",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-0a892d/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261120-1534-0a892d/2.jpg",
@@ -321,7 +321,9 @@
         "'A word may dial it down' and the myth slide are framed as hint, not proof; the myth ('makes it bigger') is not tested directly in the study."
       ],
       "created": "2026-11-20T15:35:03.547549+01:00",
-      "scheduled": "2026-11-27T19:00:00+01:00"
+      "scheduled": "2026-11-27T19:00:00+01:00",
+      "media_id": "17927418522446619",
+      "published": "2026-11-27T19:54:54.261699+01:00"
     },
     "20261120-1535-06f9f6": {
       "channel": "stehtdirzu",
@@ -346,7 +348,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261120-1536-0a7b3b": {
@@ -372,7 +374,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261120-1536-2a4906": {
@@ -404,7 +406,7 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261120-1537-e188a7": {
@@ -437,13 +439,13 @@
       "stats": {
         "likes": 0,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261120-1537-b7da6e": {
       "channel": "stehtdirzu",
       "topic": "Preiserhöhung bekommen? Dein Sonderkündigungsrecht",
-      "status": "approved",
+      "status": "published",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-b7da6e/1.jpg",
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/stehtdirzu/20261120-1537-b7da6e/2.jpg",
@@ -460,7 +462,9 @@
         "Faktenbasis um Sonderkündigungsrecht (Rechtsgrundlagen, Fristen, Form der Ankündigung) ergänzen."
       ],
       "created": "2026-11-20T15:37:38.138801+01:00",
-      "scheduled": "2026-11-27T18:00:00+01:00"
+      "scheduled": "2026-11-27T18:00:00+01:00",
+      "media_id": "18376892827214294",
+      "published": "2026-11-27T19:53:42.992784+01:00"
     },
     "20261121-2013-8171b2": {
       "channel": "aktien_nachgerechnet",
@@ -677,7 +681,7 @@
       "stats": {
         "likes": 2,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261122-0930-4ddeff": {
@@ -728,7 +732,7 @@
     },
     "20261122-1241-e0aed6": {
       "channel": "aktien_nachgerechnet",
-      "status": "approved",
+      "status": "published",
       "created": "2026-11-22T12:44:22.108315+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261122-1241-e0aed6/cover.jpg"
@@ -746,7 +750,9 @@
       "topic": "Jahre: Tesla – letzte 5 Jahre",
       "check": [],
       "format": "reel",
-      "scheduled": "2026-11-27T18:30:00+01:00"
+      "scheduled": "2026-11-27T18:30:00+01:00",
+      "media_id": "18433947994147506",
+      "published": "2026-11-27T19:54:20.172616+01:00"
     },
     "20261122-1244-2dfe1a": {
       "channel": "aktien_nachgerechnet",
@@ -799,7 +805,7 @@
       "stats": {
         "likes": 1,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261122-1249-9329ff": {
@@ -829,7 +835,7 @@
       "stats": {
         "likes": 1,
         "comments": 0,
-        "at": "2026-11-27T10:00:30+01:00"
+        "at": "2026-11-27T19:52:57+01:00"
       }
     },
     "20261123-0404-e54280": {
@@ -1110,6 +1116,18 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-27T19:54:54+01:00",
+      "msg": "✅ Veröffentlicht auf @onebetterthought: What happens in your brain when you say \"angry\" out loud?"
+    },
+    {
+      "t": "2026-11-27T19:54:54+01:00",
+      "msg": "✅ Veröffentlicht auf @aktien_nachgerechnet: Jahre: Tesla – letzte 5 Jahre"
+    },
+    {
+      "t": "2026-11-27T19:54:54+01:00",
+      "msg": "✅ Veröffentlicht auf @stehtdir.zu: Preiserhöhung bekommen? Dein Sonderkündigungsrecht"
+    },
     {
       "t": "2026-11-27T01:34:44+01:00",
       "msg": "@stehtdir.zu: 1 neue Entwürfe für die nächsten 7 Tage"
