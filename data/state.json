@@ -4,7 +4,7 @@
       "topic_index": 14
     },
     "onebetterthought": {
-      "topic_index": 14
+      "topic_index": 15
     },
     "aktien_nachgerechnet": {
       "topic_index": 0
@@ -1060,10 +1060,36 @@
       "check": [],
       "format": "reel",
       "scheduled": "2026-12-04T18:30:00+01:00"
+    },
+    "20261127-0133-e3251e": {
+      "channel": "onebetterthought",
+      "topic": "Missed your New Year's goal? You don't have to wait for January",
+      "status": "draft",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261127-0133-e3251e/1.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261127-0133-e3251e/2.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261127-0133-e3251e/3.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261127-0133-e3251e/4.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261127-0133-e3251e/5.jpg",
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/onebetterthought/20261127-0133-e3251e/6.jpg"
+      ],
+      "caption": "January came and went, and the goal didn't stick. Fine. You don't have to wait a whole year to try again.\n\nIn a study by Dai, Milkman & Riis (2014), researchers ran three field studies. They looked at Google searches for \"diet\", gym visits and sign-ups for goal commitments. All three went up after what they call temporal landmarks: the start of a new week, month, year or semester, a birthday or a holiday.\n\nWhy? Landmarks feel like a new chapter. They put some distance between you and past slip-ups. This is called the fresh start effect.\n\nAn honest limit: the study shows when people tend to start, not whether the goal lasts. A date won't do the work for you. But it can be a helpful, low-drama moment to begin again.\n\nSo look at your calendar. Is there a Monday, a new month or a birthday coming up? Pick one small goal, write the date down, and let the old attempt be a past chapter.\n\nSave this for later – and send it to someone who needs it.\n\n#onebetterthought #freshstart #newyearsgoals #habits #psychology #motivation #selfimprovement #mindset",
+      "check": [
+        "The fact base gives no participant numbers for Dai, Milkman & Riis (2014), so none are mentioned. Check the original paper if you want to add them.",
+        "The study shows that starts (searches, gym visits, sign-ups) increase after landmarks. It does not show that goals last longer. The slides and caption say this, so check the wording against the paper.",
+        "Slide 3 says birthdays and holidays counted as landmarks. This comes from the fact base. Check it against the paper.",
+        "The fourth Try this item (past chapter, not a verdict) is a framing based on the study's explanation, not a tested intervention."
+      ],
+      "created": "2026-11-27T01:34:10.186472+01:00",
+      "scheduled": "2026-12-04T19:00:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-27T01:34:10+01:00",
+      "msg": "@onebetterthought: 1 neue Entwürfe für die nächsten 7 Tage"
+    },
     {
       "t": "2026-11-27T01:33:45+01:00",
       "msg": "@aktien_nachgerechnet: 1 neue Entwürfe für die nächsten 7 Tage"
