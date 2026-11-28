@@ -1135,7 +1135,7 @@
     },
     "20261128-0254-f11d4e": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "approved",
       "created": "2026-11-28T02:56:33.053100+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261128-0254-f11d4e/cover.jpg"
@@ -1158,7 +1158,7 @@
     },
     "20261128-0256-024270": {
       "channel": "aktien_nachgerechnet",
-      "status": "draft",
+      "status": "approved",
       "created": "2026-11-28T02:58:13.872309+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261128-0256-024270/cover.jpg"
@@ -1182,6 +1182,14 @@
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-28T13:34:55+01:00",
+      "msg": "Mythos: Nie am Rekordhoch kaufen – S&P 500: freigegeben"
+    },
+    {
+      "t": "2026-11-28T13:34:55+01:00",
+      "msg": "Mythos: Dezember-Rally – DAX: freigegeben"
+    },
     {
       "t": "2026-11-28T02:58:13+01:00",
       "msg": "Neu geschrieben: Mythos: Nie am Rekordhoch kaufen – S&P 500"
