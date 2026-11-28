@@ -1066,7 +1066,7 @@
     },
     "20261127-0131-0cbd31": {
       "channel": "aktien_nachgerechnet",
-      "status": "approved",
+      "status": "replaced",
       "created": "2026-11-27T01:33:45.556626+01:00",
       "urls": [
         "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261127-0131-0cbd31/cover.jpg"
@@ -1084,7 +1084,8 @@
       "topic": "Jahre: Amazon – letzte 5 Jahre",
       "check": [],
       "format": "reel",
-      "scheduled": "2026-12-04T18:30:00+01:00"
+      "scheduled": "2026-12-04T18:30:00+01:00",
+      "replaced_by": "20261128-0256-024270"
     },
     "20261127-0133-e3251e": {
       "channel": "onebetterthought",
@@ -1154,10 +1155,37 @@
       "check": [],
       "format": "reel",
       "scheduled": "2026-11-30T18:30:00+01:00"
+    },
+    "20261128-0256-024270": {
+      "channel": "aktien_nachgerechnet",
+      "status": "draft",
+      "created": "2026-11-28T02:58:13.872309+01:00",
+      "urls": [
+        "https://raw.githubusercontent.com/dominiksuerth-prog/insta-autopilot/main/docs/insta/aktien_nachgerechnet/20261128-0256-024270/cover.jpg"
+      ],
+      "video": "aktien_nachgerechnet_20261128-0256-024270.mp4",
+      "video_url": "https://github.com/dominiksuerth-prog/insta-autopilot/releases/download/reels/aktien_nachgerechnet_20261128-0256-024270.mp4",
+      "caption": "„Nie am Rekordhoch kaufen“ – nachgerechnet 🔎\n\nBehauptung: Endet ein Jahr auf Rekordhoch, schließt das Folgejahr im Minus.\nGeprüft mit dem S&P 500, 1955–2024: stimmte in 7 von 23 Jahren (30 %).\nUrteil: Stimmt nicht.\n\nØ Rendite im Folgejahr +7,5%.\nGrundlage: Monatsschlusskurse, ohne Dividenden.\nEine Regel, die in der Vergangenheit oft stimmte, muss es in Zukunft nicht.\n\nHast du an diese Börsenregel geglaubt? Ja oder nein? 👇\n📩 Schick das jemandem, der noch an „Nie am Rekordhoch kaufen“ glaubt.\n\nKeine Anlageberatung.\n\n#aktien #börse #investieren #etf #finanzen #aktienmarkt #nachgerechnet",
+      "idea": {
+        "format": "mythos",
+        "tickers": [
+          "^GSPC"
+        ],
+        "myth": "rekord",
+        "question": "NACH REKORD BERGAB?"
+      },
+      "topic": "Mythos: Nie am Rekordhoch kaufen – S&P 500",
+      "check": [],
+      "format": "reel",
+      "scheduled": "2026-12-04T18:30:00+01:00"
     }
   },
   "tg_offset": 69273751,
   "log": [
+    {
+      "t": "2026-11-28T02:58:13+01:00",
+      "msg": "Neu geschrieben: Mythos: Nie am Rekordhoch kaufen – S&P 500"
+    },
     {
       "t": "2026-11-28T02:56:33+01:00",
       "msg": "Neu geschrieben: Mythos: Dezember-Rally – DAX"
